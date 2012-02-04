@@ -17,6 +17,7 @@
 		FA5D8F1814DDC494006C2F43 /* WAXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1314DDC494006C2F43 /* WAXMLNode.m */; };
 		FA5D8F1914DDC494006C2F43 /* WAXMLText.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1514DDC494006C2F43 /* WAXMLText.m */; };
 		FA5D8F1C14DDC4A6006C2F43 /* WAResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */; };
+		FAD7DAFC14DDD7C500DFC961 /* query.xml in Resources */ = {isa = PBXBuildFile; fileRef = FAD7DAFB14DDD7C500DFC961 /* query.xml */; };
 		FAE8C50B14DD97FD003DEC2A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE8C50A14DD97FD003DEC2A /* Cocoa.framework */; };
 		FAE8C51514DD97FD003DEC2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAE8C51314DD97FD003DEC2A /* InfoPlist.strings */; };
 		FAE8C51714DD97FD003DEC2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE8C51614DD97FD003DEC2A /* main.m */; };
@@ -48,6 +49,7 @@
 		FA5D8F1514DDC494006C2F43 /* WAXMLText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAXMLText.m; sourceTree = "<group>"; };
 		FA5D8F1A14DDC4A6006C2F43 /* WAResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAResponse.h; sourceTree = "<group>"; };
 		FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAResponse.m; sourceTree = "<group>"; };
+		FAD7DAFB14DDD7C500DFC961 /* query.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = query.xml; sourceTree = "<group>"; };
 		FAE8C50614DD97FD003DEC2A /* Wolfram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wolfram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE8C50A14DD97FD003DEC2A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAE8C50D14DD97FD003DEC2A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -182,6 +184,7 @@
 		FAE8C51114DD97FD003DEC2A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAD7DAFB14DDD7C500DFC961 /* query.xml */,
 				FAE8C51214DD97FD003DEC2A /* Wolfram-Info.plist */,
 				FAE8C51314DD97FD003DEC2A /* InfoPlist.strings */,
 				FAE8C51614DD97FD003DEC2A /* main.m */,
@@ -255,6 +258,7 @@
 				FAE8C51514DD97FD003DEC2A /* InfoPlist.strings in Resources */,
 				FAE8C51B14DD97FD003DEC2A /* Credits.rtf in Resources */,
 				FAE8C52114DD97FD003DEC2A /* MainMenu.xib in Resources */,
+				FAD7DAFC14DDD7C500DFC961 /* query.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

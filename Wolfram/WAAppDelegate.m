@@ -15,7 +15,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    NSString * path = @"/Users/alex/Desktop/query.xml";
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"query" ofType:@"xml"];
     NSData * xmlData = [NSData dataWithContentsOfFile:path];
     WAXMLDocument * document = [[WAXMLDocument alloc] initWithXMLData:xmlData];
     __unused WAResponse * response = [[WAResponse alloc] initWithDocument:document];
