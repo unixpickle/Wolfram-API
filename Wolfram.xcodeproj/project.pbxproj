@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA5D8EEC14DDBB7A006C2F43 /* NSString+URLCode.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE214DDBB7A006C2F43 /* NSString+URLCode.m */; };
+		FA5D8EED14DDBB7A006C2F43 /* WAMutableRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE514DDBB7A006C2F43 /* WAMutableRequest.m */; };
+		FA5D8EEE14DDBB7A006C2F43 /* WARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE714DDBB7A006C2F43 /* WARequest.m */; };
+		FA5D8EEF14DDBB7A006C2F43 /* WARequestAssumption.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE914DDBB7A006C2F43 /* WARequestAssumption.m */; };
+		FA5D8EF014DDBB7A006C2F43 /* WARequestPodState.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EEB14DDBB7A006C2F43 /* WARequestPodState.m */; };
+		FA5D8F1614DDC494006C2F43 /* WAXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F0F14DDC494006C2F43 /* WAXMLDocument.m */; };
+		FA5D8F1714DDC494006C2F43 /* WAXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1114DDC494006C2F43 /* WAXMLElement.m */; };
+		FA5D8F1814DDC494006C2F43 /* WAXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1314DDC494006C2F43 /* WAXMLNode.m */; };
+		FA5D8F1914DDC494006C2F43 /* WAXMLText.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1514DDC494006C2F43 /* WAXMLText.m */; };
+		FA5D8F1C14DDC4A6006C2F43 /* WAResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */; };
 		FAE8C50B14DD97FD003DEC2A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE8C50A14DD97FD003DEC2A /* Cocoa.framework */; };
 		FAE8C51514DD97FD003DEC2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAE8C51314DD97FD003DEC2A /* InfoPlist.strings */; };
 		FAE8C51714DD97FD003DEC2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE8C51614DD97FD003DEC2A /* main.m */; };
@@ -16,17 +26,37 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA5D8EE114DDBB7A006C2F43 /* NSString+URLCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLCode.h"; sourceTree = "<group>"; };
+		FA5D8EE214DDBB7A006C2F43 /* NSString+URLCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLCode.m"; sourceTree = "<group>"; };
+		FA5D8EE414DDBB7A006C2F43 /* WAMutableRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAMutableRequest.h; sourceTree = "<group>"; };
+		FA5D8EE514DDBB7A006C2F43 /* WAMutableRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAMutableRequest.m; sourceTree = "<group>"; };
+		FA5D8EE614DDBB7A006C2F43 /* WARequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WARequest.h; sourceTree = "<group>"; };
+		FA5D8EE714DDBB7A006C2F43 /* WARequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WARequest.m; sourceTree = "<group>"; };
+		FA5D8EE814DDBB7A006C2F43 /* WARequestAssumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WARequestAssumption.h; sourceTree = "<group>"; };
+		FA5D8EE914DDBB7A006C2F43 /* WARequestAssumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WARequestAssumption.m; sourceTree = "<group>"; };
+		FA5D8EEA14DDBB7A006C2F43 /* WARequestPodState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WARequestPodState.h; sourceTree = "<group>"; };
+		FA5D8EEB14DDBB7A006C2F43 /* WARequestPodState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WARequestPodState.m; sourceTree = "<group>"; };
+		FA5D8F0E14DDC494006C2F43 /* WAXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAXMLDocument.h; sourceTree = "<group>"; };
+		FA5D8F0F14DDC494006C2F43 /* WAXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAXMLDocument.m; sourceTree = "<group>"; };
+		FA5D8F1014DDC494006C2F43 /* WAXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAXMLElement.h; sourceTree = "<group>"; };
+		FA5D8F1114DDC494006C2F43 /* WAXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAXMLElement.m; sourceTree = "<group>"; };
+		FA5D8F1214DDC494006C2F43 /* WAXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAXMLNode.h; sourceTree = "<group>"; };
+		FA5D8F1314DDC494006C2F43 /* WAXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAXMLNode.m; sourceTree = "<group>"; };
+		FA5D8F1414DDC494006C2F43 /* WAXMLText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAXMLText.h; sourceTree = "<group>"; };
+		FA5D8F1514DDC494006C2F43 /* WAXMLText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAXMLText.m; sourceTree = "<group>"; };
+		FA5D8F1A14DDC4A6006C2F43 /* WAResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAResponse.h; sourceTree = "<group>"; };
+		FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAResponse.m; sourceTree = "<group>"; };
 		FAE8C50614DD97FD003DEC2A /* Wolfram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wolfram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE8C50A14DD97FD003DEC2A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAE8C50D14DD97FD003DEC2A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FAE8C50E14DD97FD003DEC2A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FAE8C50F14DD97FD003DEC2A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FAE8C51214DD97FD003DEC2A /* Wolfram-Info.plist */ = {isa = PBXFileReference; path = "Wolfram-Info.plist"; sourceTree = "<group>"; };
+		FAE8C51214DD97FD003DEC2A /* Wolfram-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Wolfram-Info.plist"; sourceTree = "<group>"; };
 		FAE8C51414DD97FD003DEC2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAE8C51614DD97FD003DEC2A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FAE8C51814DD97FD003DEC2A /* Wolfram-Prefix.pch */ = {isa = PBXFileReference; path = "Wolfram-Prefix.pch"; sourceTree = "<group>"; };
+		FAE8C51814DD97FD003DEC2A /* Wolfram-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wolfram-Prefix.pch"; sourceTree = "<group>"; };
 		FAE8C51A14DD97FD003DEC2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		FAE8C51C14DD97FD003DEC2A /* WAAppDelegate.h */ = {isa = PBXFileReference; path = WAAppDelegate.h; sourceTree = "<group>"; };
+		FAE8C51C14DD97FD003DEC2A /* WAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WAAppDelegate.h; sourceTree = "<group>"; };
 		FAE8C51D14DD97FD003DEC2A /* WAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WAAppDelegate.m; sourceTree = "<group>"; };
 		FAE8C52014DD97FD003DEC2A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,6 +73,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA5D8EE014DDBB7A006C2F43 /* URL */ = {
+			isa = PBXGroup;
+			children = (
+				FA5D8EE114DDBB7A006C2F43 /* NSString+URLCode.h */,
+				FA5D8EE214DDBB7A006C2F43 /* NSString+URLCode.m */,
+			);
+			path = URL;
+			sourceTree = "<group>";
+		};
+		FA5D8EE314DDBB7A006C2F43 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				FA5D8EE814DDBB7A006C2F43 /* WARequestAssumption.h */,
+				FA5D8EE914DDBB7A006C2F43 /* WARequestAssumption.m */,
+				FA5D8EEA14DDBB7A006C2F43 /* WARequestPodState.h */,
+				FA5D8EEB14DDBB7A006C2F43 /* WARequestPodState.m */,
+				FA5D8EE614DDBB7A006C2F43 /* WARequest.h */,
+				FA5D8EE714DDBB7A006C2F43 /* WARequest.m */,
+				FA5D8EE414DDBB7A006C2F43 /* WAMutableRequest.h */,
+				FA5D8EE514DDBB7A006C2F43 /* WAMutableRequest.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		FA5D8EF114DDBBDA006C2F43 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				FA5D8F1A14DDC4A6006C2F43 /* WAResponse.h */,
+				FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		FA5D8F0D14DDC494006C2F43 /* XML */ = {
+			isa = PBXGroup;
+			children = (
+				FA5D8F0E14DDC494006C2F43 /* WAXMLDocument.h */,
+				FA5D8F0F14DDC494006C2F43 /* WAXMLDocument.m */,
+				FA5D8F1014DDC494006C2F43 /* WAXMLElement.h */,
+				FA5D8F1114DDC494006C2F43 /* WAXMLElement.m */,
+				FA5D8F1214DDC494006C2F43 /* WAXMLNode.h */,
+				FA5D8F1314DDC494006C2F43 /* WAXMLNode.m */,
+				FA5D8F1414DDC494006C2F43 /* WAXMLText.h */,
+				FA5D8F1514DDC494006C2F43 /* WAXMLText.m */,
+			);
+			path = XML;
+			sourceTree = "<group>";
+		};
 		FAE8C4FB14DD97FD003DEC2A = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +160,7 @@
 		FAE8C51014DD97FD003DEC2A /* Wolfram */ = {
 			isa = PBXGroup;
 			children = (
+				FAE8C52714DD982F003DEC2A /* API */,
 				FAE8C51C14DD97FD003DEC2A /* WAAppDelegate.h */,
 				FAE8C51D14DD97FD003DEC2A /* WAAppDelegate.m */,
 				FAE8C51F14DD97FD003DEC2A /* MainMenu.xib */,
@@ -100,6 +179,17 @@
 				FAE8C51914DD97FD003DEC2A /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAE8C52714DD982F003DEC2A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FA5D8F0D14DDC494006C2F43 /* XML */,
+				FA5D8EE014DDBB7A006C2F43 /* URL */,
+				FA5D8EE314DDBB7A006C2F43 /* Request */,
+				FA5D8EF114DDBBDA006C2F43 /* Response */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +257,16 @@
 			files = (
 				FAE8C51714DD97FD003DEC2A /* main.m in Sources */,
 				FAE8C51E14DD97FD003DEC2A /* WAAppDelegate.m in Sources */,
+				FA5D8EEC14DDBB7A006C2F43 /* NSString+URLCode.m in Sources */,
+				FA5D8EED14DDBB7A006C2F43 /* WAMutableRequest.m in Sources */,
+				FA5D8EEE14DDBB7A006C2F43 /* WARequest.m in Sources */,
+				FA5D8EEF14DDBB7A006C2F43 /* WARequestAssumption.m in Sources */,
+				FA5D8EF014DDBB7A006C2F43 /* WARequestPodState.m in Sources */,
+				FA5D8F1614DDC494006C2F43 /* WAXMLDocument.m in Sources */,
+				FA5D8F1714DDC494006C2F43 /* WAXMLElement.m in Sources */,
+				FA5D8F1814DDC494006C2F43 /* WAXMLNode.m in Sources */,
+				FA5D8F1914DDC494006C2F43 /* WAXMLText.m in Sources */,
+				FA5D8F1C14DDC4A6006C2F43 /* WAResponse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +388,7 @@
 				FAE8C52614DD97FD003DEC2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
