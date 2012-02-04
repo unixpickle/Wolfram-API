@@ -7,14 +7,18 @@
 //
 
 #import "WAAppDelegate.h"
+#import "WAResponse.h"
 
 @implementation WAAppDelegate
 
 @synthesize window = _window;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    NSString * path = @"/Users/alex/Desktop/query.xml";
+    NSData * xmlData = [NSData dataWithContentsOfFile:path];
+    WAXMLDocument * document = [[WAXMLDocument alloc] initWithXMLData:xmlData];
+    __unused WAResponse * response = [[WAResponse alloc] initWithDocument:document];
 }
 
 @end

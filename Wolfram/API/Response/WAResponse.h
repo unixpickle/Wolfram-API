@@ -7,10 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WAAssumption.h"
 
 @interface WAResponse : NSObject {
-    NSMutableArray * pods;
-    NSMutableArray * assumptions;
+    NSArray * pods;
+    NSArray * assumptions;
 }
+
+@property (readonly) NSArray * pods;
+@property (readonly) NSArray * assumptions;
+
+- (id)initWithDocument:(WAXMLDocument *)document;
 
 @end

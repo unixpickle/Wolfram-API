@@ -23,6 +23,8 @@
 		FAE8C51B14DD97FD003DEC2A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAE8C51914DD97FD003DEC2A /* Credits.rtf */; };
 		FAE8C51E14DD97FD003DEC2A /* WAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE8C51D14DD97FD003DEC2A /* WAAppDelegate.m */; };
 		FAE8C52114DD97FD003DEC2A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAE8C51F14DD97FD003DEC2A /* MainMenu.xib */; };
+		FAFDA99814DDC6B5003C3C9E /* WAAssumption.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFDA99714DDC6B5003C3C9E /* WAAssumption.m */; };
+		FAFDA99C14DDC8C7003C3C9E /* WAAssumptionValue.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFDA99B14DDC8C7003C3C9E /* WAAssumptionValue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,10 @@
 		FAE8C51C14DD97FD003DEC2A /* WAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WAAppDelegate.h; sourceTree = "<group>"; };
 		FAE8C51D14DD97FD003DEC2A /* WAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WAAppDelegate.m; sourceTree = "<group>"; };
 		FAE8C52014DD97FD003DEC2A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FAFDA99614DDC6B5003C3C9E /* WAAssumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumption.h; sourceTree = "<group>"; };
+		FAFDA99714DDC6B5003C3C9E /* WAAssumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumption.m; sourceTree = "<group>"; };
+		FAFDA99A14DDC8C7003C3C9E /* WAAssumptionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionValue.h; sourceTree = "<group>"; };
+		FAFDA99B14DDC8C7003C3C9E /* WAAssumptionValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionValue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,10 @@
 			children = (
 				FA5D8F1A14DDC4A6006C2F43 /* WAResponse.h */,
 				FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */,
+				FAFDA99614DDC6B5003C3C9E /* WAAssumption.h */,
+				FAFDA99714DDC6B5003C3C9E /* WAAssumption.m */,
+				FAFDA99A14DDC8C7003C3C9E /* WAAssumptionValue.h */,
+				FAFDA99B14DDC8C7003C3C9E /* WAAssumptionValue.m */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -267,6 +277,8 @@
 				FA5D8F1814DDC494006C2F43 /* WAXMLNode.m in Sources */,
 				FA5D8F1914DDC494006C2F43 /* WAXMLText.m in Sources */,
 				FA5D8F1C14DDC4A6006C2F43 /* WAResponse.m in Sources */,
+				FAFDA99814DDC6B5003C3C9E /* WAAssumption.m in Sources */,
+				FAFDA99C14DDC8C7003C3C9E /* WAAssumptionValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,7 @@
 @property (readonly) NSString * assumptionValue;
 
 - (id)initWithName:(NSString *)name value:(NSString *)value;
+- (id)initWithAssumptionString:(NSString *)string;
 + (id)requestAssumptionWithName:(NSString *)name value:(NSString *)value;
 - (NSString *)encodedString;
 

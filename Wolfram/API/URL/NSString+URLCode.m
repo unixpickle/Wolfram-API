@@ -12,7 +12,7 @@
 
 - (NSString *)stringByAddingStandardPercentEscapes {
     NSMutableString * encoded = [[NSMutableString alloc] init];
-    NSCharacterSet * acceptable = [NSCharacterSet characterSetWithCharactersInString:@" _-*:"];
+    NSCharacterSet * acceptable = [NSCharacterSet characterSetWithCharactersInString:@" _-*.:"];
     
     for (NSUInteger i = 0; i < [self length]; i++) {
         unichar character = [encoded characterAtIndex:i];

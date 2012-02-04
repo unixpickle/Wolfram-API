@@ -22,4 +22,7 @@
 - (NSString *)valueForAttribute:(NSString *)attribute;
 - (void)setValue:(NSString *)value forAttribute:(NSString *)attribute;
 
+- (NSArray *)elementsWithName:(NSString *)name;
+- (WAXMLNode *)elementWithName:(NSString *)name;
+
 @end

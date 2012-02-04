@@ -15,6 +15,7 @@
 - (id)initWithXMLData:(NSData *)theData {
     if ((self = [super init])) {
         rootNode = [[WAXMLNode alloc] initWithNodeName:@"" attributes:nil];
+        currentNode = rootNode;
         NSXMLParser * parser = [[NSXMLParser alloc] initWithData:theData];
         [parser setDelegate:self];
         if (![parser parse]) {
