@@ -25,4 +25,6 @@
 - (NSArray *)elementsWithName:(NSString *)name;
 - (WAXMLNode *)elementWithName:(NSString *)name;
 
+- (NSString *)stringContents;
+
 @end

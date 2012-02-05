@@ -7,6 +7,7 @@
 //
 
 #import "WAXMLNode.h"
+#import "WAXMLText.h"
 
 @implementation WAXMLNode
 
@@ -52,6 +53,19 @@
         return [theElements objectAtIndex:0];
     }
     return nil;
+}
+
+- (NSString *)stringContents {
+    NSMutableString * mutableString = [[NSMutableString alloc] init];
+    
+    for (WAXMLElement * element in elements) {
+        if ([element isKindOfClass:[WAXMLText class]]) {
+            WAXMLText * text = (WAXMLText *)element;
+            [mutableString appendString:[text text]];
+        }
+    }
+    
+    return [NSString stringWithString:mutableString];
 }
 
 @end

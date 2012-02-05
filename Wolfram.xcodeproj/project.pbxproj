@@ -18,6 +18,9 @@
 		FA5D8F1914DDC494006C2F43 /* WAXMLText.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1514DDC494006C2F43 /* WAXMLText.m */; };
 		FA5D8F1C14DDC4A6006C2F43 /* WAResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */; };
 		FAD7DAFC14DDD7C500DFC961 /* query.xml in Resources */ = {isa = PBXBuildFile; fileRef = FAD7DAFB14DDD7C500DFC961 /* query.xml */; };
+		FAE03F2914DE253D008E7023 /* WAPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2614DE253D008E7023 /* WAPod.m */; };
+		FAE03F2A14DE253D008E7023 /* WASubPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2814DE253D008E7023 /* WASubPod.m */; };
+		FAE03F2D14DE2574008E7023 /* WAPlainText.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2C14DE2574008E7023 /* WAPlainText.m */; };
 		FAE8C50B14DD97FD003DEC2A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE8C50A14DD97FD003DEC2A /* Cocoa.framework */; };
 		FAE8C51514DD97FD003DEC2A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAE8C51314DD97FD003DEC2A /* InfoPlist.strings */; };
 		FAE8C51714DD97FD003DEC2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE8C51614DD97FD003DEC2A /* main.m */; };
@@ -50,6 +53,12 @@
 		FA5D8F1A14DDC4A6006C2F43 /* WAResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAResponse.h; sourceTree = "<group>"; };
 		FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAResponse.m; sourceTree = "<group>"; };
 		FAD7DAFB14DDD7C500DFC961 /* query.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = query.xml; sourceTree = "<group>"; };
+		FAE03F2514DE253D008E7023 /* WAPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPod.h; sourceTree = "<group>"; };
+		FAE03F2614DE253D008E7023 /* WAPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPod.m; sourceTree = "<group>"; };
+		FAE03F2714DE253D008E7023 /* WASubPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WASubPod.h; sourceTree = "<group>"; };
+		FAE03F2814DE253D008E7023 /* WASubPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WASubPod.m; sourceTree = "<group>"; };
+		FAE03F2B14DE2574008E7023 /* WAPlainText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPlainText.h; sourceTree = "<group>"; };
+		FAE03F2C14DE2574008E7023 /* WAPlainText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPlainText.m; sourceTree = "<group>"; };
 		FAE8C50614DD97FD003DEC2A /* Wolfram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wolfram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE8C50A14DD97FD003DEC2A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAE8C50D14DD97FD003DEC2A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -108,6 +117,7 @@
 		FA5D8EF114DDBBDA006C2F43 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				FAE03F2414DE251E008E7023 /* Pods */,
 				FA5D8F1A14DDC4A6006C2F43 /* WAResponse.h */,
 				FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */,
 				FAFDA99614DDC6B5003C3C9E /* WAAssumption.h */,
@@ -131,6 +141,19 @@
 				FA5D8F1514DDC494006C2F43 /* WAXMLText.m */,
 			);
 			path = XML;
+			sourceTree = "<group>";
+		};
+		FAE03F2414DE251E008E7023 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAE03F2514DE253D008E7023 /* WAPod.h */,
+				FAE03F2614DE253D008E7023 /* WAPod.m */,
+				FAE03F2714DE253D008E7023 /* WASubPod.h */,
+				FAE03F2814DE253D008E7023 /* WASubPod.m */,
+				FAE03F2B14DE2574008E7023 /* WAPlainText.h */,
+				FAE03F2C14DE2574008E7023 /* WAPlainText.m */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		FAE8C4FB14DD97FD003DEC2A = {
@@ -283,6 +306,9 @@
 				FA5D8F1C14DDC4A6006C2F43 /* WAResponse.m in Sources */,
 				FAFDA99814DDC6B5003C3C9E /* WAAssumption.m in Sources */,
 				FAFDA99C14DDC8C7003C3C9E /* WAAssumptionValue.m in Sources */,
+				FAE03F2914DE253D008E7023 /* WAPod.m in Sources */,
+				FAE03F2A14DE253D008E7023 /* WASubPod.m in Sources */,
+				FAE03F2D14DE2574008E7023 /* WAPlainText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
