@@ -10,7 +10,8 @@
 
 @interface WAResponse (Private)
 
-- (void)loadAssumptionsFromNode:(WAXMLNode *)node;
+- (BOOL)loadAssumptionsFromNode:(WAXMLNode *)node;
+- (BOOL)loadPods:(NSArray *)nodes;
 
 @end
 
@@ -23,20 +24,36 @@
     if ((self = [super init])) {
         WAXMLNode * queryResult = [[document rootNode] elementWithName:@"queryresult"];
         WAXMLNode * assumpNode = [queryResult elementWithName:@"assumptions"];
-        [self loadAssumptionsFromNode:assumpNode];
+        NSArray * podNodes = [queryResult elementsWithName:@"pod"];
+        if (![self loadAssumptionsFromNode:assumpNode]) return nil;
+        if (![self loadPods:podNodes]) return nil;
     }
     return self;
 }
 
-- (void)loadAssumptionsFromNode:(WAXMLNode *)node {
-    if (!node) return;
-    NSMutableArray * assumptionsMutable = [[NSMutableArray alloc] init];
+- (BOOL)loadAssumptionsFromNode:(WAXMLNode *)node {
+    if (!node) return NO;
+    NSMutableArray * mAssumptions = [[NSMutableArray alloc] init];
     NSArray * assumptionNodes = [node elementsWithName:@"assumption"];
     for (WAXMLNode * aNode in assumptionNodes) {
         WAAssumption * assumption = [[WAAssumption alloc] initWithElement:aNode];
-        [assumptionsMutable addObject:assumption];
+        if (!assumption) return NO;
+        [mAssumptions addObject:assumption];
     }
-    assumptions = [[NSArray alloc] initWithArray:assumptionsMutable];
+    assumptions = [[NSArray alloc] initWithArray:mAssumptions];
+    return YES;
+}
+
+- (BOOL)loadPods:(NSArray *)nodes {
+    if (!nodes) return NO;
+    NSMutableArray * mPods = [[NSMutableArray alloc] init];
+    for (WAXMLNode * aNode in nodes) {
+        WAPod * pod = [[WAPod alloc] initWithElement:aNode];
+        if (!pod) return NO;
+        [mPods addObject:pod];
+    }
+    pods = [[NSArray alloc] initWithArray:mPods];
+    return YES;
 }
 
 @end

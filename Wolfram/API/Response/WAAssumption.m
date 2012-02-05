@@ -31,12 +31,12 @@
 
 - (id)initWithElement:(WAXMLNode *)node {
     if ((self = [super init])) {
-        NSMutableArray * allValues = [[NSMutableArray alloc] init];
+        NSMutableArray * mValues = [[NSMutableArray alloc] init];
         for (WAXMLNode * subNode in [node elementsWithName:@"value"]) {
             WAAssumptionValue * value = [[WAAssumptionValue alloc] initWithNode:subNode];
-            [allValues addObject:value];
+            [mValues addObject:value];
         }
-        values = [[NSArray alloc] initWithArray:allValues];
+        values = [[NSArray alloc] initWithArray:mValues];
         type = [node valueForAttribute:@"type"];
         description = [node valueForAttribute:@"desc"];
         word = [node valueForAttribute:@"word"];

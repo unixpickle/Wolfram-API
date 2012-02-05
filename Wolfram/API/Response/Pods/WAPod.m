@@ -27,7 +27,7 @@
         for (WAXMLNode * node in podElements) {
             WASubPod * subPod = [[WASubPod alloc] initWithElement:node];
             if (!subPod) return nil;
-            [mSubPods addObject:subPods];
+            [mSubPods addObject:subPod];
         }
         subPods = [[NSArray alloc] initWithArray:mSubPods];
     }

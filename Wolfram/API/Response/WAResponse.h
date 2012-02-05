@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WAAssumption.h"
+#import "WAPod.h"
 
 @interface WAResponse : NSObject {
     NSArray * pods;

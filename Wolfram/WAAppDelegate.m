@@ -19,6 +19,7 @@
     NSData * xmlData = [NSData dataWithContentsOfFile:path];
     WAXMLDocument * document = [[WAXMLDocument alloc] initWithXMLData:xmlData];
     __unused WAResponse * response = [[WAResponse alloc] initWithDocument:document];
+    NSLog(@"James");
 }
 
 @end
