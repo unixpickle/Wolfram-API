@@ -33,4 +33,8 @@
     return self;
 }
 
+- (NSString *)encodeInput {
+    return [input stringByAddingStandardPercentEscapes];
+}
+
 @end

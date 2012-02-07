@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WAXMLDocument.h"
+#import "NSString+URLCode.h"
 
 @class WAPodStateList;
 
@@ -24,5 +25,6 @@
 
 - (id)initWithName:(NSString *)aName input:(NSString *)theInput list:(WAPodStateList *)parent;
 - (id)initWithElement:(WAXMLNode *)node list:(WAPodStateList *)parent;
+- (NSString *)encodeInput;
 
 @end

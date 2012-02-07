@@ -52,6 +52,20 @@
     assumptions = [NSArray arrayWithArray:mAssumptions];
 }
 
+- (void)selectPodState:(WAPodState *)podState {
+    WAPodStateList * list = [podState parentList];
+    NSMutableArray * mList = [podStates mutableCopy];
+    if (list) {
+        for (WAPodState * state in [list podStates]) {
+            if ([mList containsObject:[state input]]) {
+                [mList removeObject:[state input]];
+            }
+        }
+    }
+    [mList addObject:[podState encodeInput]];
+    podStates = [[NSArray alloc] initWithArray:mList];
+}
+
 - (id)copyWithZone:(NSZone *)zone {
     return [[WARequest alloc] initWithQuery:query apiKey:APIKey assumptions:assumptions podStates:podStates];
 }
