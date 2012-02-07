@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WARequestAssumption.h"
-#import "WARequestPodState.h"
 
 @interface WARequest : NSObject {
     NSArray * assumptions;
