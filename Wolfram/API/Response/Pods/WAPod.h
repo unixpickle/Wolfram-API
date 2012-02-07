@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WASubPod.h"
+#import "WAPodStateList.h"
 
 @interface WAPod : NSObject {
     NSString * title;
@@ -15,6 +16,7 @@
     NSString * identifier;
     NSString * error;
     NSArray * subPods;
+    NSArray * podStates;
 }
 
 @property (readonly) NSString * title;
@@ -22,6 +24,7 @@
 @property (readonly) NSString * identifier;
 @property (readonly) NSString * error;
 @property (readonly) NSArray * subPods;
+@property (readonly) NSArray * podStates;
 
 - (id)initWithElement:(WAXMLNode *)node;
 

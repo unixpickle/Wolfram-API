@@ -20,6 +20,7 @@
     WAXMLDocument * document = [[WAXMLDocument alloc] initWithXMLData:xmlData];
     __unused WAResponse * response = [[WAResponse alloc] initWithDocument:document];
     // TODO: load this in some form of response UI
+    (void)response;
 }
 
 @end
