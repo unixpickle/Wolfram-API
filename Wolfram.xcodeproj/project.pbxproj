@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E2D47FC14E1B57000EFD448 /* WAPodState.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D47FB14E1B57000EFD448 /* WAPodState.m */; };
 		2E2D47FF14E1B58C00EFD448 /* WAPodStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D47FE14E1B58C00EFD448 /* WAPodStateList.m */; };
+		2E2D480314E1BBB000EFD448 /* WAModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D480214E1BBB000EFD448 /* WAModel.m */; };
 		FA5D8EEC14DDBB7A006C2F43 /* NSString+URLCode.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE214DDBB7A006C2F43 /* NSString+URLCode.m */; };
 		FA5D8EED14DDBB7A006C2F43 /* WAMutableRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE514DDBB7A006C2F43 /* WAMutableRequest.m */; };
 		FA5D8EEE14DDBB7A006C2F43 /* WARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE714DDBB7A006C2F43 /* WARequest.m */; };
@@ -36,6 +37,8 @@
 		2E2D47FB14E1B57000EFD448 /* WAPodState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPodState.m; sourceTree = "<group>"; };
 		2E2D47FD14E1B58C00EFD448 /* WAPodStateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPodStateList.h; sourceTree = "<group>"; };
 		2E2D47FE14E1B58C00EFD448 /* WAPodStateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPodStateList.m; sourceTree = "<group>"; };
+		2E2D480114E1BBB000EFD448 /* WAModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAModel.h; sourceTree = "<group>"; };
+		2E2D480214E1BBB000EFD448 /* WAModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAModel.m; sourceTree = "<group>"; };
 		FA5D8EE114DDBB7A006C2F43 /* NSString+URLCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLCode.h"; sourceTree = "<group>"; };
 		FA5D8EE214DDBB7A006C2F43 /* NSString+URLCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLCode.m"; sourceTree = "<group>"; };
 		FA5D8EE414DDBB7A006C2F43 /* WAMutableRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAMutableRequest.h; sourceTree = "<group>"; };
@@ -99,6 +102,15 @@
 				2E2D47FE14E1B58C00EFD448 /* WAPodStateList.m */,
 			);
 			path = States;
+			sourceTree = "<group>";
+		};
+		2E2D480014E1BB8000EFD448 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2E2D480114E1BBB000EFD448 /* WAModel.h */,
+				2E2D480214E1BBB000EFD448 /* WAModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FA5D8EE014DDBB7A006C2F43 /* URL */ = {
@@ -203,6 +215,7 @@
 		FAE8C51014DD97FD003DEC2A /* Wolfram */ = {
 			isa = PBXGroup;
 			children = (
+				2E2D480014E1BB8000EFD448 /* Model */,
 				FAE8C52714DD982F003DEC2A /* API */,
 				FAE8C51C14DD97FD003DEC2A /* WAAppDelegate.h */,
 				FAE8C51D14DD97FD003DEC2A /* WAAppDelegate.m */,
@@ -317,6 +330,7 @@
 				FAE03F2D14DE2574008E7023 /* WAPlainText.m in Sources */,
 				2E2D47FC14E1B57000EFD448 /* WAPodState.m in Sources */,
 				2E2D47FF14E1B58C00EFD448 /* WAPodStateList.m in Sources */,
+				2E2D480314E1BBB000EFD448 /* WAModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
