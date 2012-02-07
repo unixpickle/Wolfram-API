@@ -10,8 +10,6 @@
 		FA5D8EEC14DDBB7A006C2F43 /* NSString+URLCode.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE214DDBB7A006C2F43 /* NSString+URLCode.m */; };
 		FA5D8EED14DDBB7A006C2F43 /* WAMutableRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE514DDBB7A006C2F43 /* WAMutableRequest.m */; };
 		FA5D8EEE14DDBB7A006C2F43 /* WARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE714DDBB7A006C2F43 /* WARequest.m */; };
-		FA5D8EEF14DDBB7A006C2F43 /* WARequestAssumption.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE914DDBB7A006C2F43 /* WARequestAssumption.m */; };
-		FA5D8EF014DDBB7A006C2F43 /* WARequestPodState.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EEB14DDBB7A006C2F43 /* WARequestPodState.m */; };
 		FA5D8F1614DDC494006C2F43 /* WAXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F0F14DDC494006C2F43 /* WAXMLDocument.m */; };
 		FA5D8F1714DDC494006C2F43 /* WAXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1114DDC494006C2F43 /* WAXMLElement.m */; };
 		FA5D8F1814DDC494006C2F43 /* WAXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1314DDC494006C2F43 /* WAXMLNode.m */; };
@@ -38,10 +36,6 @@
 		FA5D8EE514DDBB7A006C2F43 /* WAMutableRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAMutableRequest.m; sourceTree = "<group>"; };
 		FA5D8EE614DDBB7A006C2F43 /* WARequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WARequest.h; sourceTree = "<group>"; };
 		FA5D8EE714DDBB7A006C2F43 /* WARequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WARequest.m; sourceTree = "<group>"; };
-		FA5D8EE814DDBB7A006C2F43 /* WARequestAssumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WARequestAssumption.h; sourceTree = "<group>"; };
-		FA5D8EE914DDBB7A006C2F43 /* WARequestAssumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WARequestAssumption.m; sourceTree = "<group>"; };
-		FA5D8EEA14DDBB7A006C2F43 /* WARequestPodState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WARequestPodState.h; sourceTree = "<group>"; };
-		FA5D8EEB14DDBB7A006C2F43 /* WARequestPodState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WARequestPodState.m; sourceTree = "<group>"; };
 		FA5D8F0E14DDC494006C2F43 /* WAXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAXMLDocument.h; sourceTree = "<group>"; };
 		FA5D8F0F14DDC494006C2F43 /* WAXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAXMLDocument.m; sourceTree = "<group>"; };
 		FA5D8F1014DDC494006C2F43 /* WAXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAXMLElement.h; sourceTree = "<group>"; };
@@ -102,10 +96,6 @@
 		FA5D8EE314DDBB7A006C2F43 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				FA5D8EE814DDBB7A006C2F43 /* WARequestAssumption.h */,
-				FA5D8EE914DDBB7A006C2F43 /* WARequestAssumption.m */,
-				FA5D8EEA14DDBB7A006C2F43 /* WARequestPodState.h */,
-				FA5D8EEB14DDBB7A006C2F43 /* WARequestPodState.m */,
 				FA5D8EE614DDBB7A006C2F43 /* WARequest.h */,
 				FA5D8EE714DDBB7A006C2F43 /* WARequest.m */,
 				FA5D8EE414DDBB7A006C2F43 /* WAMutableRequest.h */,
@@ -297,8 +287,6 @@
 				FA5D8EEC14DDBB7A006C2F43 /* NSString+URLCode.m in Sources */,
 				FA5D8EED14DDBB7A006C2F43 /* WAMutableRequest.m in Sources */,
 				FA5D8EEE14DDBB7A006C2F43 /* WARequest.m in Sources */,
-				FA5D8EEF14DDBB7A006C2F43 /* WARequestAssumption.m in Sources */,
-				FA5D8EF014DDBB7A006C2F43 /* WARequestPodState.m in Sources */,
 				FA5D8F1614DDC494006C2F43 /* WAXMLDocument.m in Sources */,
 				FA5D8F1714DDC494006C2F43 /* WAXMLElement.m in Sources */,
 				FA5D8F1814DDC494006C2F43 /* WAXMLNode.m in Sources */,

@@ -14,21 +14,24 @@
 @synthesize description;
 @synthesize input;
 @synthesize valid;
+@synthesize assumption;
 
 - (id)initWithName:(NSString *)aName
        description:(NSString *)aDescription
              input:(NSString *)theInput
-             valid:(NSNumber *)aValid {
+             valid:(NSNumber *)aValid
+        assumption:(WAAssumption *)parent {
     if ((self = [super init])) {
         name = aName;
         description = aDescription;
         input = theInput;
         valid = aValid;
+        assumption = parent;
     }
     return self;
 }
 
-- (id)initWithNode:(WAXMLNode *)node {
+- (id)initWithNode:(WAXMLNode *)node assumption:(WAAssumption *)parent {
     if ((self = [super init])) {
         name = [node valueForAttribute:@"name"];
         description = [node valueForAttribute:@"desc"];
@@ -39,18 +42,24 @@
                 valid = [NSNumber numberWithBool:NO];
             }
         }
-        input = [node valueForAttribute:@"input"];
+        input = [[node valueForAttribute:@"input"] stringByEvaluatingPercentEscapes];
+        assumption = parent;
     }
     return self;
 }
 
-- (NSString *)assumptionValueWithDescription:(NSString *)newValue {
+- (WAAssumptionValue *)valueWithInputValue:(NSString *)newValue {
     NSRange lastRange = [input rangeOfString:@"_" options:NSBackwardsSearch];
     if (lastRange.location == NSNotFound) return nil;
     NSRange prefixRange = NSMakeRange(0, lastRange.location);
     NSString * prefix = [input substringWithRange:prefixRange];
-    return [NSString stringWithFormat:@"%@_%@", prefix,
+    NSString * newInput =  [NSString stringWithFormat:@"%@_%@", prefix,
             [newValue stringByAddingStandardPercentEscapes]];
+    return [[WAAssumptionValue alloc] initWithName:self.name
+                                       description:self.description
+                                             input:newInput
+                                             valid:self.valid
+                                        assumption:self.assumption];
 }
 
 @end

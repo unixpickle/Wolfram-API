@@ -7,6 +7,7 @@
 //
 
 #import "WARequest.h"
+#import "WAAssumption.h"
 
 @interface WAMutableRequest : WARequest <NSCopying, NSMutableCopying> {
     
@@ -15,9 +16,10 @@
 - (void)setQuery:(NSString *)aQuery;
 - (void)setAPIKey:(NSString *)aKey;
 
-- (void)addAssumption:(WARequestAssumption *)assumption;
-- (void)addPodState:(WARequestPodState *)podState;
-- (void)removeAssumption:(WARequestAssumption *)assumption;
-- (void)removePodState:(WARequestPodState *)podState;
+- (void)addAssumption:(NSString *)assumption;
+- (void)addPodState:(NSString *)podState;
+- (void)removeAssumption:(NSString *)assumption;
+- (void)removePodState:(NSString *)podState;
+- (void)selectAssumptionValue:(WAAssumptionValue *)value;
 
 @end

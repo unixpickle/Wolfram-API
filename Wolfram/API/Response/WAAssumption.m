@@ -14,7 +14,6 @@
 @synthesize type;
 @synthesize description;
 @synthesize current;
-@synthesize count;
 @synthesize word;
 
 - (id)initWithValues:(NSArray *)someValues attributes:(NSDictionary *)someAttributes {
@@ -23,7 +22,6 @@
         type = [someAttributes objectForKey:@"type"];
         description = [someAttributes objectForKey:@"desc"];
         current = [someAttributes objectForKey:@"current"];
-        count = [someAttributes objectForKey:@"count"];
         word = [someAttributes objectForKey:@"word"];
     }
     return self;
@@ -33,7 +31,7 @@
     if ((self = [super init])) {
         NSMutableArray * mValues = [[NSMutableArray alloc] init];
         for (WAXMLNode * subNode in [node elementsWithName:@"value"]) {
-            WAAssumptionValue * value = [[WAAssumptionValue alloc] initWithNode:subNode];
+            WAAssumptionValue * value = [[WAAssumptionValue alloc] initWithNode:subNode assumption:self];
             [mValues addObject:value];
         }
         values = [[NSArray alloc] initWithArray:mValues];
@@ -41,20 +39,18 @@
         description = [node valueForAttribute:@"desc"];
         word = [node valueForAttribute:@"word"];
         NSString * currentStr = [node valueForAttribute:@"current"];
-        NSString * countStr = [node valueForAttribute:@"count"];
         if (currentStr) current = [NSNumber numberWithInt:[currentStr intValue]];
-        if (countStr) count = [NSNumber numberWithInt:[countStr intValue]];
     }
     return self;
 }
 
 - (WAAssumptionInputType)inputType {
-    if ([count intValue] == 1) {
-        return WAAssumptionInputTypeCustom;
-    } else if ([count intValue] > 2) {
-        return WAAssumptionInputTypeList;
+    if ([values count] == 1 && [type isEqualToString:kAssumptionTypeFormulaVariable]) {
+        return WAAssumptionInputTypeVariableCustom;
+    } else if ([type isEqualToString:kAssumptionTypeFormulaVariable]) {
+        return WAAssumptionInputTypeVariableList;
     }
-    return WAAssumptionInputTypeLink;
+    return WAAssumptionInputTypeList;
 }
 
 @end

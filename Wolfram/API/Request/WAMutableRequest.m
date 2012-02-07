@@ -18,24 +18,38 @@
     APIKey = aKey;
 }
 
-- (void)addAssumption:(WARequestAssumption *)assumption {
+- (void)addAssumption:(NSString *)assumption {
     assumptions = [assumptions arrayByAddingObject:assumption];
 }
 
-- (void)addPodState:(WARequestPodState *)podState {
+- (void)addPodState:(NSString *)podState {
     podStates = [podStates arrayByAddingObject:podStates];
 }
 
-- (void)removeAssumption:(WARequestAssumption *)assumption {
+- (void)removeAssumption:(NSString *)assumption {
     NSMutableArray * array = [assumptions mutableCopy];
     [array removeObject:assumption];
     assumptions = [NSArray arrayWithArray:array];
 }
 
-- (void)removePodState:(WARequestPodState *)podState {
+- (void)removePodState:(NSString *)podState {
     NSMutableArray * array = [podStates mutableCopy];
     [array removeObject:podState];
     podStates = [NSArray arrayWithArray:array];
+}
+
+- (void)selectAssumptionValue:(WAAssumptionValue *)value {
+    // remove all existing values from the assumption
+    WAAssumption * assumption = [value assumption];
+    NSMutableArray * mAssumptions = [assumptions mutableCopy];
+    for (WAAssumptionValue * aValue in [assumption values]) {
+        if ([mAssumptions containsObject:[aValue input]]) {
+            [mAssumptions removeObject:[aValue input]];
+        }
+    }
+    // add this new value from the assumption
+    [mAssumptions addObject:[value input]];
+    assumptions = [NSArray arrayWithArray:mAssumptions];
 }
 
 - (id)copyWithZone:(NSZone *)zone {

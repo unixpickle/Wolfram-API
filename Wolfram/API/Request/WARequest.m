@@ -36,11 +36,11 @@
     NSMutableString * builtRequest = [NSMutableString stringWithFormat:baseStr,
                                       [query stringByAddingStandardPercentEscapes],
                                       [APIKey stringByAddingStandardPercentEscapes]];
-    for (WARequestAssumption * assumption in assumptions) {
-        [builtRequest appendFormat:@"&assumption=%@", [assumption encodedString]];
+    for (NSString * assumption in assumptions) {
+        [builtRequest appendFormat:@"&assumption=%@", [assumption stringByAddingStandardPercentEscapes]];
     }
-    for (WARequestPodState * podState in podStates) {
-        [builtRequest appendFormat:@"&podstate=%@", [podState encodedString]];
+    for (NSString * podState in podStates) {
+        [builtRequest appendFormat:@"&podstate=%@", [podState stringByAddingStandardPercentEscapes]];
     }
     if (podIDs) {
         for (NSString * anID in podIDs) {
@@ -52,11 +52,13 @@
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    return [[WARequest alloc] initWithQuery:query apiKey:APIKey assumptions:assumptions podStates:podStates];
+    return [[WARequest allocWithZone:zone] initWithQuery:query apiKey:APIKey
+                                             assumptions:assumptions podStates:podStates];
 }
 
 - (id)mutableCopyWithZone:(NSZone *)zone {
-    return [[WAMutableRequest alloc] initWithQuery:query apiKey:APIKey assumptions:assumptions podStates:podStates];
+    return [[WAMutableRequest allocWithZone:zone] initWithQuery:query apiKey:APIKey
+                                                    assumptions:assumptions podStates:podStates];
 }
 
 @end

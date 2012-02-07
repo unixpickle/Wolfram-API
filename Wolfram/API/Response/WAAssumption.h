@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "WAAssumptionValue.h"
 
+#define kAssumptionTypeFormulaVariable @"FormulaVariable"
+
 typedef enum {
-    WAAssumptionInputTypeCustom,
-    WAAssumptionInputTypeList,
-    WAAssumptionInputTypeLink
+    WAAssumptionInputTypeVariableCustom,
+    WAAssumptionInputTypeVariableList,
+    WAAssumptionInputTypeList
 } WAAssumptionInputType;
 
 @interface WAAssumption : NSObject {
@@ -20,7 +22,6 @@ typedef enum {
     NSString * type;
     NSString * description;
     NSNumber * current;
-    NSNumber * count;
     NSString * word;
 }
 
@@ -28,7 +29,6 @@ typedef enum {
 @property (readonly) NSString * type;
 @property (readonly) NSString * description;
 @property (readonly) NSNumber * current;
-@property (readonly) NSNumber * count;
 @property (readonly) NSString * word;
 
 - (id)initWithValues:(NSArray *)someValues attributes:(NSDictionary *)someAttributes;
