@@ -23,7 +23,7 @@
 - (id)initWithQuery:(NSString *)theQuery apiKey:(NSString *)theKey
         assumptions:(NSArray *)theAssumptions podStates:(NSArray *)theStates;
 
-- (NSURL *)encodedURL;
-- (NSURL *)encodedURLForIncludeIDs:(NSArray *)podIDs;
+- (NSURL *)encodedURL:(BOOL)async;
+- (NSURL *)encodedURL:(BOOL)async forIncludeIDs:(NSArray *)podIDs;
 
 @end

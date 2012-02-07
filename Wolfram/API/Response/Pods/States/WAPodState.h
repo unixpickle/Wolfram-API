@@ -22,7 +22,7 @@
 @property (readonly) NSString * name;
 @property (readonly) NSString * input;
 
-
++ (NSArray *)podStatesFromElement:(WAXMLNode *)element;
 - (id)initWithName:(NSString *)aName input:(NSString *)theInput list:(WAPodStateList *)parent;
 - (id)initWithElement:(WAXMLNode *)node list:(WAPodStateList *)parent;
 - (NSString *)encodeInput;

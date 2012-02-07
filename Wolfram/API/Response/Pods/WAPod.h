@@ -17,6 +17,7 @@
     NSString * error;
     NSArray * subPods;
     NSArray * podStates;
+    NSURL * asyncURL;
 }
 
 @property (readonly) NSString * title;
@@ -25,6 +26,7 @@
 @property (readonly) NSString * error;
 @property (readonly) NSArray * subPods;
 @property (readonly) NSArray * podStates;
+@property (readonly) NSURL * asyncURL;
 
 - (id)initWithElement:(WAXMLNode *)node;
 

@@ -27,15 +27,16 @@
     return self;
 }
 
-- (NSURL *)encodedURL {
-    return [self encodedURLForIncludeIDs:nil];
+- (NSURL *)encodedURL:(BOOL)async {
+    return [self encodedURL:async forIncludeIDs:nil];
 }
 
-- (NSURL *)encodedURLForIncludeIDs:(NSArray *)podIDs {
-    NSString * baseStr = @"http://api.wolframalpha.com/v2/query?input=%@&appid=%@";
+- (NSURL *)encodedURL:(BOOL)async forIncludeIDs:(NSArray *)podIDs {
+    NSString * baseStr = @"http://api.wolframalpha.com/v2/query?input=%@&appid=%@%@";
     NSMutableString * builtRequest = [NSMutableString stringWithFormat:baseStr,
                                       [query stringByAddingStandardPercentEscapes],
-                                      [APIKey stringByAddingStandardPercentEscapes]];
+                                      [APIKey stringByAddingStandardPercentEscapes],
+                                      (async ? @"&async=true" : @"")];
     for (NSString * assumption in assumptions) {
         [builtRequest appendFormat:@"&assumption=%@", [assumption stringByAddingStandardPercentEscapes]];
     }

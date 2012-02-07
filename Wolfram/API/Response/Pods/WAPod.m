@@ -22,6 +22,7 @@
 @synthesize error;
 @synthesize subPods;
 @synthesize podStates;
+@synthesize asyncURL;
 
 - (id)initWithElement:(WAXMLNode *)node {
     if ((self = [super init])) {
@@ -39,6 +40,9 @@
         }
         subPods = [[NSArray alloc] initWithArray:mSubPods];
         
+        NSString * asyncStr = [node valueForAttribute:@"async"];
+        if (asyncStr) asyncURL = [NSURL URLWithString:asyncStr];
+        
         WAXMLNode * statesElement = [node elementWithName:@"states"];
         if (statesElement) [self loadStates:statesElement];
     }
@@ -46,18 +50,7 @@
 }
 
 - (void)loadStates:(WAXMLNode *)statesElement {
-    NSArray * states = [statesElement elementsWithName:@"state"];
-    NSArray * lists = [statesElement elementsWithName:@"statelist"];
-    NSMutableArray * mPodStates = [[NSMutableArray alloc] init];
-    for (WAXMLNode * node in states) {
-        WAPodState * podState = [[WAPodState alloc] initWithElement:node list:nil];
-        [mPodStates addObject:podState];
-    }
-    for (WAXMLNode * node in lists) {
-        WAPodStateList * list = [[WAPodStateList alloc] initWithElement:node];
-        [mPodStates addObject:list];
-    }
-    podStates = [[NSArray alloc] initWithArray:mPodStates];
+    podStates = [WAPodState podStatesFromElement:statesElement];
 }
 
 @end
