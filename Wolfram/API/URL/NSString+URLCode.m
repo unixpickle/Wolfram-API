@@ -15,7 +15,7 @@
     NSCharacterSet * acceptable = [NSCharacterSet characterSetWithCharactersInString:@" _-*.:"];
     
     for (NSUInteger i = 0; i < [self length]; i++) {
-        unichar character = [encoded characterAtIndex:i];
+        unichar character = [self characterAtIndex:i];
         if (!isalnum(character) && ![acceptable characterIsMember:character]) {
             [encoded appendFormat:@"%%%02X", (unsigned char)character];
         } else if (character == ' ') {

@@ -13,15 +13,10 @@
 
 @interface WAModel (Private)
 
-- (NSError *)errorWithDomain:(NSString *)domain code:(NSUInteger)code message:(NSString *)msg;
-
-- (void)requestThread:(NSDictionary *)info;
-- (void)requestAsyncPod:(NSURL *)asyncURL;
-- (void)removeCurrentThread;
-
-- (void)informDelegateError:(NSError *)fetchError;
-- (void)informDelegateResponse:(WAResponse *)response;
-- (void)informDelegatePod:(WAPod *)aPod;
+- (void)delegateInformError:(NSError *)fetchError;
+- (void)delegateInformResponse:(WAResponse *)response;
+- (void)delegateInformPod:(WAPod *)aPod;
+- (void)delegateInformComplete;
 - (void)sendPrimaryRequest:(NSString *)podID;
 - (void)sendAsyncRequest:(NSURL *)async;
 
@@ -33,7 +28,7 @@
 
 - (id)init {
     if ((self = [super init])) {
-        requestThreads = [[NSMutableArray alloc] init];
+        requests = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -63,133 +58,26 @@
 }
 
 - (void)cancelRequests {
-    @synchronized (requestThreads) {
-        while ([requestThreads count] > 0) {
-            NSThread * thread = [requestThreads lastObject];
-            [thread cancel];
-            [requestThreads removeLastObject];
-        }
+    while ([requests count] > 0) {
+        WAModelRequest * request = [requests lastObject];
+        [request cancel];
+        [requests removeLastObject];
     }
 }
 
-#pragma mark - Background Threads -
-
-- (NSError *)errorWithDomain:(NSString *)domain code:(NSUInteger)code message:(NSString *)msg {
-    NSDictionary * info = [NSDictionary dictionaryWithObject:msg forKey:NSLocalizedDescriptionKey];
-    return [NSError errorWithDomain:domain code:code userInfo:info];
+- (BOOL)isFinished {
+    return [requests count] == 0;
 }
 
-- (void)requestThread:(NSDictionary *)info {
-    @autoreleasepool {
-        WARequest * request = [info objectForKey:kRequestInfoRequest];
-        NSString * podName = [info objectForKey:kRequestInfoPod];
-        NSURL * url = nil;
-        if (podName) url = [request encodedURL:kUseAsync forIncludeIDs:[NSArray arrayWithObject:podName]];
-        else url = [request encodedURL:kUseAsync];
-        
-        // fetch the URL data
-        NSURLRequest * urlRequest = [NSURLRequest requestWithURL:url];
-        NSError * error = nil;
-        NSData * fetched = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                 returningResponse:nil error:&error];
-        if ([[NSThread currentThread] isCancelled]) return;
-        if (!fetched) {
-            [self performSelectorOnMainThread:@selector(informDelegateError:)
-                                   withObject:error waitUntilDone:NO];
-            [self removeCurrentThread];
-            return;
-        }
-        
-        // parse the XML document
-        WAXMLDocument * document = [[WAXMLDocument alloc] initWithXMLData:fetched];
-        if (!document) {
-            NSError * xmlError = [self errorWithDomain:@"WAXMLDocument"
-                                                  code:1
-                                               message:@"Failed to parse response."];
-            [self performSelectorOnMainThread:@selector(informDelegateError:)
-                                   withObject:xmlError waitUntilDone:NO];
-            [self removeCurrentThread];
-            return;
-        }
-        
-        // process the XML as a response
-        WAResponse * response = [[WAResponse alloc] initWithDocument:document];
-        if (!response) {
-            NSError * waError = [self errorWithDomain:@"WAResponse"
-                                                  code:1
-                                               message:@"Invalid response XML"];
-            [self performSelectorOnMainThread:@selector(informDelegateError:)
-                                   withObject:waError waitUntilDone:NO];
-            [self removeCurrentThread];
-            return;
-        }
-        
-        [self performSelectorOnMainThread:@selector(informDelegateResponse:)
-                               withObject:response waitUntilDone:NO];
-        [self removeCurrentThread];
-    }
-}
+#pragma mark - Requests -
 
-- (void)requestAsyncPod:(NSURL *)asyncURL {
-    @autoreleasepool {
-        // fetch the URL data
-        NSURLRequest * urlRequest = [NSURLRequest requestWithURL:asyncURL];
-        NSError * error = nil;
-        NSData * fetched = [NSURLConnection sendSynchronousRequest:urlRequest
-                                                 returningResponse:nil error:&error];
-        if ([[NSThread currentThread] isCancelled]) return;
-        if (!fetched) {
-            [self performSelectorOnMainThread:@selector(informDelegateError:)
-                                   withObject:error waitUntilDone:NO];
-            [self removeCurrentThread];
-            return;
-        }
-        
-        // parse the XML document
-        WAXMLDocument * document = [[WAXMLDocument alloc] initWithXMLData:fetched];
-        if (!document) {
-            NSError * xmlError = [self errorWithDomain:@"WAXMLDocument"
-                                                  code:1
-                                               message:@"Failed to parse response."];
-            [self performSelectorOnMainThread:@selector(informDelegateError:)
-                                   withObject:xmlError waitUntilDone:NO];
-            [self removeCurrentThread];
-            return;
-        }
-        
-        // process the XML as a pod
-        WAXMLNode * podNode = [[document rootNode] elementWithName:@"pod"];
-        WAPod * pod = [[WAPod alloc] initWithElement:podNode];
-        if (!pod) {
-            NSError * podError = [self errorWithDomain:@"WAPod"
-                                                  code:1
-                                               message:@"Failed to parse response pod."];
-            [self performSelectorOnMainThread:@selector(informDelegateError:)
-                                   withObject:podError waitUntilDone:NO];
-            [self removeCurrentThread];
-            return;
-        }
-        
-        [self performSelectorOnMainThread:@selector(informDelegatePod:)
-                               withObject:pod waitUntilDone:NO];
-        [self removeCurrentThread];
-    }
-}
-
-- (void)removeCurrentThread {
-    NSThread * thread = [NSThread currentThread];
-    @synchronized (requestThreads) {
-        [requestThreads removeObject:thread];
-    }
-}
-
-- (void)informDelegateError:(NSError *)fetchError {
+- (void)delegateInformError:(NSError *)fetchError {
     if ([delegate respondsToSelector:@selector(model:failedToLoad:)]) {
         [delegate model:self failedToLoad:fetchError];
     }
 }
 
-- (void)informDelegateResponse:(WAResponse *)response {
+- (void)delegateInformResponse:(WAResponse *)response {
     if ([delegate respondsToSelector:@selector(model:gotResponse:)]) {
         [delegate model:self gotResponse:response];
     }
@@ -210,34 +98,66 @@
             }
         }
     }
+    if ([requests count] == 0) {
+        [self delegateInformComplete];
+    }
 }
 
-- (void)informDelegatePod:(WAPod *)aPod {
+- (void)delegateInformPod:(WAPod *)aPod {
     if ([delegate respondsToSelector:@selector(model:gotPod:)]) {
         [delegate model:self gotPod:aPod];
     }
 }
 
-- (void)sendPrimaryRequest:(NSString *)podID {
-    NSDictionary * info = [NSDictionary dictionaryWithObjectsAndKeys:[currentPage copy], kRequestInfoRequest,
-                           podID, kRequestInfoPod, nil];
-    NSThread * requestThread = [[NSThread alloc] initWithTarget:self
-                                                       selector:@selector(requestThread:)
-                                                         object:info];
-    @synchronized (requestThreads) {
-        [requestThreads addObject:requestThread];
+- (void)delegateInformComplete {
+    if ([delegate respondsToSelector:@selector(modelFinishedAllQueries:)]) {
+        [delegate modelFinishedAllQueries:self];
     }
-    [requestThread start];
+}
+
+- (void)sendPrimaryRequest:(NSString *)podID {
+    WAModelQuery * query = [[WAModelQuery alloc] initWithRequest:[currentPage copy]
+                                                           podID:podID];
+    [query setDelegate:self];
+    [requests addObject:query];
+    [query start];
 }
 
 - (void)sendAsyncRequest:(NSURL *)async {
-    NSThread * requestThread = [[NSThread alloc] initWithTarget:self
-                                                       selector:@selector(requestAsyncPod:)
-                                                         object:async];
-    @synchronized (requestThreads) {
-        [requestThreads addObject:requestThread];
+    WAModelPodQuery * podQuery = [[WAModelPodQuery alloc] initWithURL:async];
+    [podQuery setDelegate:self];
+    [requests addObject:podQuery];
+    [podQuery start];
+}
+
+- (void)modelRequest:(id)sender failedWithError:(NSError *)anError {
+    [requests removeObject:sender];
+    [self delegateInformError:anError];
+}
+
+- (void)modelRequest:(id)sender fetchedObject:(id)object {
+    [requests removeObject:sender];
+    if ([sender isKindOfClass:[WAModelQuery class]]) {
+        WAModelQuery * query = (WAModelQuery *)sender;
+        WAResponse * response = (WAResponse *)object;
+        if ([query podID]) {
+            // specific pod request => treat like async
+            for (WAPod * pod in [response pods]) {
+                [self delegateInformPod:pod];
+            }
+            if ([requests count] == 0) {
+                [self delegateInformComplete];
+            }
+        } else {
+            [self delegateInformResponse:response];
+        }
+    } else if ([sender isKindOfClass:[WAModelPodQuery class]]) {
+        WAPod * pod = (WAPod *)object;
+        [self delegateInformPod:pod];
+        if ([requests count] == 0) {
+            [self delegateInformComplete];
+        }
     }
-    [requestThread start];
 }
 
 @end

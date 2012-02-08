@@ -18,6 +18,10 @@
 		FA5D8F1814DDC494006C2F43 /* WAXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1314DDC494006C2F43 /* WAXMLNode.m */; };
 		FA5D8F1914DDC494006C2F43 /* WAXMLText.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1514DDC494006C2F43 /* WAXMLText.m */; };
 		FA5D8F1C14DDC4A6006C2F43 /* WAResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */; };
+		FA87E44014E203F90062BF06 /* WAModelQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87E43F14E203F90062BF06 /* WAModelQuery.m */; };
+		FA87E44414E207B10062BF06 /* NSError+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87E44314E207B10062BF06 /* NSError+Message.m */; };
+		FA87E44714E2095C0062BF06 /* WAModelPodQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87E44614E2095C0062BF06 /* WAModelPodQuery.m */; };
+		FA87E44A14E20A290062BF06 /* WAModelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87E44914E20A280062BF06 /* WAModelRequest.m */; };
 		FAD7DAFC14DDD7C500DFC961 /* query.xml in Resources */ = {isa = PBXBuildFile; fileRef = FAD7DAFB14DDD7C500DFC961 /* query.xml */; };
 		FAE03F2914DE253D008E7023 /* WAPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2614DE253D008E7023 /* WAPod.m */; };
 		FAE03F2A14DE253D008E7023 /* WASubPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2814DE253D008E7023 /* WASubPod.m */; };
@@ -55,6 +59,14 @@
 		FA5D8F1514DDC494006C2F43 /* WAXMLText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAXMLText.m; sourceTree = "<group>"; };
 		FA5D8F1A14DDC4A6006C2F43 /* WAResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAResponse.h; sourceTree = "<group>"; };
 		FA5D8F1B14DDC4A6006C2F43 /* WAResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAResponse.m; sourceTree = "<group>"; };
+		FA87E43E14E203F90062BF06 /* WAModelQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAModelQuery.h; sourceTree = "<group>"; };
+		FA87E43F14E203F90062BF06 /* WAModelQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAModelQuery.m; sourceTree = "<group>"; };
+		FA87E44214E207B10062BF06 /* NSError+Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Message.h"; sourceTree = "<group>"; };
+		FA87E44314E207B10062BF06 /* NSError+Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Message.m"; sourceTree = "<group>"; };
+		FA87E44514E2095C0062BF06 /* WAModelPodQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAModelPodQuery.h; sourceTree = "<group>"; };
+		FA87E44614E2095C0062BF06 /* WAModelPodQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAModelPodQuery.m; sourceTree = "<group>"; };
+		FA87E44814E20A280062BF06 /* WAModelRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAModelRequest.h; sourceTree = "<group>"; };
+		FA87E44914E20A280062BF06 /* WAModelRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAModelRequest.m; sourceTree = "<group>"; };
 		FAD7DAFB14DDD7C500DFC961 /* query.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = query.xml; sourceTree = "<group>"; };
 		FAE03F2514DE253D008E7023 /* WAPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPod.h; sourceTree = "<group>"; };
 		FAE03F2614DE253D008E7023 /* WAPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPod.m; sourceTree = "<group>"; };
@@ -109,6 +121,14 @@
 			children = (
 				2E2D480114E1BBB000EFD448 /* WAModel.h */,
 				2E2D480214E1BBB000EFD448 /* WAModel.m */,
+				FA87E44814E20A280062BF06 /* WAModelRequest.h */,
+				FA87E44914E20A280062BF06 /* WAModelRequest.m */,
+				FA87E43E14E203F90062BF06 /* WAModelQuery.h */,
+				FA87E43F14E203F90062BF06 /* WAModelQuery.m */,
+				FA87E44514E2095C0062BF06 /* WAModelPodQuery.h */,
+				FA87E44614E2095C0062BF06 /* WAModelPodQuery.m */,
+				FA87E44214E207B10062BF06 /* NSError+Message.h */,
+				FA87E44314E207B10062BF06 /* NSError+Message.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,6 +351,10 @@
 				2E2D47FC14E1B57000EFD448 /* WAPodState.m in Sources */,
 				2E2D47FF14E1B58C00EFD448 /* WAPodStateList.m in Sources */,
 				2E2D480314E1BBB000EFD448 /* WAModel.m in Sources */,
+				FA87E44014E203F90062BF06 /* WAModelQuery.m in Sources */,
+				FA87E44414E207B10062BF06 /* NSError+Message.m in Sources */,
+				FA87E44714E2095C0062BF06 /* WAModelPodQuery.m in Sources */,
+				FA87E44A14E20A290062BF06 /* WAModelRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

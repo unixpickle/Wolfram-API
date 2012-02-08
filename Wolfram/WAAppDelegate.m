@@ -15,12 +15,27 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"query" ofType:@"xml"];
-    NSData * xmlData = [NSData dataWithContentsOfFile:path];
-    WAXMLDocument * document = [[WAXMLDocument alloc] initWithXMLData:xmlData];
-    __unused WAResponse * response = [[WAResponse alloc] initWithDocument:document];
-    // TODO: load this in some form of response UI
-    (void)response;
+    model = [[WAModel alloc] init];
+    [model setDelegate:self];
+    [model searchQuery:@"James"];
+}
+
+- (void)model:(WAModel *)model gotResponse:(WAResponse *)response {
+    NSLog(@"Response: %lu pods and %lu assumptions",
+          [[response pods] count],
+          [[response assumptions] count]);
+}
+
+- (void)model:(WAModel *)aModel gotPod:(WAPod *)pod {
+    NSLog(@"Got pod: %@ (%@)", [pod title], [pod identifier]);
+}
+
+- (void)model:(WAModel *)model failedToLoad:(NSError *)error {
+    NSLog(@"Model error: %@", error);
+}
+
+- (void)modelFinishedAllQueries:(WAModel *)model {
+    NSLog(@"Done queries");
 }
 
 @end

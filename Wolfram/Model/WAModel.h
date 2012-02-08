@@ -7,25 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WAResponse.h"
 #import "WAMutableRequest.h"
+#import "WAModelQuery.h"
+#import "WAModelPodQuery.h"
 
 #define kAPIKey @"HGGPA6-LRPYV5Q2Y6"
-#define kUseAsync YES
 
 @class WAModel;
 
 @protocol WAModelDelegate <NSObject>
 
+@optional
 - (void)model:(WAModel *)model gotResponse:(WAResponse *)response;
 - (void)model:(WAModel *)model gotAssumptions:(NSArray *)assumptions;
 - (void)model:(WAModel *)model gotPod:(WAPod *)pod;
 - (void)model:(WAModel *)model failedToLoad:(NSError *)error;
+- (void)modelFinishedAllQueries:(WAModel *)model;
 
 @end
 
-@interface WAModel : NSObject {
-    NSMutableArray * requestThreads;
+@interface WAModel : NSObject <WAModelRequestDelegate> {
+    NSMutableArray * requests;
     WARequest * currentPage;
     __weak id<WAModelDelegate> delegate;
 }
@@ -36,5 +38,6 @@
 - (void)applyAssumption:(WAAssumptionValue *)assumption;
 - (void)applyState:(WAPodState *)state forPod:(WAPod *)aPod;
 - (void)cancelRequests;
+- (BOOL)isFinished;
 
 @end
