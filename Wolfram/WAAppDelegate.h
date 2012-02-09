@@ -8,9 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "WAModel.h"
+#import "WAView.h"
 
 @interface WAAppDelegate : NSObject <NSApplicationDelegate, WAModelDelegate> {
     WAModel * model;
+    WAView * mainView;
 }
 
 @property (assign) IBOutlet NSWindow * window;

@@ -10,6 +10,11 @@
 		2E2D47FC14E1B57000EFD448 /* WAPodState.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D47FB14E1B57000EFD448 /* WAPodState.m */; };
 		2E2D47FF14E1B58C00EFD448 /* WAPodStateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D47FE14E1B58C00EFD448 /* WAPodStateList.m */; };
 		2E2D480314E1BBB000EFD448 /* WAModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D480214E1BBB000EFD448 /* WAModel.m */; };
+		FA2DE1E014E338A100CF7DA3 /* WAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE1DF14E338A100CF7DA3 /* WAViewController.m */; };
+		FA2DE1E414E338EF00CF7DA3 /* WAView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE1E314E338EF00CF7DA3 /* WAView.m */; };
+		FA2DE1EA14E3483900CF7DA3 /* WAViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE1E914E3483900CF7DA3 /* WAViewEvent.m */; };
+		FA2DE1ED14E348E400CF7DA3 /* WAViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE1EC14E348E400CF7DA3 /* WAViewItem.m */; };
+		FA2DE1F014E364B400CF7DA3 /* WAViewSearchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE1EF14E364B400CF7DA3 /* WAViewSearchItem.m */; };
 		FA5D8EEC14DDBB7A006C2F43 /* NSString+URLCode.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE214DDBB7A006C2F43 /* NSString+URLCode.m */; };
 		FA5D8EED14DDBB7A006C2F43 /* WAMutableRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE514DDBB7A006C2F43 /* WAMutableRequest.m */; };
 		FA5D8EEE14DDBB7A006C2F43 /* WARequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE714DDBB7A006C2F43 /* WARequest.m */; };
@@ -43,6 +48,16 @@
 		2E2D47FE14E1B58C00EFD448 /* WAPodStateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPodStateList.m; sourceTree = "<group>"; };
 		2E2D480114E1BBB000EFD448 /* WAModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAModel.h; sourceTree = "<group>"; };
 		2E2D480214E1BBB000EFD448 /* WAModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAModel.m; sourceTree = "<group>"; };
+		FA2DE1DE14E338A100CF7DA3 /* WAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAViewController.h; sourceTree = "<group>"; };
+		FA2DE1DF14E338A100CF7DA3 /* WAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAViewController.m; sourceTree = "<group>"; };
+		FA2DE1E214E338EF00CF7DA3 /* WAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAView.h; sourceTree = "<group>"; };
+		FA2DE1E314E338EF00CF7DA3 /* WAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAView.m; sourceTree = "<group>"; };
+		FA2DE1E814E3483900CF7DA3 /* WAViewEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAViewEvent.h; sourceTree = "<group>"; };
+		FA2DE1E914E3483900CF7DA3 /* WAViewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAViewEvent.m; sourceTree = "<group>"; };
+		FA2DE1EB14E348E400CF7DA3 /* WAViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAViewItem.h; sourceTree = "<group>"; };
+		FA2DE1EC14E348E400CF7DA3 /* WAViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAViewItem.m; sourceTree = "<group>"; };
+		FA2DE1EE14E364B400CF7DA3 /* WAViewSearchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAViewSearchItem.h; sourceTree = "<group>"; };
+		FA2DE1EF14E364B400CF7DA3 /* WAViewSearchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAViewSearchItem.m; sourceTree = "<group>"; };
 		FA5D8EE114DDBB7A006C2F43 /* NSString+URLCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLCode.h"; sourceTree = "<group>"; };
 		FA5D8EE214DDBB7A006C2F43 /* NSString+URLCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLCode.m"; sourceTree = "<group>"; };
 		FA5D8EE414DDBB7A006C2F43 /* WAMutableRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAMutableRequest.h; sourceTree = "<group>"; };
@@ -131,6 +146,30 @@
 				FA87E44314E207B10062BF06 /* NSError+Message.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FA2DE1DC14E3389200CF7DA3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA2DE1DE14E338A100CF7DA3 /* WAViewController.h */,
+				FA2DE1DF14E338A100CF7DA3 /* WAViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FA2DE1E114E338DE00CF7DA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA2DE1E214E338EF00CF7DA3 /* WAView.h */,
+				FA2DE1E314E338EF00CF7DA3 /* WAView.m */,
+				FA2DE1E814E3483900CF7DA3 /* WAViewEvent.h */,
+				FA2DE1E914E3483900CF7DA3 /* WAViewEvent.m */,
+				FA2DE1EB14E348E400CF7DA3 /* WAViewItem.h */,
+				FA2DE1EC14E348E400CF7DA3 /* WAViewItem.m */,
+				FA2DE1EE14E364B400CF7DA3 /* WAViewSearchItem.h */,
+				FA2DE1EF14E364B400CF7DA3 /* WAViewSearchItem.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		FA5D8EE014DDBB7A006C2F43 /* URL */ = {
@@ -235,6 +274,8 @@
 		FAE8C51014DD97FD003DEC2A /* Wolfram */ = {
 			isa = PBXGroup;
 			children = (
+				FA2DE1E114E338DE00CF7DA3 /* View */,
+				FA2DE1DC14E3389200CF7DA3 /* Controller */,
 				2E2D480014E1BB8000EFD448 /* Model */,
 				FAE8C52714DD982F003DEC2A /* API */,
 				FAE8C51C14DD97FD003DEC2A /* WAAppDelegate.h */,
@@ -355,6 +396,11 @@
 				FA87E44414E207B10062BF06 /* NSError+Message.m in Sources */,
 				FA87E44714E2095C0062BF06 /* WAModelPodQuery.m in Sources */,
 				FA87E44A14E20A290062BF06 /* WAModelRequest.m in Sources */,
+				FA2DE1E014E338A100CF7DA3 /* WAViewController.m in Sources */,
+				FA2DE1E414E338EF00CF7DA3 /* WAView.m in Sources */,
+				FA2DE1EA14E3483900CF7DA3 /* WAViewEvent.m in Sources */,
+				FA2DE1ED14E348E400CF7DA3 /* WAViewItem.m in Sources */,
+				FA2DE1F014E364B400CF7DA3 /* WAViewSearchItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

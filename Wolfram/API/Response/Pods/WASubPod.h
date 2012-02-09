@@ -9,14 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "WAPlainText.h"
 #import "WAXMLDocument.h"
+#import "WAPodState.h"
 
 @interface WASubPod : NSObject {
     NSString * title;
     NSArray * representations;
+    NSArray * podStates;
 }
 
 @property (readonly) NSString * title;
 @property (readonly) NSArray * representations;
+@property (readonly) NSArray * podStates;
 
 - (id)initWithElement:(WAXMLNode *)node;
 

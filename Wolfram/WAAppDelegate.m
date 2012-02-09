@@ -15,9 +15,12 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    model = [[WAModel alloc] init];
-    [model setDelegate:self];
-    [model searchQuery:@"James"];
+    //model = [[WAModel alloc] init];
+    //[model setDelegate:self];
+    //[model searchQuery:@"James"];
+    
+    mainView = [[WAView alloc] initWithFrame:[self.window.contentView bounds]];
+    [self.window.contentView addSubview:mainView];
 }
 
 - (void)model:(WAModel *)model gotResponse:(WAResponse *)response {
