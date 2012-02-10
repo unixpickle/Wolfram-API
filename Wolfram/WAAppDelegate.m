@@ -21,7 +21,7 @@
     [self.window.contentView addSubview:view];
     [view hookupWindowNotifications];
     
-    controller = [[WAViewController alloc] initWithView:view model:model];
+    controller = [[WAController alloc] initWithView:view model:model];
 }
 
 @end
