@@ -10,6 +10,9 @@
 
 @interface WAView (Private)
 
+- (void)windowBecameKey:(NSNotification *)notification;
+- (void)windowResignedKey:(NSNotification *)notification;
+
 - (NSSize)contentViewportSize;
 - (void)layoutContentView;
 
@@ -18,6 +21,8 @@
 @implementation WAView
 
 @synthesize delegate;
+
+#pragma mark - View Mechanics -
 
 - (id)initWithFrame:(NSRect)frameRect {
     if ((self = [super initWithFrame:frameRect])) {
@@ -38,16 +43,90 @@
         
         // create search item
         NSRect searchFrame = NSMakeRect(10, 10, size.width - 20, 0);
-        WAViewSearchItem * search = [[WAViewSearchItem alloc] initWithFrame:searchFrame
-                                                                      title:@"Search"];
-        [search setDelegate:self];
-        [itemViews addObject:search];
-        [self layoutContentView];
+        WAViewSearchItem * search = [[WAViewSearchItem alloc] initWithFrame:searchFrame title:@"Search"];
+        [self addItem:search];
     }
     return self;
 }
 
+- (void)setFrame:(NSRect)frame {
+    [super setFrame:frame];
+    [scrollView setFrame:frame];
+    
+    NSSize size = [self contentViewportSize];
+    [clipView setFrame:NSMakeRect(0, 0, size.width, size.height)];
+    [self layoutContentView];
+    [self reflectScrolledClipView:scrollView.documentView];
+}
+
+- (void)removeFromSuperview {
+    [self detachWindowNotifications];
+}
+
+- (void)dealloc {
+    [self detachWindowNotifications];
+}
+
+#pragma mark - Window Notifications -
+
+- (void)hookupWindowNotifications {
+    if (configuredNotifications) return;
+    NSWindow * window = self.window;
+    if (!window) return;
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(windowBecameKey:)
+                                                 name:NSWindowDidBecomeKeyNotification
+                                               object:window];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(windowResignedKey:)
+                                                 name:NSWindowDidResignKeyNotification
+                                               object:window];
+    configuredNotifications = YES;
+    if (![window isKeyWindow]) {
+        [self windowResignedKey:nil];
+    } else {
+        [self windowBecameKey:nil];
+    }
+}
+
+- (void)detachWindowNotifications {
+    if (!configuredNotifications) return;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    configuredNotifications = NO;
+}
+
+#pragma mark (Private) Callbacks
+
+- (void)windowBecameKey:(NSNotification *)notification {
+    for (WAViewItem * item in itemViews) {
+        [item setFocused:YES];
+    }
+}
+
+- (void)windowResignedKey:(NSNotification *)notification {
+    for (WAViewItem * item in itemViews) {
+        [item setFocused:NO];
+    }
+}
+
 #pragma mark - Items -
+
+#pragma mark Management
+
+- (void)addItem:(WAViewItem *)item {
+    [item setDelegate:self];
+    [itemViews addObject:item];
+    [self layoutContentView];
+}
+
+- (void)removeItems {
+    while ([itemViews count] > 1) {
+        WAViewItem * item = [itemViews lastObject];
+        [item removeFromSuperview];
+        [itemViews removeLastObject];
+    }
+    [self layoutContentView];
+}
 
 #pragma mark Delegate
 
@@ -58,17 +137,15 @@
         [delegate waView:self item:item event:event];
     }
 }
-                       
-#pragma mark - Private -
 
-#pragma mark Content View
-                       
+#pragma mark (Private) Content View
+
 - (NSSize)contentViewportSize {
-   NSSize size = [NSScrollView contentSizeForFrameSize:scrollView.frame.size
-                                 hasHorizontalScroller:scrollView.hasHorizontalScroller
-                                   hasVerticalScroller:scrollView.hasVerticalScroller
-                                            borderType:scrollView.borderType];
-   return size;
+    NSSize size = [NSScrollView contentSizeForFrameSize:scrollView.frame.size
+                                  hasHorizontalScroller:scrollView.hasHorizontalScroller
+                                    hasVerticalScroller:scrollView.hasVerticalScroller
+                                             borderType:scrollView.borderType];
+    return size;
 }
 
 - (void)layoutContentView {

@@ -7,12 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "WAModel.h"
-#import "WAView.h"
+#import "WAViewController.h"
 
-@interface WAAppDelegate : NSObject <NSApplicationDelegate, WAModelDelegate> {
+@interface WAAppDelegate : NSObject <NSApplicationDelegate> {
     WAModel * model;
-    WAView * mainView;
+    WAView * view;
+    WAViewController * controller;
 }
 
 @property (assign) IBOutlet NSWindow * window;

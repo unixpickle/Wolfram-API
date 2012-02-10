@@ -25,12 +25,14 @@
     return 40;
 }
 
-- (void)handleCollapseExpand:(BOOL)expanded {
-    if (expanded) {
-        if (![searchField superview]) [self addSubview:searchField];
-    } else {
-        if ([searchField superview]) [searchField removeFromSuperview];
-    }
+- (void)expand {
+    [super expand];
+    if (![searchField superview]) [self addSubview:searchField];
+}
+
+- (void)collapse {
+    [super collapse];
+    if ([searchField superview]) [searchField removeFromSuperview];
 }
 
 - (void)setFrame:(NSRect)frame {

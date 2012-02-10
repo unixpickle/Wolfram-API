@@ -14,31 +14,14 @@
 @synthesize window = _window;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
-    //model = [[WAModel alloc] init];
-    //[model setDelegate:self];
-    //[model searchQuery:@"James"];
+    model = [[WAModel alloc] init];
+    view = [[WAView alloc] initWithFrame:[self.window.contentView bounds]];
+    [view setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
     
-    mainView = [[WAView alloc] initWithFrame:[self.window.contentView bounds]];
-    [self.window.contentView addSubview:mainView];
-}
-
-- (void)model:(WAModel *)model gotResponse:(WAResponse *)response {
-    NSLog(@"Response: %lu pods and %lu assumptions",
-          [[response pods] count],
-          [[response assumptions] count]);
-}
-
-- (void)model:(WAModel *)aModel gotPod:(WAPod *)pod {
-    NSLog(@"Got pod: %@ (%@)", [pod title], [pod identifier]);
-}
-
-- (void)model:(WAModel *)model failedToLoad:(NSError *)error {
-    NSLog(@"Model error: %@", error);
-}
-
-- (void)modelFinishedAllQueries:(WAModel *)model {
-    NSLog(@"Done queries");
+    [self.window.contentView addSubview:view];
+    [view hookupWindowNotifications];
+    
+    controller = [[WAViewController alloc] initWithView:view model:model];
 }
 
 @end

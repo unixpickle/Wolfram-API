@@ -81,10 +81,32 @@
     return self;
 }
 
+#pragma mark Focus
+
+- (BOOL)canBecomeKeyView {
+    return YES;
+}
+
+- (BOOL)becomeFirstResponder {
+    highlighted = YES;
+    [self setNeedsDisplay:YES];
+    return YES;
+}
+
+- (BOOL)resignFirstResponder {
+    highlighted = NO;
+    [self setNeedsDisplay:YES];
+    return YES;
+}
+
+- (void)mouseDown:(NSEvent *)theEvent {
+    [[self window] makeFirstResponder:self];
+}
+
 #pragma mark Content
 
 + (CGFloat)contentHeight {
-    return 10;
+    return 1;
 }
 
 + (CGFloat)initialHeight {
@@ -92,26 +114,33 @@
 }
 
 - (void)expandCollapsePress:(id)sender {
+    if ([expandButton state] == 0) [self collapse];
+    else [self expand];
+    
+    WAViewEvent * resizeEvent = [[WAViewEvent alloc] initWithEventType:WAViewEventTypeResize userInfo:nil];
+    [delegate viewItem:self event:resizeEvent];
+}
+
+- (void)expand {
     CGFloat height = 0;
-    if ([expandButton state] == 0) {
-        height = kTitleHeight + 2;
-    } else {
-        height = kTitleHeight + 2 + [[self class] contentHeight];
-    }
+    height = kTitleHeight + 2 + [[self class] contentHeight];
     [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
     
     NSRect frame = [self frame];
     frame.size.height = height;
     [self setFrame:frame];
     [self setNeedsDisplay:YES];
-    
-    [self handleCollapseExpand:([expandButton state] != 0)];
-    WAViewEvent * resizeEvent = [[WAViewEvent alloc] initWithEventType:WAViewEventTypeResize
-                                                              userInfo:nil];
-    [delegate viewItem:self event:resizeEvent];
 }
 
-- (void)handleCollapseExpand:(BOOL)expanded {
+- (void)collapse {
+    CGFloat height = 0;
+    height = kTitleHeight + 2;
+    [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
+    
+    NSRect frame = [self frame];
+    frame.size.height = height;
+    [self setFrame:frame];
+    [self setNeedsDisplay:YES];
 }
 
 #pragma mark - Drawing -

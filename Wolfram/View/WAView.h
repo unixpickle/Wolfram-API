@@ -23,6 +23,7 @@
     NSClipView * clipView;
     NSView * contentView;
     
+    BOOL configuredNotifications;
     NSMutableArray * itemViews;
     __weak id<WAViewDelegate> delegate;
 }
@@ -30,5 +31,11 @@
 @property (nonatomic, weak) id<WAViewDelegate> delegate;
 
 - (id)initWithFrame:(NSRect)frameRect;
+
+- (void)addItem:(WAViewItem *)item;
+- (void)removeItems;
+
+- (void)hookupWindowNotifications;
+- (void)detachWindowNotifications;
 
 @end

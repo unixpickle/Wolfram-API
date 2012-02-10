@@ -10,7 +10,7 @@
 #import "WAView.h"
 #import "WAModel.h"
 
-@interface WAViewController : NSObject <WAModelDelegate> {
+@interface WAViewController : NSObject <WAModelDelegate, WAViewDelegate> {
     WAView * view;
     WAModel * model;
 }
