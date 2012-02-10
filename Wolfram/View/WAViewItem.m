@@ -20,7 +20,7 @@
 
 @implementation WAViewItem
 
-@synthesize delegate;
+@synthesize eventManager;
 
 #pragma mark - Properties -
 
@@ -131,8 +131,8 @@
     if ([expandButton state] == 0) [self collapse];
     else [self expand];
     
-    WAViewEvent * resizeEvent = [[WAViewEvent alloc] initWithEventType:WAViewEventTypeResize userInfo:nil];
-    [delegate viewItem:self event:resizeEvent];
+    WAEvent * event = [WAEvent eventWithType:WAEventTypeExpandCollapse sender:self];
+    [eventManager postEvent:event];
 }
 
 - (void)expand {

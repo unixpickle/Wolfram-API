@@ -12,7 +12,6 @@
 		2E2D480314E1BBB000EFD448 /* WAModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D480214E1BBB000EFD448 /* WAModel.m */; };
 		FA2DE1E014E338A100CF7DA3 /* WAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE1DF14E338A100CF7DA3 /* WAViewController.m */; };
 		FA2DE1E414E338EF00CF7DA3 /* WAView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE1E314E338EF00CF7DA3 /* WAView.m */; };
-		FA2DE1EA14E3483900CF7DA3 /* WAViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE1E914E3483900CF7DA3 /* WAViewEvent.m */; };
 		FA2DE1ED14E348E400CF7DA3 /* WAViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE1EC14E348E400CF7DA3 /* WAViewItem.m */; };
 		FA2DE1F014E364B400CF7DA3 /* WAViewSearchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE1EF14E364B400CF7DA3 /* WAViewSearchItem.m */; };
 		FA5D8EEC14DDBB7A006C2F43 /* NSString+URLCode.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5D8EE214DDBB7A006C2F43 /* NSString+URLCode.m */; };
@@ -29,6 +28,8 @@
 		FA87E44A14E20A290062BF06 /* WAModelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA87E44914E20A280062BF06 /* WAModelRequest.m */; };
 		FA93400114E5C9B1008B3DC1 /* WAAssumption.m in Sources */ = {isa = PBXBuildFile; fileRef = FA933FFE14E5C9B1008B3DC1 /* WAAssumption.m */; };
 		FA93400214E5C9B1008B3DC1 /* WAAssumptionValue.m in Sources */ = {isa = PBXBuildFile; fileRef = FA93400014E5C9B1008B3DC1 /* WAAssumptionValue.m */; };
+		FA93400614E5CB6C008B3DC1 /* WAEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA93400514E5CB6C008B3DC1 /* WAEventManager.m */; };
+		FA93400914E5CB77008B3DC1 /* WAEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = FA93400814E5CB77008B3DC1 /* WAEvent.m */; };
 		FAD7DAFC14DDD7C500DFC961 /* query.xml in Resources */ = {isa = PBXBuildFile; fileRef = FAD7DAFB14DDD7C500DFC961 /* query.xml */; };
 		FAE03F2914DE253D008E7023 /* WAPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2614DE253D008E7023 /* WAPod.m */; };
 		FAE03F2A14DE253D008E7023 /* WASubPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2814DE253D008E7023 /* WASubPod.m */; };
@@ -52,8 +53,6 @@
 		FA2DE1DF14E338A100CF7DA3 /* WAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAViewController.m; sourceTree = "<group>"; };
 		FA2DE1E214E338EF00CF7DA3 /* WAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAView.h; sourceTree = "<group>"; };
 		FA2DE1E314E338EF00CF7DA3 /* WAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAView.m; sourceTree = "<group>"; };
-		FA2DE1E814E3483900CF7DA3 /* WAViewEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAViewEvent.h; sourceTree = "<group>"; };
-		FA2DE1E914E3483900CF7DA3 /* WAViewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAViewEvent.m; sourceTree = "<group>"; };
 		FA2DE1EB14E348E400CF7DA3 /* WAViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAViewItem.h; sourceTree = "<group>"; };
 		FA2DE1EC14E348E400CF7DA3 /* WAViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAViewItem.m; sourceTree = "<group>"; };
 		FA2DE1EE14E364B400CF7DA3 /* WAViewSearchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAViewSearchItem.h; sourceTree = "<group>"; };
@@ -86,6 +85,10 @@
 		FA933FFE14E5C9B1008B3DC1 /* WAAssumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumption.m; sourceTree = "<group>"; };
 		FA933FFF14E5C9B1008B3DC1 /* WAAssumptionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionValue.h; sourceTree = "<group>"; };
 		FA93400014E5C9B1008B3DC1 /* WAAssumptionValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionValue.m; sourceTree = "<group>"; };
+		FA93400414E5CB6C008B3DC1 /* WAEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAEventManager.h; sourceTree = "<group>"; };
+		FA93400514E5CB6C008B3DC1 /* WAEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAEventManager.m; sourceTree = "<group>"; };
+		FA93400714E5CB77008B3DC1 /* WAEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAEvent.h; sourceTree = "<group>"; };
+		FA93400814E5CB77008B3DC1 /* WAEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAEvent.m; sourceTree = "<group>"; };
 		FAD7DAFB14DDD7C500DFC961 /* query.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = query.xml; sourceTree = "<group>"; };
 		FAE03F2514DE253D008E7023 /* WAPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPod.h; sourceTree = "<group>"; };
 		FAE03F2614DE253D008E7023 /* WAPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPod.m; sourceTree = "<group>"; };
@@ -160,10 +163,9 @@
 		FA2DE1E114E338DE00CF7DA3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA93400314E5CB5F008B3DC1 /* Events */,
 				FA2DE1E214E338EF00CF7DA3 /* WAView.h */,
 				FA2DE1E314E338EF00CF7DA3 /* WAView.m */,
-				FA2DE1E814E3483900CF7DA3 /* WAViewEvent.h */,
-				FA2DE1E914E3483900CF7DA3 /* WAViewEvent.m */,
 				FA2DE1EB14E348E400CF7DA3 /* WAViewItem.h */,
 				FA2DE1EC14E348E400CF7DA3 /* WAViewItem.m */,
 				FA2DE1EE14E364B400CF7DA3 /* WAViewSearchItem.h */,
@@ -228,6 +230,17 @@
 			);
 			name = Assumptions;
 			path = Pods/Assumptions;
+			sourceTree = "<group>";
+		};
+		FA93400314E5CB5F008B3DC1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				FA93400414E5CB6C008B3DC1 /* WAEventManager.h */,
+				FA93400514E5CB6C008B3DC1 /* WAEventManager.m */,
+				FA93400714E5CB77008B3DC1 /* WAEvent.h */,
+				FA93400814E5CB77008B3DC1 /* WAEvent.m */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 		FAE03F2414DE251E008E7023 /* Pods */ = {
@@ -405,11 +418,12 @@
 				FA87E44A14E20A290062BF06 /* WAModelRequest.m in Sources */,
 				FA2DE1E014E338A100CF7DA3 /* WAViewController.m in Sources */,
 				FA2DE1E414E338EF00CF7DA3 /* WAView.m in Sources */,
-				FA2DE1EA14E3483900CF7DA3 /* WAViewEvent.m in Sources */,
 				FA2DE1ED14E348E400CF7DA3 /* WAViewItem.m in Sources */,
 				FA2DE1F014E364B400CF7DA3 /* WAViewSearchItem.m in Sources */,
 				FA93400114E5C9B1008B3DC1 /* WAAssumption.m in Sources */,
 				FA93400214E5C9B1008B3DC1 /* WAAssumptionValue.m in Sources */,
+				FA93400614E5CB6C008B3DC1 /* WAEventManager.m in Sources */,
+				FA93400914E5CB77008B3DC1 /* WAEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

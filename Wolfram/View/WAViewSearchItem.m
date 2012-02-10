@@ -49,12 +49,10 @@
 }
 
 - (void)searchEnter:(id)sender {
-    NSDictionary * info = [NSDictionary dictionaryWithObject:[searchField stringValue]
-                                                      forKey:WAViewEventQueryKey];
-    WAViewEvent * event = [[WAViewEvent alloc] initWithEventType:WAViewEventTypeSearch
-                                                        userInfo:info];
-    [delegate viewItem:self event:event];
-   
+    WAEvent * event = [WAEvent eventWithType:WAEventTypeSearch sender:self
+                                      object:[searchField stringValue]
+                                      forKey:kWAEventQueryUserInfoKey];
+    [eventManager postEvent:event];
     [self performSelector:@selector(deselectSearchText) withObject:nil afterDelay:0.01];
 }
 

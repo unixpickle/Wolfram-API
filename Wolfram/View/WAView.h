@@ -12,19 +12,22 @@
 
 @class WAView;
 
-@protocol WAViewDelegate
+@protocol WAViewDelegate <NSObject>
 
-- (void)waView:(WAView *)view item:(WAViewItem *)item event:(WAViewEvent *)event;
+@optional
+- (void)waView:(WAView *)view searchQuery:(NSString *)query;
 
 @end
 
-@interface WAView : NSView <WAViewItemDelegate> {
+@interface WAView : NSView <WAEventManagerTarget> {
     NSScrollView * scrollView;
     NSClipView * clipView;
     NSView * contentView;
     
     BOOL configuredNotifications;
     NSMutableArray * itemViews;
+    WAEventManager * eventManager;
+    
     __weak id<WAViewDelegate> delegate;
 }
 

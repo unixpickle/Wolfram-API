@@ -27,15 +27,7 @@
 
 #pragma mark Events
 
-- (void)waView:(WAView *)view item:(WAViewItem *)item event:(WAViewEvent *)event {
-    NSLog(@"Controller got event");
-    if ([event eventType] == WAViewEventTypeSearch) {
-        [self handleSearchEvent:event];
-    }
-}
-
-- (void)handleSearchEvent:(WAViewEvent *)event {
-    NSString * query = [[event userInfo] objectForKey:WAViewEventQueryKey];
+- (void)waView:(WAView *)aView searchQuery:(NSString *)query {
     [model searchQuery:query];
     [view removeItems];
     [[view searchItem] setLoading:YES];

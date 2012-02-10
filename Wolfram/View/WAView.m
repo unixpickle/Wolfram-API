@@ -27,6 +27,7 @@
 - (id)initWithFrame:(NSRect)frameRect {
     if ((self = [super initWithFrame:frameRect])) {
         itemViews = [[NSMutableArray alloc] init];
+        eventManager = [[WAEventManager alloc] initWithTarget:self];
         
         scrollView = [[NSScrollView alloc] initWithFrame:self.bounds];
         clipView = [[NSClipView alloc] initWithFrame:self.bounds];
@@ -109,12 +110,25 @@
     }
 }
 
+#pragma mark - Events -
+
+- (void)eventManager:(WAEventManager *)manager receivedEvent:(WAEvent *)event {
+    if (event.eventType == WAEventTypeExpandCollapse) {
+        [self layoutContentView];
+    } else if (event.eventType == WAEventTypeSearch) {
+        NSString * query = [event.userInfo objectForKey:kWAEventQueryUserInfoKey];
+        if ([delegate respondsToSelector:@selector(waView:searchQuery:)]) {
+            [delegate waView:self searchQuery:query];
+        }
+    }
+}
+
 #pragma mark - Items -
 
 #pragma mark Management
 
 - (void)addItem:(WAViewItem *)item {
-    [item setDelegate:self];
+    [item setEventManager:eventManager];
     [itemViews addObject:item];
     [self layoutContentView];
 }
@@ -134,13 +148,7 @@
 
 #pragma mark Delegate
 
-- (void)viewItem:(WAViewItem *)item event:(WAViewEvent *)event {
-    if ([event eventType] == WAViewEventTypeResize) {
-        [self layoutContentView];
-    } else {
-        [delegate waView:self item:item event:event];
-    }
-}
+
 
 #pragma mark (Private) Content View
 
