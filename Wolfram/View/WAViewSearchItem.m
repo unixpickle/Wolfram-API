@@ -16,10 +16,6 @@
 
 @implementation WAViewSearchItem
 
-+ (CGFloat)contentHeight {
-    return 40;
-}
-
 - (id)initWithFrame:(NSRect)frame title:(NSString *)aTitle {
     if ((self = [super initWithFrame:frame title:aTitle])) {
         searchField = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 10, frame.size.width - 20, 22)];
@@ -31,21 +27,6 @@
         [self addSubview:searchField];
     }
     return self;
-}
-
-- (void)setFrame:(NSRect)frame {
-    [super setFrame:frame];
-    [searchField setFrame:NSMakeRect(10, 10, frame.size.width - 20, 22)];
-}
-
-- (void)expand {
-    [super expand];
-    if (![searchField superview]) [self addSubview:searchField];
-}
-
-- (void)collapse {
-    [super collapse];
-    if ([searchField superview]) [searchField removeFromSuperview];
 }
 
 - (void)searchEnter:(id)sender {
@@ -60,6 +41,28 @@
     NSText * fieldEditor = [self.window fieldEditor:YES forObject:searchField];
     [fieldEditor setSelectedRange:NSMakeRange([[fieldEditor string] length], 0)];
     [fieldEditor setNeedsDisplay:YES];
+    [[self window] makeFirstResponder:self];
+}
+
+#pragma mark - Layout -
+
++ (CGFloat)contentHeight {
+    return 40;
+}
+
+- (void)setFrame:(NSRect)frame {
+    [super setFrame:frame];
+    [searchField setFrame:NSMakeRect(10, 10, frame.size.width - 20, 22)];
+}
+
+- (void)layoutExpanded {
+    [super layoutExpanded];
+    if (![searchField superview]) [self addSubview:searchField];
+}
+
+- (void)layoutCollapsed {
+    [super layoutCollapsed];
+    if ([searchField superview]) [searchField removeFromSuperview];
 }
 
 @end

@@ -28,6 +28,7 @@
 #pragma mark Events
 
 - (void)waView:(WAView *)aView searchQuery:(NSString *)query {
+    [model cancelRequests];
     [model searchQuery:query];
     [view removeItems];
     [[view searchItem] setLoading:YES];

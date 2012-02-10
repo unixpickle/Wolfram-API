@@ -32,7 +32,7 @@
 + (CGFloat)initialHeight;
 
 - (void)expandCollapsePress:(id)sender;
-- (void)expand;
-- (void)collapse;
+- (void)layoutExpanded;
+- (void)layoutCollapsed;
 
 @end

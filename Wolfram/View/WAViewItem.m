@@ -128,14 +128,14 @@
 }
 
 - (void)expandCollapsePress:(id)sender {
-    if ([expandButton state] == 0) [self collapse];
-    else [self expand];
+    if ([expandButton state] == 0) [self layoutCollapsed];
+    else [self layoutExpanded];
     
     WAEvent * event = [WAEvent eventWithType:WAEventTypeExpandCollapse sender:self];
     [eventManager postEvent:event];
 }
 
-- (void)expand {
+- (void)layoutExpanded {
     CGFloat height = 0;
     height = kTitleHeight + 2 + [[self class] contentHeight];
     [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
@@ -147,7 +147,7 @@
     [self setNeedsDisplay:YES];
 }
 
-- (void)collapse {
+- (void)layoutCollapsed {
     CGFloat height = 0;
     height = kTitleHeight + 2;
     [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
