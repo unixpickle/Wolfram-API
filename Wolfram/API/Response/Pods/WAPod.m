@@ -34,7 +34,7 @@
         NSArray * podElements = [node elementsWithName:@"subpod"];
         NSMutableArray * mSubPods = [[NSMutableArray alloc] init];
         for (WAXMLNode * node in podElements) {
-            WASubPod * subPod = [[WASubPod alloc] initWithElement:node];
+            WASubPod * subPod = [[WASubPod alloc] initWithElement:node pod:self];
             if (!subPod) return nil;
             [mSubPods addObject:subPod];
         }
@@ -50,7 +50,7 @@
 }
 
 - (void)loadStates:(WAXMLNode *)statesElement {
-    podStates = [WAPodState podStatesFromElement:statesElement];
+    podStates = [WAPodState podStatesFromElement:statesElement pod:self];
 }
 
 @end

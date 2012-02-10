@@ -11,20 +11,30 @@
 #import "NSString+URLCode.h"
 
 @class WAPodStateList;
+@class WAPod;
 
 @interface WAPodState : NSObject {
-    WAPodStateList * parentList;
+    __weak WAPod * pod;
+    __weak WAPodStateList * parentList;
     NSString * name;
     NSString * input;
 }
 
+@property (readonly) WAPod * pod;
 @property (readonly) WAPodStateList * parentList;
 @property (readonly) NSString * name;
 @property (readonly) NSString * input;
 
-+ (NSArray *)podStatesFromElement:(WAXMLNode *)element;
-- (id)initWithName:(NSString *)aName input:(NSString *)theInput list:(WAPodStateList *)parent;
-- (id)initWithElement:(WAXMLNode *)node list:(WAPodStateList *)parent;
+- (id)initWithName:(NSString *)aName
+             input:(NSString *)theInput 
+              list:(WAPodStateList *)parent
+               pod:(WAPod *)parentPod;
+- (id)initWithElement:(WAXMLNode *)node
+                 list:(WAPodStateList *)parent
+                  pod:(WAPod *)parentPod;
+
 - (NSString *)encodeInput;
++ (NSArray *)podStatesFromElement:(WAXMLNode *)element pod:(WAPod *)parentPod;
+
 
 @end

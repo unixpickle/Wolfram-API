@@ -15,6 +15,6 @@
 @property (readonly) NSArray * podStates;
 
 - (id)initWithStates:(NSArray *)states;
-- (id)initWithElement:(WAXMLNode *)node;
+- (id)initWithElement:(WAXMLNode *)node pod:(WAPod *)aPod;
 
 @end

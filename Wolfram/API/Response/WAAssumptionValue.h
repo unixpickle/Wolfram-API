@@ -17,7 +17,7 @@
     NSString * description;
     NSString * input;
     NSNumber * valid;
-    WAAssumption * assumption;
+    __weak WAAssumption * assumption;
 }
 
 @property (readonly) NSString * name;

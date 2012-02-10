@@ -13,9 +13,11 @@
 @synthesize title;
 @synthesize representations;
 @synthesize podStates;
+@synthesize pod;
 
-- (id)initWithElement:(WAXMLNode *)node {
+- (id)initWithElement:(WAXMLNode *)node pod:(WAPod *)parentPod {
     if ((self = [super init])) {
+        pod = parentPod;
         NSMutableArray * mRepresentations = [[NSMutableArray alloc] init];
         WAXMLNode * textNode = [node elementWithName:@"plaintext"];
         if (textNode) {
@@ -25,7 +27,7 @@
         }
         representations = [[NSArray alloc] initWithArray:mRepresentations];
         WAXMLNode * statesElement = [node elementWithName:@"states"];
-        if (statesElement) podStates = [WAPodState podStatesFromElement:statesElement];
+        if (statesElement) podStates = [WAPodState podStatesFromElement:statesElement pod:parentPod];
     }
     return self;
 }

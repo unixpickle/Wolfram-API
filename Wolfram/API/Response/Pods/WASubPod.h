@@ -11,16 +11,20 @@
 #import "WAXMLDocument.h"
 #import "WAPodState.h"
 
+@class WAPod;
+
 @interface WASubPod : NSObject {
     NSString * title;
     NSArray * representations;
     NSArray * podStates;
+    __weak WAPod * pod;
 }
 
 @property (readonly) NSString * title;
 @property (readonly) NSArray * representations;
 @property (readonly) NSArray * podStates;
+@property (readonly) WAPod * pod;
 
-- (id)initWithElement:(WAXMLNode *)node;
+- (id)initWithElement:(WAXMLNode *)node pod:(WAPod *)parentPod;
 
 @end

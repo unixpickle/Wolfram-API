@@ -19,12 +19,12 @@
     return self;
 }
 
-- (id)initWithElement:(WAXMLNode *)node {
+- (id)initWithElement:(WAXMLNode *)node pod:(WAPod *)aPod {
     if ((self = [super init])) {
         NSMutableArray * mStates = [[NSMutableArray alloc] init];
         NSArray * elStates = [node elementsWithName:@"state"];
         for (WAXMLNode * state in elStates) {
-            WAPodState * podState = [[WAPodState alloc] initWithElement:state list:self];
+            WAPodState * podState = [[WAPodState alloc] initWithElement:state list:self pod:aPod];
             [mStates addObject:podState];
         }
         podStates = [[NSArray alloc] initWithArray:mStates];
