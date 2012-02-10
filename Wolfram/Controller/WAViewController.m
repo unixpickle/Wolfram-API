@@ -25,31 +25,42 @@
 
 #pragma mark - View -
 
+#pragma mark Events
+
 - (void)waView:(WAView *)view item:(WAViewItem *)item event:(WAViewEvent *)event {
-    // handle event
     NSLog(@"Controller got event");
+    if ([event eventType] == WAViewEventTypeSearch) {
+        [self handleSearchEvent:event];
+    }
+}
+
+- (void)handleSearchEvent:(WAViewEvent *)event {
+    NSString * query = [[event userInfo] objectForKey:WAViewEventQueryKey];
+    [model searchQuery:query];
+    [view removeItems];
+    [[view searchItem] setLoading:YES];
 }
 
 #pragma mark - Model -
 
 - (void)model:(WAModel *)model gotPod:(WAPod *)pod {
-    
+    NSLog(@"Got pod: %@", [pod title]);
 }
 
 - (void)model:(WAModel *)model gotAssumptions:(NSArray *)assumptions {
-    
+    NSLog(@"Assumptions (count): %lu", [assumptions count]);
 }
 
 - (void)model:(WAModel *)model failedToLoad:(NSError *)error {
-    
+    NSLog(@"Load failed: %@", error);
 }
 
 - (void)model:(WAModel *)model gotResponse:(WAResponse *)response {
-    
+    NSLog(@"Received response: (%lu assumptions, %lu pods)", [[response assumptions] count], [[response pods] count]);
 }
 
 - (void)modelFinishedAllQueries:(WAModel *)model {
-    
+    [[view searchItem] setLoading:NO];
 }
 
 @end

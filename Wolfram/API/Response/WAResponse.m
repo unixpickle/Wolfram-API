@@ -32,7 +32,7 @@
 }
 
 - (BOOL)loadAssumptionsFromNode:(WAXMLNode *)node {
-    if (!node) return NO;
+    if (!node) return YES;
     NSMutableArray * mAssumptions = [[NSMutableArray alloc] init];
     NSArray * assumptionNodes = [node elementsWithName:@"assumption"];
     for (WAXMLNode * aNode in assumptionNodes) {

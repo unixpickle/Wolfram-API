@@ -85,12 +85,11 @@
         [delegate model:self gotAssumptions:[response assumptions]];
     }
     for (WAPod * pod in [response pods]) {
-        if ([[pod subPods] count] > 0) {
-            if ([delegate respondsToSelector:@selector(model:gotPod:)]) {
-                [delegate model:self gotPod:pod];
-            }
-        } else {
-            // detatch async if it is possible
+        if ([delegate respondsToSelector:@selector(model:gotPod:)]) {
+            [delegate model:self gotPod:pod];
+        }
+        if ([[pod subPods] count] == 0) {
+            // fetch asynchronously if available
             if ([pod asyncURL]) {
                 [self sendAsyncRequest:[pod asyncURL]];
             } else {

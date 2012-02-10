@@ -47,7 +47,13 @@
 
 - (void)setLoading:(BOOL)flag {
     loading = flag;
-    [self setNeedsDisplay:YES];
+    if (flag) {
+        [loadIndicator startAnimation:self];
+        [loadIndicator setHidden:NO];
+    } else {
+        [loadIndicator stopAnimation:self];
+        [loadIndicator setHidden:YES];
+    }
 }
 
 - (void)setFocused:(BOOL)flag {
@@ -77,6 +83,14 @@
         [expandButton setTarget:self];
         [expandButton setAction:@selector(expandCollapsePress:)];
         [self addSubview:expandButton];
+        
+        loadIndicator = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(frame.size.width - 26,
+                                                                              frame.size.height - 20,
+                                                                              16, 16)];
+        [loadIndicator setControlSize:NSSmallControlSize];
+        [loadIndicator setStyle:NSProgressIndicatorSpinningStyle];
+        [loadIndicator setHidden:YES];
+        [self addSubview:loadIndicator];
     }
     return self;
 }
@@ -125,6 +139,7 @@
     CGFloat height = 0;
     height = kTitleHeight + 2 + [[self class] contentHeight];
     [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
+    [loadIndicator setFrame:NSMakeRect(self.frame.size.width - 26, height - 21, 16, 16)];
     
     NSRect frame = [self frame];
     frame.size.height = height;
@@ -136,6 +151,7 @@
     CGFloat height = 0;
     height = kTitleHeight + 2;
     [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
+    [loadIndicator setFrame:NSMakeRect(self.frame.size.width - 26, height - 21, 16, 16)];
     
     NSRect frame = [self frame];
     frame.size.height = height;

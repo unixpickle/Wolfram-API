@@ -20,4 +20,6 @@
 
 - (id)initWithView:(WAView *)aView model:(WAModel *)aModel;
 
+- (void)handleSearchEvent:(WAViewEvent *)event;
+
 @end

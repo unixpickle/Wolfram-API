@@ -128,6 +128,10 @@
     [self layoutContentView];
 }
 
+- (WAViewSearchItem *)searchItem {
+    return [itemViews objectAtIndex:0];
+}
+
 #pragma mark Delegate
 
 - (void)viewItem:(WAViewItem *)item event:(WAViewEvent *)event {

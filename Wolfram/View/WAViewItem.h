@@ -21,8 +21,9 @@
 
 @interface WAViewItem : NSView {
     NSString * title;
-    BOOL loading;
     NSButton * expandButton;
+    NSProgressIndicator * loadIndicator;
+    BOOL loading;
     BOOL focused;
     BOOL highlighted;
     __weak id<WAViewItemDelegate> delegate;

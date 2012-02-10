@@ -34,6 +34,7 @@
 
 - (void)addItem:(WAViewItem *)item;
 - (void)removeItems;
+- (WAViewSearchItem *)searchItem;
 
 - (void)hookupWindowNotifications;
 - (void)detachWindowNotifications;

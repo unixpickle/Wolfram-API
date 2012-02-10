@@ -13,6 +13,8 @@ typedef enum {
     WAViewEventTypeResize
 } WAViewEventType;
 
+#define WAViewEventQueryKey @"WAViewEventQueryKey"
+
 @interface WAViewEvent : NSObject {
     WAViewEventType eventType;
     NSDictionary * userInfo;

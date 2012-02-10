@@ -12,4 +12,6 @@
     NSTextField * searchField;
 }
 
+- (void)searchEnter:(id)sender;
+
 @end
