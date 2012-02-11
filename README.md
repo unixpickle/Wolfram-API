@@ -1,4 +1,4 @@
 Wolfram API
 ===========
 
-Wolfram API will allow easy access to Wolfram|Alpha's XML API. When it is completed, it will support all of the features currently documented on WA's developer site. I am not particularly interested in this project, so I would be greatful if other developers would be interested in helping out.
+Wolfram API was originally intended only to be a raw API for accessing Wolfram|Alpha's XML data API. However, such a project would be and was boring to implement on its own, so I decided to have a little fun and implement a nice-looking Cocoa UI for it. As of now, running this project will present you with a usable user-interface, which will shortly incorporate all of Wolfram|Alpha's online features.
