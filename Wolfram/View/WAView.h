@@ -7,8 +7,8 @@
 //
 
 #import <AppKit/AppKit.h>
-#import "WAViewItem.h"
 #import "WAViewSearchItem.h"
+#import "WAViewPodItem.h"
 
 @class WAView;
 
@@ -38,6 +38,7 @@
 - (void)addItem:(WAViewItem *)item;
 - (void)removeItems;
 - (WAViewSearchItem *)searchItem;
+- (WAViewPodItem *)addPodItem:(WAPod *)aPod;
 
 - (void)hookupWindowNotifications;
 - (void)detachWindowNotifications;

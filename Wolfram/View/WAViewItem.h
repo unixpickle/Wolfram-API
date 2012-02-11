@@ -28,10 +28,11 @@
 @property (readwrite, weak) WAEventManager * eventManager;
 
 - (id)initWithFrame:(NSRect)frame title:(NSString *)aTitle;
-+ (CGFloat)contentHeight;
-+ (CGFloat)initialHeight;
+- (CGFloat)contentHeight;
+- (void)fitBoundsToHeight;
 
 - (void)expandCollapsePress:(id)sender;
+- (void)setExpanded:(BOOL)expanded;
 - (void)layoutExpanded;
 - (void)layoutCollapsed;
 

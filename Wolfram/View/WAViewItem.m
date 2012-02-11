@@ -69,7 +69,7 @@
 #pragma mark - View Management -
 
 - (id)initWithFrame:(NSRect)frame title:(NSString *)aTitle {
-    frame.size.height = [[self class] initialHeight];
+    frame.size.height = kTitleHeight + 2;
     if ((self = [super initWithFrame:frame])) {
         title = aTitle;
         loading = NO;
@@ -91,6 +91,7 @@
         [loadIndicator setStyle:NSProgressIndicatorSpinningStyle];
         [loadIndicator setHidden:YES];
         [self addSubview:loadIndicator];
+        [self fitBoundsToHeight];
     }
     return self;
 }
@@ -119,32 +120,49 @@
 
 #pragma mark Content
 
-+ (CGFloat)contentHeight {
+- (CGFloat)contentHeight {
     return 1;
 }
 
-+ (CGFloat)initialHeight {
-    return [self contentHeight] + 2 + kTitleHeight;
+- (void)fitBoundsToHeight {
+    CGFloat height = 0;
+    height = kTitleHeight + 2 + [self contentHeight];
+    [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
+    [loadIndicator setFrame:NSMakeRect(self.frame.size.width - 26, height - 21, 16, 16)];
+    NSRect frame = [self frame];
+    frame.size.height = height;
+    [self setFrame:frame];
+    [self setNeedsLayout:YES];
 }
 
+#pragma mark Expand/Collapse
+
 - (void)expandCollapsePress:(id)sender {
-    if ([expandButton state] == 0) [self layoutCollapsed];
-    else [self layoutExpanded];
+    [self setExpanded:[expandButton state]];
     
     WAEvent * event = [WAEvent eventWithType:WAEventTypeExpandCollapse sender:self];
     [eventManager postEvent:event];
 }
 
-- (void)layoutExpanded {
-    CGFloat height = 0;
-    height = kTitleHeight + 2 + [[self class] contentHeight];
-    [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
-    [loadIndicator setFrame:NSMakeRect(self.frame.size.width - 26, height - 21, 16, 16)];
+- (void)setExpanded:(BOOL)expanded {
+    CGFloat oldHeight = self.frame.size.height;
     
-    NSRect frame = [self frame];
-    frame.size.height = height;
-    [self setFrame:frame];
-    [self setNeedsDisplay:YES];
+    if (expanded) {
+        [self layoutExpanded];
+    } else {
+        [self layoutCollapsed];
+    }
+    
+    CGFloat newHeight = self.frame.size.height;
+    NSNumber * delta = [NSNumber numberWithFloat:newHeight - oldHeight];
+    
+    WAEvent * event = [WAEvent eventWithType:WAEventTypeExpandCollapse sender:self
+                                      object:delta forKey:kWAEventDeltaHeightUserInfoKey];
+    [eventManager postEvent:event];
+}
+
+- (void)layoutExpanded {
+    [self fitBoundsToHeight];
 }
 
 - (void)layoutCollapsed {

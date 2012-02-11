@@ -38,6 +38,7 @@
 
 - (void)model:(WAModel *)model gotPod:(WAPod *)pod {
     NSLog(@"Got pod: %@", [pod title]);
+    [view addPodItem:pod];
 }
 
 - (void)model:(WAModel *)model gotAssumptions:(NSArray *)assumptions {

@@ -46,7 +46,7 @@
 
 #pragma mark - Layout -
 
-+ (CGFloat)contentHeight {
+- (CGFloat)contentHeight {
     return 40;
 }
 

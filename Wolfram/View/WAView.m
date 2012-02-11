@@ -54,10 +54,7 @@
     [super setFrame:frame];
     [scrollView setFrame:frame];
     
-    NSSize size = [self contentViewportSize];
-    [clipView setFrame:NSMakeRect(0, 0, size.width, size.height)];
     [self layoutContentView];
-    [self reflectScrolledClipView:scrollView.documentView];
 }
 
 - (void)removeFromSuperview {
@@ -114,7 +111,18 @@
 
 - (void)eventManager:(WAEventManager *)manager receivedEvent:(WAEvent *)event {
     if (event.eventType == WAEventTypeExpandCollapse) {
+        NSRect topDownFrame = [scrollView documentVisibleRect];
         [self layoutContentView];
+        float delta = [[[event userInfo] objectForKey:kWAEventDeltaHeightUserInfoKey] floatValue];
+
+        topDownFrame.origin.y += delta;
+        if (topDownFrame.origin.y < 0) {
+            topDownFrame.origin.y = 0;
+        } else if (topDownFrame.origin.y + topDownFrame.size.height > clipView.frame.size.height) {
+            topDownFrame.origin.y = clipView.frame.size.height - topDownFrame.size.height;
+        }
+        [[scrollView contentView] scrollRectToVisible:topDownFrame];
+        [scrollView reflectScrolledClipView:[scrollView contentView]];
     } else if (event.eventType == WAEventTypeSearch) {
         NSString * query = [event.userInfo objectForKey:kWAEventQueryUserInfoKey];
         if ([delegate respondsToSelector:@selector(waView:searchQuery:)]) {
@@ -146,9 +154,38 @@
     return [itemViews objectAtIndex:0];
 }
 
-#pragma mark Delegate
+- (WAViewPodItem *)addPodItem:(WAPod *)aPod {
+    WAViewPodItem * newItem = [[WAViewPodItem alloc] initWithFrame:NSMakeRect(0, 0, [self contentViewportSize].width - 20, 0)
+                                                               pod:aPod];
+    // TODO: collapse it if it's past result #5 or something
+    [newItem setEventManager:eventManager];
+    for (NSUInteger i = 0; i < [itemViews count]; i++) {
+        WAViewItem * item = [itemViews objectAtIndex:i];
+        if ([item isKindOfClass:[WAViewPodItem class]]) {
+            WAViewPodItem * podItem = (WAViewPodItem *)item;
+            if ([[[podItem pod] identifier] isEqualToString:[aPod identifier]]) {
+                // TODO: copy expanded state
+                [podItem removeFromSuperview];
+                [itemViews replaceObjectAtIndex:i withObject:newItem];
+                [self layoutContentView];
+                return newItem;
+            }
+        }
+    }
+    
+    NSRect topDownFrame = [scrollView documentVisibleRect];
+    CGFloat oldHeight = contentView.frame.size.height;
 
-
+    [self addItem:newItem];    
+        
+    CGFloat newHeight = contentView.frame.size.height;
+    topDownFrame.origin.y += newHeight - oldHeight;
+    
+    [[scrollView contentView] scrollRectToVisible:topDownFrame];
+    [scrollView reflectScrolledClipView:[scrollView contentView]];
+    
+    return newItem;
+}
 
 #pragma mark (Private) Content View
 
@@ -185,6 +222,7 @@
         }
     }
     [contentView setFrame:NSMakeRect(0, 0, size.width, height)];
+    [clipView setFrame:NSMakeRect(0, 0, size.width, height)];
 }
 
 @end

@@ -16,6 +16,7 @@ typedef enum {
 } WAEventType;
 
 #define kWAEventQueryUserInfoKey @"kWAEventQueryUserInfoKey"
+#define kWAEventDeltaHeightUserInfoKey @"kWAEventDeltaHeightUserInfoKey"
 
 @interface WAEvent : NSObject {
     WAEventType _eventType;
