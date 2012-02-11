@@ -8,10 +8,10 @@
 
 #import <AppKit/AppKit.h>
 #import "WAViewItem.h"
-#import "WAViewSearchCell.h"
-#import "WAViewPodCell.h"
+#import "WASearchCell.h"
+#import "WAPodCell.h"
 #import "WAScrollState.h"
-#import "WAViewAssumptionsCell.h"
+#import "WAAssumptionsCell.h"
 
 @class WAView;
 
@@ -44,9 +44,9 @@
 - (void)addItem:(WAViewItem *)item;
 - (WAViewItem *)addCell:(WAViewItemCell *)cell;
 - (void)removeItems;
-- (WAViewSearchCell *)searchCell;
-- (WAViewPodCell *)addPodCell:(WAPod *)aPod;
-- (WAViewAssumptionsCell *)addAssumptionsCell:(NSArray *)assumptions;
+- (WASearchCell *)searchCell;
+- (WAPodCell *)addPodCell:(WAPod *)aPod;
+- (WAAssumptionsCell *)addAssumptionsCell:(NSArray *)assumptions;
 
 - (void)saveScrollRect;
 - (void)restoreScrollRect;

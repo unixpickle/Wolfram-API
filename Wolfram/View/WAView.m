@@ -44,7 +44,7 @@
         [self addSubview:scrollView];
         
         // create search item
-        WAViewSearchCell * search = [[WAViewSearchCell alloc] initWithEventManager:eventManager
+        WASearchCell * search = [[WASearchCell alloc] initWithEventManager:eventManager
                                                                              title:@"Search"];
         [self addCell:search];
         [self layoutContentView];
@@ -193,20 +193,20 @@
     [self layoutContentView];
 }
 
-- (WAViewSearchCell *)searchCell {
-    return (WAViewSearchCell *)[[itemViews objectAtIndex:0] itemCell];
+- (WASearchCell *)searchCell {
+    return (WASearchCell *)[[itemViews objectAtIndex:0] itemCell];
 }
 
-- (WAViewPodCell *)addPodCell:(WAPod *)aPod {
-    WAViewPodCell * newCell = [[WAViewPodCell alloc] initWithEventManager:eventManager pod:aPod];
+- (WAPodCell *)addPodCell:(WAPod *)aPod {
+    WAPodCell * newCell = [[WAPodCell alloc] initWithEventManager:eventManager pod:aPod];
     WAViewItem * newItem = [[WAViewItem alloc] initWithItemCell:newCell];
     if ([[aPod subPods] count] == 0) {
         [newCell setLoading:YES];
     }
     for (NSUInteger i = 0; i < [itemViews count]; i++) {
         WAViewItem * item = [itemViews objectAtIndex:i];
-        if ([item.itemCell isKindOfClass:[WAViewPodCell class]]) {
-            WAViewPodCell * podItem = (WAViewPodCell *)item.itemCell;
+        if ([item.itemCell isKindOfClass:[WAPodCell class]]) {
+            WAPodCell * podItem = (WAPodCell *)item.itemCell;
             if ([[[podItem pod] identifier] isEqualToString:[aPod identifier]]) {
                 BOOL isExpanded = [item isExpanded];
                 [self saveScrollRect];
@@ -226,9 +226,9 @@
     return newCell;
 }
 
-- (WAViewAssumptionsCell *)addAssumptionsCell:(NSArray *)assumptions {
+- (WAAssumptionsCell *)addAssumptionsCell:(NSArray *)assumptions {
     if ([assumptions count] == 0) return nil;
-    WAViewAssumptionsCell * cell = [[WAViewAssumptionsCell alloc] initWithEventManager:eventManager assumptions:assumptions];
+    WAAssumptionsCell * cell = [[WAAssumptionsCell alloc] initWithEventManager:eventManager assumptions:assumptions];
     [self addCell:cell];
     return cell;
 }
