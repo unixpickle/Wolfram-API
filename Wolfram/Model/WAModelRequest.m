@@ -57,7 +57,6 @@
 - (void)delegateInformError:(NSError *)error {
     if (![[NSThread currentThread] isMainThread]) {
         if ([[NSThread currentThread] isCancelled]) {
-            backgroundThread = nil;
             return;
         }
         [self performSelectorOnMainThread:@selector(delegateInformError:) withObject:error waitUntilDone:NO];
@@ -72,7 +71,6 @@
 - (void)delegateInformResult:(id)object {
     if (![[NSThread currentThread] isMainThread]) {
         if ([[NSThread currentThread] isCancelled]) {
-            backgroundThread = nil;
             return;
         }
         [self performSelectorOnMainThread:@selector(delegateInformResult:) withObject:object waitUntilDone:NO];

@@ -53,4 +53,11 @@
     return WAAssumptionInputTypeList;
 }
 
+- (NSString *)promptLabel {
+    if ([type isEqualToString:@"Clash"]) {
+        return [NSString stringWithFormat:@"Use \"%@\" as", word];
+    }
+    return @"Using";
+}
+
 @end

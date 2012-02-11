@@ -11,6 +11,7 @@
 #import "WAViewSearchCell.h"
 #import "WAViewPodCell.h"
 #import "WAScrollState.h"
+#import "WAViewAssumptionsCell.h"
 
 @class WAView;
 
@@ -18,6 +19,7 @@
 
 @optional
 - (void)waView:(WAView *)view searchQuery:(NSString *)query;
+- (void)waView:(WAView *)view assumptionSelected:(WAAssumptionValue *)assumption;
 
 @end
 
@@ -44,6 +46,7 @@
 - (void)removeItems;
 - (WAViewSearchCell *)searchCell;
 - (WAViewPodCell *)addPodCell:(WAPod *)aPod;
+- (WAViewAssumptionsCell *)addAssumptionsCell:(NSArray *)assumptions;
 
 - (void)saveScrollRect;
 - (void)restoreScrollRect;

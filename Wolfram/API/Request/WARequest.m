@@ -23,6 +23,12 @@
         APIKey = theKey;
         podStates = theStates;
         assumptions = theAssumptions;
+        if (!assumptions) {
+            assumptions = [NSArray array];
+        }
+        if (!podStates) {
+            podStates = [NSArray array];
+        }
     }
     return self;
 }

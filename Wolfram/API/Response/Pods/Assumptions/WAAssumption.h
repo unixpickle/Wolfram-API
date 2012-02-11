@@ -35,5 +35,6 @@ typedef enum {
 - (id)initWithElement:(WAXMLNode *)node;
 
 - (WAAssumptionInputType)inputType;
+- (NSString *)promptLabel;
 
 @end

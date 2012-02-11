@@ -34,6 +34,13 @@
     [[view searchCell] setLoading:YES];
 }
 
+- (void)waView:(WAView *)aView assumptionSelected:(WAAssumptionValue *)assumption {
+    [model cancelRequests];
+    [model applyAssumption:assumption];
+    [view removeItems];
+    [[view searchCell] setLoading:YES];
+}
+
 #pragma mark - Model -
 
 - (void)model:(WAModel *)model gotPod:(WAPod *)pod {
@@ -44,6 +51,7 @@
 
 - (void)model:(WAModel *)model gotAssumptions:(NSArray *)assumptions {
     NSLog(@"Assumptions (count): %lu", [assumptions count]);
+    [view addAssumptionsCell:assumptions];
 }
 
 - (void)model:(WAModel *)model failedToLoad:(NSError *)error {

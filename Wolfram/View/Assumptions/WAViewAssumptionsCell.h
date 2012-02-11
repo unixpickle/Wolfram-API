@@ -7,7 +7,12 @@
 //
 
 #import "WAViewItemCell.h"
+#import "WAAssumptionPickerView.h"
 
-@interface WAViewAssumptionsCell : WAViewItemCell
+@interface WAViewAssumptionsCell : WAViewItemCell {
+    NSArray * assumptionViews;
+}
+
+- (id)initWithEventManager:(WAEventManager *)manager assumptions:(NSArray *)assumptions;
 
 @end

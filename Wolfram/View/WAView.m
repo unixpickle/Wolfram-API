@@ -121,6 +121,11 @@
         if ([delegate respondsToSelector:@selector(waView:searchQuery:)]) {
             [delegate waView:self searchQuery:query];
         }
+    } else if (event.eventType == WAEventTypeAssumption) {
+        WAAssumptionValue * value = [event.userInfo objectForKey:kWAEventAssumptionValueUserInfoKey];
+        if ([delegate respondsToSelector:@selector(waView:assumptionSelected:)]) {
+            [delegate waView:self assumptionSelected:value];
+        }
     }
 }
 
@@ -219,6 +224,13 @@
 
     [self addItem:newItem];
     return newCell;
+}
+
+- (WAViewAssumptionsCell *)addAssumptionsCell:(NSArray *)assumptions {
+    if ([assumptions count] == 0) return nil;
+    WAViewAssumptionsCell * cell = [[WAViewAssumptionsCell alloc] initWithEventManager:eventManager assumptions:assumptions];
+    [self addCell:cell];
+    return cell;
 }
 
 #pragma mark (Private) Content View
