@@ -20,16 +20,17 @@
 
 @implementation WAViewItem
 
-@synthesize eventManager;
+@synthesize itemCell;
 
 #pragma mark - Properties -
 
-- (NSString *)title {
-    return title;
+- (WAEventManager *)eventManager {
+    return eventManager;
 }
 
-- (BOOL)isLoading {
-    return loading;
+- (void)setEventManager:(WAEventManager *)manager {
+    eventManager = manager;
+    itemCell.eventManager = manager;
 }
 
 - (BOOL)isFocused {
@@ -38,22 +39,6 @@
 
 - (BOOL)isHighlighted {
     return highlighted;
-}
-
-- (void)setTitle:(NSString *)string {
-    title = string;
-    [self setNeedsDisplay:YES];
-}
-
-- (void)setLoading:(BOOL)flag {
-    loading = flag;
-    if (flag) {
-        [loadIndicator startAnimation:self];
-        [loadIndicator setHidden:NO];
-    } else {
-        [loadIndicator stopAnimation:self];
-        [loadIndicator setHidden:YES];
-    }
 }
 
 - (void)setFocused:(BOOL)flag {
@@ -68,14 +53,17 @@
 
 #pragma mark - View Management -
 
-- (id)initWithFrame:(NSRect)frame title:(NSString *)aTitle {
-    frame.size.height = kTitleHeight + 2;
+- (id)initWithItemCell:(WAViewItemCell *)theCell {
+    NSRect frame = NSMakeRect(0, 0, theCell.frame.size.width + 2,
+                              kTitleHeight + 3 + theCell.frame.size.height);
     if ((self = [super initWithFrame:frame])) {
-        title = aTitle;
-        loading = NO;
         focused = YES;
+        itemCell = theCell;
+        eventManager = theCell.eventManager;
         
-        expandButton = [[NSButton alloc] initWithFrame:NSMakeRect(5, frame.size.height - (kTitleHeight / 2 + 7), 13, 13)];
+        [itemCell addObserver:self forKeyPath:@"loading" options:NSKeyValueObservingOptionNew context:NULL];
+        
+        expandButton = [[NSButton alloc] initWithFrame:NSMakeRect(5, frame.size.height - (kTitleHeight / 2 + 8), 13, 13)];
         [expandButton setBezelStyle:NSDisclosureBezelStyle];
         [expandButton setButtonType:NSOnOffButton];
         [expandButton setTitle:@""];
@@ -89,11 +77,31 @@
                                                                               16, 16)];
         [loadIndicator setControlSize:NSSmallControlSize];
         [loadIndicator setStyle:NSProgressIndicatorSpinningStyle];
-        [loadIndicator setHidden:YES];
-        [self addSubview:loadIndicator];
-        [self fitBoundsToHeight];
+        
+        [self fitBoundsToWidth];
+        [self observeValueForKeyPath:@"loading" ofObject:itemCell change:nil context:NULL];
     }
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"loading"]) {
+        if ([itemCell isLoading]) {
+            [loadIndicator startAnimation:self];
+            if (![loadIndicator superview]) {
+                [self addSubview:loadIndicator];
+            }
+        } else {
+            [loadIndicator stopAnimation:self];
+            if ([loadIndicator superview]) {
+                [loadIndicator removeFromSuperview];
+            }
+        }
+    }
+}
+
+- (void)dealloc {
+    [itemCell removeObserver:self forKeyPath:@"loading"];
 }
 
 #pragma mark Focus
@@ -120,33 +128,33 @@
 
 #pragma mark Content
 
-- (void)setFrame:(NSRect)frameRect {
-    [super setFrame:frameRect];
-    CGFloat height = frameRect.size.height;
-    [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
-    [loadIndicator setFrame:NSMakeRect(self.frame.size.width - 26, height - 21, 16, 16)];
-}
-
-- (CGFloat)contentHeight {
-    return 1;
-}
-
-- (CGFloat)viewHeightForContentHeight {
+- (CGFloat)totalViewHeight {
     if ([expandButton state] == 0) {
         return kTitleHeight + 2;
     } else {
-        return kTitleHeight + 2 + [self contentHeight];
+        return kTitleHeight + 3 + [itemCell frame].size.height;
     }
 }
 
-- (void)fitBoundsToHeight {
-    CGFloat height = [self viewHeightForContentHeight];
-    [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
-    [loadIndicator setFrame:NSMakeRect(self.frame.size.width - 26, height - 21, 16, 16)];
+- (void)fitBoundsToWidth {
+    if ([self isExpanded]) {
+        [itemCell setFrameOrigin:NSMakePoint(1, 1)];
+        [itemCell resizeToWidth:self.frame.size.width - 2];
+        if (![itemCell superview]) {
+            [self addSubview:itemCell];
+        }
+    } else {
+        if ([itemCell superview]) {
+            [itemCell removeFromSuperview];
+        }
+    }
+    CGFloat height = [self totalViewHeight];
+    [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 8), 13, 13)];
+    [loadIndicator setFrame:NSMakeRect(self.frame.size.width - 26, height - 20, 16, 16)];
     NSRect frame = [self frame];
     frame.size.height = height;
     [self setFrame:frame];
-    [self setNeedsLayout:YES];
+    [self setNeedsDisplay:YES];
 }
 
 #pragma mark Expand/Collapse
@@ -177,25 +185,21 @@
 }
 
 - (void)layoutExpanded {
-    [self fitBoundsToHeight];
+    [self fitBoundsToWidth];
 }
 
 - (void)layoutCollapsed {
-    [self fitBoundsToHeight];
-}
-
-- (void)layoutForWidth {
-    
+    [self fitBoundsToWidth];
 }
 
 #pragma mark - Drawing -
 
 - (void)drawRect:(NSRect)dirtyRect {
     CGContextRef context = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
-    if ([expandButton state] == 0) {
-        [self drawCollapsed:context];
-    } else {
+    if ([self isExpanded]) {
         [self drawExpanded:context];
+    } else {
+        [self drawCollapsed:context];
     }
 }
 
@@ -338,6 +342,7 @@
                                  [NSColor colorWithDeviceWhite:0.224 alpha:1], NSForegroundColorAttributeName,
                                  nil];
     
+    NSString * title = [itemCell title];
     NSAttributedString * aStr = [[NSAttributedString alloc] initWithString:title
                                                                 attributes:attributes];
     CGFloat maxWidth = self.frame.size.width - 30;

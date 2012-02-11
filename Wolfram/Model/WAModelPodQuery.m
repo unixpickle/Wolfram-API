@@ -19,6 +19,7 @@
 
 - (void)backgroundMethod {
     @autoreleasepool {
+        [NSThread sleepForTimeInterval:5];
         NSError * error = nil;
         WAXMLDocument * document = [[self class] fetchXMLDocument:podURL error:&error];
         if ([[NSThread currentThread] isCancelled]) return;

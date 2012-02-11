@@ -31,7 +31,7 @@
     [model cancelRequests];
     [model searchQuery:query];
     [view removeItems];
-    [[view searchItem] setLoading:YES];
+    [[view searchCell] setLoading:YES];
 }
 
 #pragma mark - Model -
@@ -39,7 +39,7 @@
 - (void)model:(WAModel *)model gotPod:(WAPod *)pod {
     NSLog(@"Got pod: %@", [pod title]);
     if (!pod.title) return;
-    [view addPodItem:pod];
+    [view addPodCell:pod];
 }
 
 - (void)model:(WAModel *)model gotAssumptions:(NSArray *)assumptions {
@@ -55,7 +55,7 @@
 }
 
 - (void)modelFinishedAllQueries:(WAModel *)model {
-    [[view searchItem] setLoading:NO];
+    [[view searchCell] setLoading:NO];
 }
 
 @end

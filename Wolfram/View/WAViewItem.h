@@ -8,35 +8,32 @@
 
 #import <Cocoa/Cocoa.h>
 #import "WAEventManager.h"
+#import "WAViewItemCell.h"
 
 #define kTitleHeight 21
 
 @interface WAViewItem : NSView {
-    NSString * title;
     NSButton * expandButton;
     NSProgressIndicator * loadIndicator;
-    BOOL loading;
     BOOL focused;
     BOOL highlighted;
     __weak WAEventManager * eventManager;
+    WAViewItemCell * itemCell;
 }
 
-@property (nonatomic, retain) NSString * title;
-@property (readwrite, getter = isLoading) BOOL loading;
 @property (readwrite, getter = isFocused) BOOL focused;
 @property (readwrite, getter = isHighlighted) BOOL highlighted;
 @property (readwrite, weak) WAEventManager * eventManager;
+@property (readonly) WAViewItemCell * itemCell;
 
-- (id)initWithFrame:(NSRect)frame title:(NSString *)aTitle;
-- (CGFloat)contentHeight;
-- (CGFloat)viewHeightForContentHeight;
-- (void)fitBoundsToHeight;
+- (id)initWithItemCell:(WAViewItemCell *)theCell;
+- (CGFloat)totalViewHeight;
+- (void)fitBoundsToWidth;
 
 - (void)expandCollapsePress:(id)sender;
 - (void)setExpanded:(BOOL)expanded;
 - (BOOL)isExpanded;
 - (void)layoutExpanded;
 - (void)layoutCollapsed;
-- (void)layoutForWidth;
 
 @end

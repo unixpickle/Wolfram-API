@@ -44,9 +44,10 @@
         [self addSubview:scrollView];
         
         // create search item
-        NSRect searchFrame = NSMakeRect(10, 10, size.width - 20, 0);
-        WAViewSearchItem * search = [[WAViewSearchItem alloc] initWithFrame:searchFrame title:@"Search"];
-        [self addItem:search];
+        WAViewSearchCell * search = [[WAViewSearchCell alloc] initWithEventManager:eventManager
+                                                                             title:@"Search"];
+        [self addCell:search];
+        [self layoutContentView];
     }
     return self;
 }
@@ -138,6 +139,7 @@
                                        reason:@"Scroll restore stack empty, cannot pop"
                                      userInfo:nil];
     }
+    
     WAScrollState * state = [scrollStates lastObject];
     [scrollStates removeLastObject];
     NSRect oldRect = state.visibleRect;
@@ -146,9 +148,6 @@
     oldRect.origin.y += newHeight - state.contentHeight;
     
     // anchor the top in the case of size changes
-    if (newVisibleHeight != oldRect.size.height) {
-        NSLog(@"Monkey brains");
-    }
     oldRect.origin.y += (oldRect.size.height - newVisibleHeight);
     oldRect.size.height = newVisibleHeight;
     
@@ -157,6 +156,7 @@
     } else if (oldRect.origin.y + oldRect.size.height > clipView.frame.size.height) {
         oldRect.origin.y = clipView.frame.size.height - oldRect.size.height;
     }
+    
     [[scrollView contentView] scrollRectToVisible:oldRect];
     [scrollView reflectScrolledClipView:[scrollView contentView]];
 }
@@ -173,6 +173,12 @@
     [self restoreScrollRect];
 }
 
+- (WAViewItem *)addCell:(WAViewItemCell *)cell {
+    WAViewItem * item = [[WAViewItem alloc] initWithItemCell:cell];
+    [self addItem:item];
+    return item;
+}
+
 - (void)removeItems {
     while ([itemViews count] > 1) {
         WAViewItem * item = [itemViews lastObject];
@@ -182,34 +188,37 @@
     [self layoutContentView];
 }
 
-- (WAViewSearchItem *)searchItem {
-    return [itemViews objectAtIndex:0];
+- (WAViewSearchCell *)searchCell {
+    return (WAViewSearchCell *)[[itemViews objectAtIndex:0] itemCell];
 }
 
-- (WAViewPodItem *)addPodItem:(WAPod *)aPod {
-    WAViewPodItem * newItem = [[WAViewPodItem alloc] initWithFrame:NSMakeRect(0, 0, [self contentViewportSize].width - 20, 0)
-                                                               pod:aPod];
-    [newItem setEventManager:eventManager];
+- (WAViewPodCell *)addPodCell:(WAPod *)aPod {
+    WAViewPodCell * newCell = [[WAViewPodCell alloc] initWithEventManager:eventManager pod:aPod];
+    WAViewItem * newItem = [[WAViewItem alloc] initWithItemCell:newCell];
+    if ([[aPod subPods] count] == 0) {
+        [newCell setLoading:YES];
+    }
     for (NSUInteger i = 0; i < [itemViews count]; i++) {
         WAViewItem * item = [itemViews objectAtIndex:i];
-        if ([item isKindOfClass:[WAViewPodItem class]]) {
-            WAViewPodItem * podItem = (WAViewPodItem *)item;
+        if ([item.itemCell isKindOfClass:[WAViewPodCell class]]) {
+            WAViewPodCell * podItem = (WAViewPodCell *)item.itemCell;
             if ([[[podItem pod] identifier] isEqualToString:[aPod identifier]]) {
-                BOOL isExpanded = [podItem isExpanded];
+                BOOL isExpanded = [item isExpanded];
                 [self saveScrollRect];
-                [podItem removeFromSuperview];
+                
+                [item removeFromSuperview];
                 [itemViews replaceObjectAtIndex:i withObject:newItem];
                 if (!isExpanded) [newItem setExpanded:NO];
                 [self layoutContentView];
+                
                 [self restoreScrollRect];
-                return newItem;
+                return newCell;
             }
         }
     }
 
     [self addItem:newItem];
-    
-    return newItem;
+    return newCell;
 }
 
 #pragma mark (Private) Content View
@@ -234,7 +243,7 @@
         frame.origin.x = 10;
         frame.origin.y = height;
         [item setFrame:frame];
-        [item layoutForWidth];
+        [item fitBoundsToWidth];
         height += item.frame.size.height + 10;
         if (![item superview]) {
             [contentView addSubview:item];

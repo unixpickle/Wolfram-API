@@ -7,8 +7,9 @@
 //
 
 #import <AppKit/AppKit.h>
-#import "WAViewSearchItem.h"
-#import "WAViewPodItem.h"
+#import "WAViewItem.h"
+#import "WAViewSearchCell.h"
+#import "WAViewPodCell.h"
 #import "WAScrollState.h"
 
 @class WAView;
@@ -39,9 +40,10 @@
 - (id)initWithFrame:(NSRect)frameRect;
 
 - (void)addItem:(WAViewItem *)item;
+- (WAViewItem *)addCell:(WAViewItemCell *)cell;
 - (void)removeItems;
-- (WAViewSearchItem *)searchItem;
-- (WAViewPodItem *)addPodItem:(WAPod *)aPod;
+- (WAViewSearchCell *)searchCell;
+- (WAViewPodCell *)addPodCell:(WAPod *)aPod;
 
 - (void)saveScrollRect;
 - (void)restoreScrollRect;
