@@ -8,15 +8,17 @@
 
 #import "WAViewItem.h"
 #import "WAPod.h"
-#import "WASubpodView.h"
+#import "WASubPodView.h"
 
 @interface WAViewPodItem : WAViewItem {
     WAPod * pod;
-    NSArray * subpodViews;
+    NSArray * subPodViews;
+    CGFloat calculatedHeight;
 }
 
 @property (readonly) WAPod * pod;
 
 - (id)initWithFrame:(NSRect)frame pod:(WAPod *)thePod;
+- (void)resizeToWidth:(CGFloat)width;
 
 @end

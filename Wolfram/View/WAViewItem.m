@@ -120,13 +120,27 @@
 
 #pragma mark Content
 
+- (void)setFrame:(NSRect)frameRect {
+    [super setFrame:frameRect];
+    CGFloat height = frameRect.size.height;
+    [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
+    [loadIndicator setFrame:NSMakeRect(self.frame.size.width - 26, height - 21, 16, 16)];
+}
+
 - (CGFloat)contentHeight {
     return 1;
 }
 
+- (CGFloat)viewHeightForContentHeight {
+    if ([expandButton state] == 0) {
+        return kTitleHeight + 2;
+    } else {
+        return kTitleHeight + 2 + [self contentHeight];
+    }
+}
+
 - (void)fitBoundsToHeight {
-    CGFloat height = 0;
-    height = kTitleHeight + 2 + [self contentHeight];
+    CGFloat height = [self viewHeightForContentHeight];
     [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
     [loadIndicator setFrame:NSMakeRect(self.frame.size.width - 26, height - 21, 16, 16)];
     NSRect frame = [self frame];
@@ -161,20 +175,16 @@
     [eventManager postEvent:event];
 }
 
+- (BOOL)isExpanded {
+    return [expandButton state];
+}
+
 - (void)layoutExpanded {
     [self fitBoundsToHeight];
 }
 
 - (void)layoutCollapsed {
-    CGFloat height = 0;
-    height = kTitleHeight + 2;
-    [expandButton setFrame:NSMakeRect(5, height - (kTitleHeight / 2 + 7), 13, 13)];
-    [loadIndicator setFrame:NSMakeRect(self.frame.size.width - 26, height - 21, 16, 16)];
-    
-    NSRect frame = [self frame];
-    frame.size.height = height;
-    [self setFrame:frame];
-    [self setNeedsDisplay:YES];
+    [self fitBoundsToHeight];
 }
 
 #pragma mark - Drawing -

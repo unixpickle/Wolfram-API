@@ -38,6 +38,7 @@
 
 - (void)model:(WAModel *)model gotPod:(WAPod *)pod {
     NSLog(@"Got pod: %@", [pod title]);
+    if (!pod.title) return;
     [view addPodItem:pod];
 }
 

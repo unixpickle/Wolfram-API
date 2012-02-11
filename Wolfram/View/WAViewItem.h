@@ -29,10 +29,12 @@
 
 - (id)initWithFrame:(NSRect)frame title:(NSString *)aTitle;
 - (CGFloat)contentHeight;
+- (CGFloat)viewHeightForContentHeight;
 - (void)fitBoundsToHeight;
 
 - (void)expandCollapsePress:(id)sender;
 - (void)setExpanded:(BOOL)expanded;
+- (BOOL)isExpanded;
 - (void)layoutExpanded;
 - (void)layoutCollapsed;
 

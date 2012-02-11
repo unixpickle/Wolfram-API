@@ -110,7 +110,7 @@
 #pragma mark - Events -
 
 - (void)eventManager:(WAEventManager *)manager receivedEvent:(WAEvent *)event {
-    if (event.eventType == WAEventTypeExpandCollapse) {
+    if (event.eventType == WAEventTypeExpandCollapse || event.eventType == WAEventTypeHeightChange) {
         NSRect topDownFrame = [scrollView documentVisibleRect];
         [self layoutContentView];
         float delta = [[[event userInfo] objectForKey:kWAEventDeltaHeightUserInfoKey] floatValue];
@@ -200,18 +200,25 @@
 - (void)layoutContentView {
     CGFloat height = 10;
     CGSize size = [self contentViewportSize];
+    NSRect visibleRect = [scrollView documentVisibleRect];
     for (NSInteger i = [itemViews count] - 1; i >= 0; i--) {
         WAViewItem * item = [itemViews objectAtIndex:i];
         NSRect frame = [item frame];
+        CGFloat oldHeight = frame.size.height;
         frame.size.width = size.width - 20;
         frame.origin.x = 10;
         frame.origin.y = height;
-        height += frame.size.height + 10;
         [item setFrame:frame];
+        height += item.frame.size.height + 10;
+        CGFloat newHeight = item.frame.size.height;
+        if (oldHeight != newHeight) {
+            visibleRect.origin.y += (newHeight - oldHeight);
+        }
         if (![item superview]) {
             [contentView addSubview:item];
         }
     }
+
     if (height < size.height) {
         CGFloat offset = size.height - height;
         height = size.height;
@@ -221,8 +228,16 @@
             [item setFrame:frame];
         }
     }
+    
     [contentView setFrame:NSMakeRect(0, 0, size.width, height)];
     [clipView setFrame:NSMakeRect(0, 0, size.width, height)];
+    
+    if (visibleRect.origin.y < 0) {
+        visibleRect.origin.y = 0;
+    } else if (visibleRect.origin.y + visibleRect.size.height > clipView.frame.size.height) {
+        visibleRect.origin.y = clipView.frame.size.height - visibleRect.size.height;
+    }
+    [[scrollView contentView] scrollRectToVisible:visibleRect];
 }
 
 @end

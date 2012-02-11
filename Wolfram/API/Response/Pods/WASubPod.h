@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WAPlainText.h"
+#import "WAImage.h"
 #import "WAXMLDocument.h"
 #import "WAPodState.h"
 
@@ -26,5 +27,7 @@
 @property (readonly) WAPod * pod;
 
 - (id)initWithElement:(WAXMLNode *)node pod:(WAPod *)parentPod;
+- (id)representationOfClass:(Class)aClass;
+- (WAImage *)imageRepresentation;
 
 @end

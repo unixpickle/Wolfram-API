@@ -7,7 +7,17 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "WASubPod.h"
+#import "WAImageView.h"
 
-@interface WASubpodView : NSView
+@interface WASubPodView : NSView {
+    WASubPod * subPod;
+    __strong NSView<WADataView> * dataView;
+}
+
+@property (readonly) WASubPod * subPod;
+
+- (id)initWithFrame:(NSRect)frameRect subPod:(WASubPod *)aSubPod;
+- (void)resizeToWidth:(CGFloat)width;
 
 @end
