@@ -54,6 +54,12 @@
     fetchThread = nil;
 }
 
+- (void)drawRect:(NSRect)dirtyRect {
+    [super drawRect:dirtyRect];
+    [[NSColor whiteColor] set];
+    NSRectFill(self.bounds);
+}
+
 #pragma mark - Private -
 
 #pragma mark Scaling

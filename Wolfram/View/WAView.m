@@ -189,17 +189,17 @@
 - (WAViewPodItem *)addPodItem:(WAPod *)aPod {
     WAViewPodItem * newItem = [[WAViewPodItem alloc] initWithFrame:NSMakeRect(0, 0, [self contentViewportSize].width - 20, 0)
                                                                pod:aPod];
-    // TODO: collapse it if it's past result #5 or something
     [newItem setEventManager:eventManager];
     for (NSUInteger i = 0; i < [itemViews count]; i++) {
         WAViewItem * item = [itemViews objectAtIndex:i];
         if ([item isKindOfClass:[WAViewPodItem class]]) {
             WAViewPodItem * podItem = (WAViewPodItem *)item;
             if ([[[podItem pod] identifier] isEqualToString:[aPod identifier]]) {
-                // TODO: copy expanded state
+                BOOL isExpanded = [podItem isExpanded];
                 [self saveScrollRect];
                 [podItem removeFromSuperview];
                 [itemViews replaceObjectAtIndex:i withObject:newItem];
+                if (!isExpanded) [newItem setExpanded:NO];
                 [self layoutContentView];
                 [self restoreScrollRect];
                 return newItem;

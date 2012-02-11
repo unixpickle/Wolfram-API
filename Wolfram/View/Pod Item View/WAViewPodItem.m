@@ -94,4 +94,31 @@
     }
 }
 
+- (void)drawRect:(NSRect)dirtyRect {
+    const CGFloat dashLengths[2] = {1.0, 1.0}; 
+    
+    [super drawRect:dirtyRect];
+    if (![self isExpanded] || [subPodViews count] < 2) {
+        return;
+    }
+    
+    // draw pod separators
+    CGContextRef context = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
+    CGContextSetRGBStrokeColor(context, 0.7, 0.7, 0.7, 1);
+    CGContextSetLineWidth(context, 1);
+    CGContextSetLineDash(context, 0, dashLengths, 1);
+    for (NSUInteger i = 0; i < [subPodViews count] - 1; i++) {
+        WASubPodView * podView = [subPodViews objectAtIndex:i];
+        if ([podView superview]) {
+            CGFloat lineY = podView.frame.origin.y - 5;
+            CGPoint points[2] = {CGPointMake(10, lineY - 0.5),
+                                 CGPointMake(self.frame.size.width - 10, lineY + 0.5)};
+            CGContextBeginPath(context);
+            CGContextMoveToPoint(context, points[0].x, points[0].y);
+            CGContextAddLineToPoint(context, points[1].x, points[1].y);
+            CGContextDrawPath(context, kCGPathStroke);
+        }
+    }
+}
+
 @end
