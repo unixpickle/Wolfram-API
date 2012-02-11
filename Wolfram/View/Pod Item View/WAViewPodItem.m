@@ -101,7 +101,6 @@
     for (WASubPodView * spv in subPodViews) {
         [spv removeFromSuperview];
     }
-    subPodViews = [NSArray array];
 }
 
 @end
