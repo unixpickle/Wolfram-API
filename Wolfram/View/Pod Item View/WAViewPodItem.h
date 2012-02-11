@@ -8,9 +8,11 @@
 
 #import "WAViewItem.h"
 #import "WAPod.h"
+#import "WASubpodView.h"
 
 @interface WAViewPodItem : WAViewItem {
     WAPod * pod;
+    NSArray * subpodViews;
 }
 
 @property (readonly) WAPod * pod;
