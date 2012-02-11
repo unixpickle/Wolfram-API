@@ -1,5 +1,5 @@
 //
-//  WAViewAssumptionsCell.h
+//  WAAssumptionsCell.h
 //  Wolfram
 //
 //  Created by Alex Nichol on 2/11/12.

@@ -1,5 +1,5 @@
 //
-//  WAViewSearchItem.h
+//  WASearchCell.h
 //  Wolfram
 //
 //  Created by Alex Nichol on 2/8/12.

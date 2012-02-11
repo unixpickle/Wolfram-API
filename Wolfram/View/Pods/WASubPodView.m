@@ -1,5 +1,5 @@
 //
-//  WASubpodView.m
+//  WASubPodView.m
 //  Wolfram
 //
 //  Created by Alex Nichol on 2/10/12.
