@@ -19,6 +19,5 @@
 @property (readonly) WAPod * pod;
 
 - (id)initWithFrame:(NSRect)frame pod:(WAPod *)thePod;
-- (void)resizeToWidth:(CGFloat)width;
 
 @end

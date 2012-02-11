@@ -28,6 +28,7 @@
     if ((self = [super initWithFrame:frameRect])) {
         itemViews = [[NSMutableArray alloc] init];
         eventManager = [[WAEventManager alloc] initWithTarget:self];
+        scrollStates = [[NSMutableArray alloc] init];
         
         scrollView = [[NSScrollView alloc] initWithFrame:self.bounds];
         clipView = [[NSClipView alloc] initWithFrame:self.bounds];
@@ -51,8 +52,10 @@
 }
 
 - (void)setFrame:(NSRect)frame {
+    [self saveScrollRect];
     [super setFrame:frame];
     [scrollView setFrame:frame];
+    [self restoreScrollRect];
     
     [self layoutContentView];
 }
@@ -110,25 +113,52 @@
 #pragma mark - Events -
 
 - (void)eventManager:(WAEventManager *)manager receivedEvent:(WAEvent *)event {
-    if (event.eventType == WAEventTypeExpandCollapse || event.eventType == WAEventTypeHeightChange) {
-        NSRect topDownFrame = [scrollView documentVisibleRect];
+    if (event.eventType == WAEventTypeExpandCollapse) {
         [self layoutContentView];
-        float delta = [[[event userInfo] objectForKey:kWAEventDeltaHeightUserInfoKey] floatValue];
-
-        topDownFrame.origin.y += delta;
-        if (topDownFrame.origin.y < 0) {
-            topDownFrame.origin.y = 0;
-        } else if (topDownFrame.origin.y + topDownFrame.size.height > clipView.frame.size.height) {
-            topDownFrame.origin.y = clipView.frame.size.height - topDownFrame.size.height;
-        }
-        [[scrollView contentView] scrollRectToVisible:topDownFrame];
-        [scrollView reflectScrolledClipView:[scrollView contentView]];
     } else if (event.eventType == WAEventTypeSearch) {
         NSString * query = [event.userInfo objectForKey:kWAEventQueryUserInfoKey];
         if ([delegate respondsToSelector:@selector(waView:searchQuery:)]) {
             [delegate waView:self searchQuery:query];
         }
     }
+}
+
+#pragma mark - Scrolling -
+
+- (void)saveScrollRect {
+    NSRect rect = [scrollView documentVisibleRect];
+    CGFloat height = contentView.frame.size.height;
+    WAScrollState * state = [[WAScrollState alloc] initWithVisibleRect:rect contentHeight:height];
+    [scrollStates addObject:state];
+}
+
+- (void)restoreScrollRect {
+    if ([scrollStates count] == 0) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                       reason:@"Scroll restore stack empty, cannot pop"
+                                     userInfo:nil];
+    }
+    WAScrollState * state = [scrollStates lastObject];
+    [scrollStates removeLastObject];
+    NSRect oldRect = state.visibleRect;
+    CGFloat newHeight = contentView.frame.size.height;
+    CGFloat newVisibleHeight = [self contentViewportSize].height;
+    oldRect.origin.y += newHeight - state.contentHeight;
+    
+    // anchor the top in the case of size changes
+    if (newVisibleHeight != oldRect.size.height) {
+        NSLog(@"Monkey brains");
+    }
+    oldRect.origin.y += (oldRect.size.height - newVisibleHeight);
+    oldRect.size.height = newVisibleHeight;
+    
+    if (oldRect.origin.y < 0) {
+        oldRect.origin.y = 0;
+    } else if (oldRect.origin.y + oldRect.size.height > clipView.frame.size.height) {
+        oldRect.origin.y = clipView.frame.size.height - oldRect.size.height;
+    }
+    [[scrollView contentView] scrollRectToVisible:oldRect];
+    [scrollView reflectScrolledClipView:[scrollView contentView]];
 }
 
 #pragma mark - Items -
@@ -138,7 +168,9 @@
 - (void)addItem:(WAViewItem *)item {
     [item setEventManager:eventManager];
     [itemViews addObject:item];
+    [self saveScrollRect];
     [self layoutContentView];
+    [self restoreScrollRect];
 }
 
 - (void)removeItems {
@@ -165,24 +197,17 @@
             WAViewPodItem * podItem = (WAViewPodItem *)item;
             if ([[[podItem pod] identifier] isEqualToString:[aPod identifier]]) {
                 // TODO: copy expanded state
+                [self saveScrollRect];
                 [podItem removeFromSuperview];
                 [itemViews replaceObjectAtIndex:i withObject:newItem];
                 [self layoutContentView];
+                [self restoreScrollRect];
                 return newItem;
             }
         }
     }
-    
-    NSRect topDownFrame = [scrollView documentVisibleRect];
-    CGFloat oldHeight = contentView.frame.size.height;
 
-    [self addItem:newItem];    
-        
-    CGFloat newHeight = contentView.frame.size.height;
-    topDownFrame.origin.y += newHeight - oldHeight;
-    
-    [[scrollView contentView] scrollRectToVisible:topDownFrame];
-    [scrollView reflectScrolledClipView:[scrollView contentView]];
+    [self addItem:newItem];
     
     return newItem;
 }
@@ -200,20 +225,17 @@
 - (void)layoutContentView {
     CGFloat height = 10;
     CGSize size = [self contentViewportSize];
-    NSRect visibleRect = [scrollView documentVisibleRect];
+    [self saveScrollRect];
+    
     for (NSInteger i = [itemViews count] - 1; i >= 0; i--) {
         WAViewItem * item = [itemViews objectAtIndex:i];
         NSRect frame = [item frame];
-        CGFloat oldHeight = frame.size.height;
         frame.size.width = size.width - 20;
         frame.origin.x = 10;
         frame.origin.y = height;
         [item setFrame:frame];
+        [item layoutForWidth];
         height += item.frame.size.height + 10;
-        CGFloat newHeight = item.frame.size.height;
-        if (oldHeight != newHeight) {
-            visibleRect.origin.y += (newHeight - oldHeight);
-        }
         if (![item superview]) {
             [contentView addSubview:item];
         }
@@ -232,12 +254,13 @@
     [contentView setFrame:NSMakeRect(0, 0, size.width, height)];
     [clipView setFrame:NSMakeRect(0, 0, size.width, height)];
     
-    if (visibleRect.origin.y < 0) {
-        visibleRect.origin.y = 0;
-    } else if (visibleRect.origin.y + visibleRect.size.height > clipView.frame.size.height) {
-        visibleRect.origin.y = clipView.frame.size.height - visibleRect.size.height;
+    [self restoreScrollRect];
+    
+    // redraw all of the pod items
+    for (NSInteger i = [itemViews count] - 1; i >= 0; i--) {
+        WAViewItem * item = [itemViews objectAtIndex:i];
+        [item setNeedsDisplay:YES];
     }
-    [[scrollView contentView] scrollRectToVisible:visibleRect];
 }
 
 @end

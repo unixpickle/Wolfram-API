@@ -48,18 +48,9 @@
     return calculatedHeight;
 }
 
-- (void)setFrame:(NSRect)frameRect {
-    NSRect oldFrame = self.frame;
-    [super setFrame:frameRect];
+- (void)layoutForWidth {
     if (![self isExpanded]) return;
-    if (frameRect.size.width != oldFrame.size.width) {
-        [self resizeToWidth:frameRect.size.width];
-    } else {
-        [super setFrame:frameRect];
-    }
-}
-
-- (void)resizeToWidth:(CGFloat)width {
+    CGFloat width = self.frame.size.width;
     CGFloat subpodWidth = width - 20;
     CGFloat subpodHeight = 10;
     for (WASubPodView * subPod in subPodViews) {
@@ -93,7 +84,7 @@
 
 - (void)layoutExpanded {
     [super layoutExpanded];
-    [self resizeToWidth:self.frame.size.width];
+    [self layoutForWidth];
 }
 
 - (void)layoutCollapsed {

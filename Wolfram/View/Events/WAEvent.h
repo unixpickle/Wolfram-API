@@ -12,8 +12,7 @@ typedef enum {
     WAEventTypeAssumption,
     WAEventTypeStateChange,
     WAEventTypeSearch,
-    WAEventTypeExpandCollapse,
-    WAEventTypeHeightChange
+    WAEventTypeExpandCollapse
 } WAEventType;
 
 #define kWAEventQueryUserInfoKey @"kWAEventQueryUserInfoKey"

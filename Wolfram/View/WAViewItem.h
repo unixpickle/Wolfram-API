@@ -37,5 +37,6 @@
 - (BOOL)isExpanded;
 - (void)layoutExpanded;
 - (void)layoutCollapsed;
+- (void)layoutForWidth;
 
 @end

@@ -9,6 +9,7 @@
 #import <AppKit/AppKit.h>
 #import "WAViewSearchItem.h"
 #import "WAViewPodItem.h"
+#import "WAScrollState.h"
 
 @class WAView;
 
@@ -28,6 +29,8 @@
     NSMutableArray * itemViews;
     WAEventManager * eventManager;
     
+    NSMutableArray * scrollStates;
+    
     __weak id<WAViewDelegate> delegate;
 }
 
@@ -39,6 +42,9 @@
 - (void)removeItems;
 - (WAViewSearchItem *)searchItem;
 - (WAViewPodItem *)addPodItem:(WAPod *)aPod;
+
+- (void)saveScrollRect;
+- (void)restoreScrollRect;
 
 - (void)hookupWindowNotifications;
 - (void)detachWindowNotifications;

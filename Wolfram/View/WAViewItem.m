@@ -153,9 +153,6 @@
 
 - (void)expandCollapsePress:(id)sender {
     [self setExpanded:[expandButton state]];
-    
-    WAEvent * event = [WAEvent eventWithType:WAEventTypeExpandCollapse sender:self];
-    [eventManager postEvent:event];
 }
 
 - (void)setExpanded:(BOOL)expanded {
@@ -185,6 +182,10 @@
 
 - (void)layoutCollapsed {
     [self fitBoundsToHeight];
+}
+
+- (void)layoutForWidth {
+    
 }
 
 #pragma mark - Drawing -
@@ -339,6 +340,17 @@
     
     NSAttributedString * aStr = [[NSAttributedString alloc] initWithString:title
                                                                 attributes:attributes];
+    CGFloat maxWidth = self.frame.size.width - 30;
+    NSMutableString * modTitle = [title mutableCopy];
+    while ([aStr size].width > maxWidth) {
+        if ([modTitle length] > 0) {
+            [modTitle deleteCharactersInRange:NSMakeRange([modTitle length] - 1, 1)];
+        } else {
+            break;
+        }
+        aStr = [[NSAttributedString alloc] initWithString:[modTitle stringByAppendingString:@"..."]
+                                               attributes:attributes];
+    }
     [aStr drawAtPoint:NSMakePoint(point.x, point.y)];
 }
 
