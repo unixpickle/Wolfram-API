@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "WAAssumptionValue.h"
 
+#define kAssumptionTypeFormulaSolve @"FormulaSolve"
 #define kAssumptionTypeFormulaVariable @"FormulaVariable"
+#define kAssumptionTypeFormulaVariableOption @"FormulaVariableOption"
 #define kAssumptionTypeFormulaVariableInclude @"FormulaVariableInclude"
 #define kAssumptionTypeFormulaSelect @"FormulaSelect"
+#define kAssumptionTypeClash @"Clash"
 
 typedef enum {
     WAAssumptionInputTypeVariableCustom,
@@ -39,5 +42,6 @@ typedef enum {
 
 - (WAAssumptionInputType)inputType;
 - (NSString *)promptLabel;
+- (NSString *)inputValue;
 
 @end

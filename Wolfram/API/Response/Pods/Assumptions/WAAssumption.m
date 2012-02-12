@@ -56,10 +56,22 @@
 }
 
 - (NSString *)promptLabel {
-    if ([type isEqualToString:@"Clash"]) {
+    if ([type isEqualToString:kAssumptionTypeClash]) {
         return [NSString stringWithFormat:@"Use \"%@\" as", word];
+    } else if ([type isEqualToString:kAssumptionTypeFormulaVariable]) {
+        return [self description];
+    } else if ([type isEqualToString:kAssumptionTypeFormulaSolve]) {
+        return @"Solve for";
+    } else if ([type isEqualToString:kAssumptionTypeFormulaVariableOption]) {
+        return @"Calculate";
     }
-    return @"Using";
+    return @"Assuming";
+}
+
+- (NSString *)inputValue {
+    if ([values count] != 1) return nil;
+    WAAssumptionValue * value = [values lastObject];
+    return [value description];
 }
 
 @end

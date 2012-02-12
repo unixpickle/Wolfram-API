@@ -22,7 +22,8 @@
         for (WAAssumption * assumption in assumptions) {
             NSView<WAAssumptionView> * assumptionView = nil;
             if ([assumption inputType] == WAAssumptionInputTypeVariableCustom) {
-                // TODO: make an input type for this
+                assumptionView = [[WAAssumptionInput alloc] initWithEventManager:manager
+                                                                      assumption:assumption];
             } else if ([assumption inputType] == WAAssumptionInputTypeInclude) {
                 assumptionView = [[WAAssumptionIncludes alloc] initWithEventManager:manager
                                                                          assumption:assumption];

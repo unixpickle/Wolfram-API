@@ -40,6 +40,7 @@
 		FAB3492714E71730003AF9A4 /* WAAssumptionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492614E7172F003AF9A4 /* WAAssumptionsCell.m */; };
 		FAB3492A14E7207C003AF9A4 /* WAAssumptionIncludes.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492914E7207C003AF9A4 /* WAAssumptionIncludes.m */; };
 		FAB3492D14E7370B003AF9A4 /* WARequestAssumption.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492C14E7370B003AF9A4 /* WARequestAssumption.m */; };
+		FAB3493014E74C79003AF9A4 /* WAAssumptionInput.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492F14E74C78003AF9A4 /* WAAssumptionInput.m */; };
 		FAD7DAFC14DDD7C500DFC961 /* query.xml in Resources */ = {isa = PBXBuildFile; fileRef = FAD7DAFB14DDD7C500DFC961 /* query.xml */; };
 		FAE03F2914DE253D008E7023 /* WAPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2614DE253D008E7023 /* WAPod.m */; };
 		FAE03F2A14DE253D008E7023 /* WASubPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2814DE253D008E7023 /* WASubPod.m */; };
@@ -121,6 +122,8 @@
 		FAB3492914E7207C003AF9A4 /* WAAssumptionIncludes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionIncludes.m; sourceTree = "<group>"; };
 		FAB3492B14E7370B003AF9A4 /* WARequestAssumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WARequestAssumption.h; sourceTree = "<group>"; };
 		FAB3492C14E7370B003AF9A4 /* WARequestAssumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WARequestAssumption.m; sourceTree = "<group>"; };
+		FAB3492E14E74C78003AF9A4 /* WAAssumptionInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionInput.h; sourceTree = "<group>"; };
+		FAB3492F14E74C78003AF9A4 /* WAAssumptionInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionInput.m; sourceTree = "<group>"; };
 		FAD7DAFB14DDD7C500DFC961 /* query.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = query.xml; sourceTree = "<group>"; };
 		FAE03F2514DE253D008E7023 /* WAPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPod.h; sourceTree = "<group>"; };
 		FAE03F2614DE253D008E7023 /* WAPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPod.m; sourceTree = "<group>"; };
@@ -301,6 +304,8 @@
 				FAB3492414E70346003AF9A4 /* WAAssumptionPickerView.m */,
 				FAB3492814E7207B003AF9A4 /* WAAssumptionIncludes.h */,
 				FAB3492914E7207C003AF9A4 /* WAAssumptionIncludes.m */,
+				FAB3492E14E74C78003AF9A4 /* WAAssumptionInput.h */,
+				FAB3492F14E74C78003AF9A4 /* WAAssumptionInput.m */,
 			);
 			path = Assumptions;
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 				FAB3492714E71730003AF9A4 /* WAAssumptionsCell.m in Sources */,
 				FAB3492A14E7207C003AF9A4 /* WAAssumptionIncludes.m in Sources */,
 				FAB3492D14E7370B003AF9A4 /* WARequestAssumption.m in Sources */,
+				FAB3493014E74C79003AF9A4 /* WAAssumptionInput.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
