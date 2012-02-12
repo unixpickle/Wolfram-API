@@ -41,7 +41,6 @@
 		FAB3492A14E7207C003AF9A4 /* WAAssumptionIncludes.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492914E7207C003AF9A4 /* WAAssumptionIncludes.m */; };
 		FAB3492D14E7370B003AF9A4 /* WARequestAssumption.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492C14E7370B003AF9A4 /* WARequestAssumption.m */; };
 		FAB3493014E74C79003AF9A4 /* WAAssumptionInput.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492F14E74C78003AF9A4 /* WAAssumptionInput.m */; };
-		FAD7DAFC14DDD7C500DFC961 /* query.xml in Resources */ = {isa = PBXBuildFile; fileRef = FAD7DAFB14DDD7C500DFC961 /* query.xml */; };
 		FAE03F2914DE253D008E7023 /* WAPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2614DE253D008E7023 /* WAPod.m */; };
 		FAE03F2A14DE253D008E7023 /* WASubPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2814DE253D008E7023 /* WASubPod.m */; };
 		FAE03F2D14DE2574008E7023 /* WAPlainText.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2C14DE2574008E7023 /* WAPlainText.m */; };
@@ -124,7 +123,6 @@
 		FAB3492C14E7370B003AF9A4 /* WARequestAssumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WARequestAssumption.m; sourceTree = "<group>"; };
 		FAB3492E14E74C78003AF9A4 /* WAAssumptionInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionInput.h; sourceTree = "<group>"; };
 		FAB3492F14E74C78003AF9A4 /* WAAssumptionInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionInput.m; sourceTree = "<group>"; };
-		FAD7DAFB14DDD7C500DFC961 /* query.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = query.xml; sourceTree = "<group>"; };
 		FAE03F2514DE253D008E7023 /* WAPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPod.h; sourceTree = "<group>"; };
 		FAE03F2614DE253D008E7023 /* WAPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPod.m; sourceTree = "<group>"; };
 		FAE03F2714DE253D008E7023 /* WASubPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WASubPod.h; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 		FAE8C51114DD97FD003DEC2A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FAD7DAFB14DDD7C500DFC961 /* query.xml */,
 				FAE8C51214DD97FD003DEC2A /* Wolfram-Info.plist */,
 				FAE8C51314DD97FD003DEC2A /* InfoPlist.strings */,
 				FAE8C51614DD97FD003DEC2A /* main.m */,
@@ -468,7 +465,6 @@
 				FAE8C51514DD97FD003DEC2A /* InfoPlist.strings in Resources */,
 				FAE8C51B14DD97FD003DEC2A /* Credits.rtf in Resources */,
 				FAE8C52114DD97FD003DEC2A /* MainMenu.xib in Resources */,
-				FAD7DAFC14DDD7C500DFC961 /* query.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
