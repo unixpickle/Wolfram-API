@@ -38,6 +38,8 @@
 		FAB3491E14E701F9003AF9A4 /* WAPodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3491B14E701F9003AF9A4 /* WAPodCell.m */; };
 		FAB3492514E70346003AF9A4 /* WAAssumptionPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492414E70346003AF9A4 /* WAAssumptionPickerView.m */; };
 		FAB3492714E71730003AF9A4 /* WAAssumptionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492614E7172F003AF9A4 /* WAAssumptionsCell.m */; };
+		FAB3492A14E7207C003AF9A4 /* WAAssumptionIncludes.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492914E7207C003AF9A4 /* WAAssumptionIncludes.m */; };
+		FAB3492D14E7370B003AF9A4 /* WARequestAssumption.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492C14E7370B003AF9A4 /* WARequestAssumption.m */; };
 		FAD7DAFC14DDD7C500DFC961 /* query.xml in Resources */ = {isa = PBXBuildFile; fileRef = FAD7DAFB14DDD7C500DFC961 /* query.xml */; };
 		FAE03F2914DE253D008E7023 /* WAPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2614DE253D008E7023 /* WAPod.m */; };
 		FAE03F2A14DE253D008E7023 /* WASubPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2814DE253D008E7023 /* WASubPod.m */; };
@@ -61,7 +63,7 @@
 		FA2DE1DF14E338A100CF7DA3 /* WAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAController.m; sourceTree = "<group>"; };
 		FA2DE1E214E338EF00CF7DA3 /* WAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAView.h; sourceTree = "<group>"; };
 		FA2DE1E314E338EF00CF7DA3 /* WAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAView.m; sourceTree = "<group>"; };
-		FA2DE1EE14E364B400CF7DA3 /* WASearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = WASearchCell.h; sourceTree = "<group>"; };
+		FA2DE1EE14E364B400CF7DA3 /* WASearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WASearchCell.h; sourceTree = "<group>"; };
 		FA2DE1EF14E364B400CF7DA3 /* WASearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WASearchCell.m; sourceTree = "<group>"; };
 		FA5D8EE114DDBB7A006C2F43 /* NSString+URLCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLCode.h"; sourceTree = "<group>"; };
 		FA5D8EE214DDBB7A006C2F43 /* NSString+URLCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLCode.m"; sourceTree = "<group>"; };
@@ -108,13 +110,17 @@
 		FAB3491714E701F9003AF9A4 /* WAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAImageView.m; sourceTree = "<group>"; };
 		FAB3491814E701F9003AF9A4 /* WASubPodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WASubPodView.h; sourceTree = "<group>"; };
 		FAB3491914E701F9003AF9A4 /* WASubPodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WASubPodView.m; sourceTree = "<group>"; };
-		FAB3491A14E701F9003AF9A4 /* WAPodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = WAPodCell.h; sourceTree = "<group>"; };
+		FAB3491A14E701F9003AF9A4 /* WAPodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPodCell.h; sourceTree = "<group>"; };
 		FAB3491B14E701F9003AF9A4 /* WAPodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPodCell.m; sourceTree = "<group>"; };
 		FAB3491F14E7021A003AF9A4 /* WAAssumptionsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionsCell.h; sourceTree = "<group>"; };
 		FAB3492214E7029F003AF9A4 /* WAAssumptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionView.h; sourceTree = "<group>"; };
 		FAB3492314E70346003AF9A4 /* WAAssumptionPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionPickerView.h; sourceTree = "<group>"; };
 		FAB3492414E70346003AF9A4 /* WAAssumptionPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionPickerView.m; sourceTree = "<group>"; };
 		FAB3492614E7172F003AF9A4 /* WAAssumptionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionsCell.m; sourceTree = "<group>"; };
+		FAB3492814E7207B003AF9A4 /* WAAssumptionIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionIncludes.h; sourceTree = "<group>"; };
+		FAB3492914E7207C003AF9A4 /* WAAssumptionIncludes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionIncludes.m; sourceTree = "<group>"; };
+		FAB3492B14E7370B003AF9A4 /* WARequestAssumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WARequestAssumption.h; sourceTree = "<group>"; };
+		FAB3492C14E7370B003AF9A4 /* WARequestAssumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WARequestAssumption.m; sourceTree = "<group>"; };
 		FAD7DAFB14DDD7C500DFC961 /* query.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = query.xml; sourceTree = "<group>"; };
 		FAE03F2514DE253D008E7023 /* WAPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPod.h; sourceTree = "<group>"; };
 		FAE03F2614DE253D008E7023 /* WAPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPod.m; sourceTree = "<group>"; };
@@ -219,6 +225,8 @@
 				FA5D8EE714DDBB7A006C2F43 /* WARequest.m */,
 				FA5D8EE414DDBB7A006C2F43 /* WAMutableRequest.h */,
 				FA5D8EE514DDBB7A006C2F43 /* WAMutableRequest.m */,
+				FAB3492B14E7370B003AF9A4 /* WARequestAssumption.h */,
+				FAB3492C14E7370B003AF9A4 /* WARequestAssumption.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -291,6 +299,8 @@
 				FAB3492614E7172F003AF9A4 /* WAAssumptionsCell.m */,
 				FAB3492314E70346003AF9A4 /* WAAssumptionPickerView.h */,
 				FAB3492414E70346003AF9A4 /* WAAssumptionPickerView.m */,
+				FAB3492814E7207B003AF9A4 /* WAAssumptionIncludes.h */,
+				FAB3492914E7207C003AF9A4 /* WAAssumptionIncludes.m */,
 			);
 			path = Assumptions;
 			sourceTree = "<group>";
@@ -500,6 +510,8 @@
 				FAB3491E14E701F9003AF9A4 /* WAPodCell.m in Sources */,
 				FAB3492514E70346003AF9A4 /* WAAssumptionPickerView.m in Sources */,
 				FAB3492714E71730003AF9A4 /* WAAssumptionsCell.m in Sources */,
+				FAB3492A14E7207C003AF9A4 /* WAAssumptionIncludes.m in Sources */,
+				FAB3492D14E7370B003AF9A4 /* WARequestAssumption.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

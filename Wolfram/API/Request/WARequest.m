@@ -43,8 +43,9 @@
                                       [query stringByAddingStandardPercentEscapes],
                                       [APIKey stringByAddingStandardPercentEscapes],
                                       (async ? @"&async=true" : @"")];
-    for (NSString * assumption in assumptions) {
-        [builtRequest appendFormat:@"&assumption=%@", [assumption stringByAddingStandardPercentEscapes]];
+    for (WARequestAssumption * assumption in assumptions) {
+        NSString * input = [assumption input];
+        [builtRequest appendFormat:@"&assumption=%@", input];
     }
     for (NSString * podState in podStates) {
         [builtRequest appendFormat:@"&podstate=%@", [podState stringByAddingStandardPercentEscapes]];

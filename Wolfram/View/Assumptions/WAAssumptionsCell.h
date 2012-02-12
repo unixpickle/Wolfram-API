@@ -8,6 +8,7 @@
 
 #import "WAViewItemCell.h"
 #import "WAAssumptionPickerView.h"
+#import "WAAssumptionIncludes.h"
 
 @interface WAAssumptionsCell : WAViewItemCell {
     NSArray * assumptionViews;

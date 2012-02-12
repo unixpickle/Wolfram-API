@@ -78,8 +78,10 @@
 - (void)popupButtonChanged:(id)sender {
     NSUInteger index = [popupButton indexOfSelectedItem];
     WAAssumptionValue * value = [[assumption values] objectAtIndex:index];
-    WAEvent * event = [WAEvent eventWithType:WAEventTypeAssumption sender:self
-                                      object:value forKey:kWAEventAssumptionValueUserInfoKey];
+    WAEvent * event = [WAEvent eventWithType:WAEventTypeAssumption
+                                      sender:self
+                                      object:value
+                                      forKey:kWAEventAssumptionValueUserInfoKey];
     [eventManager postEvent:event];
 }
 

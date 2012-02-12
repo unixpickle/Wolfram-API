@@ -18,7 +18,7 @@
     APIKey = aKey;
 }
 
-- (void)addAssumption:(NSString *)assumption {
+- (void)addAssumption:(WARequestAssumption *)assumption {
     assumptions = [assumptions arrayByAddingObject:assumption];
 }
 
@@ -26,9 +26,15 @@
     podStates = [podStates arrayByAddingObject:podStates];
 }
 
-- (void)removeAssumption:(NSString *)assumption {
+- (void)removeAssumption:(WARequestAssumption *)assumption {
     NSMutableArray * array = [assumptions mutableCopy];
-    [array removeObject:assumption];
+    for (NSInteger i = 0; i < [array count]; i++) {
+        WARequestAssumption * value = [array objectAtIndex:i];
+        if ([[value input] isEqualToString:[assumption input]]) {
+            [array removeObjectAtIndex:i];
+            i--;
+        }
+    }
     assumptions = [NSArray arrayWithArray:array];
 }
 
@@ -38,18 +44,26 @@
     podStates = [NSArray arrayWithArray:array];
 }
 
-- (void)selectAssumptionValue:(WAAssumptionValue *)value {
-    // remove all existing values from the assumption
-    WAAssumption * assumption = [value assumption];
-    NSMutableArray * mAssumptions = [assumptions mutableCopy];
-    for (WAAssumptionValue * aValue in [assumption values]) {
-        if ([mAssumptions containsObject:[aValue input]]) {
-            [mAssumptions removeObject:[aValue input]];
+
+#pragma mark - Selecting -
+
+- (void)removeConflicting:(WARequestAssumption *)assumption {
+    NSMutableArray * array = [assumptions mutableCopy];
+    for (NSInteger i = 0; i < [array count]; i++) {
+        WARequestAssumption * value = [array objectAtIndex:i];
+        BOOL conflict = [value conflictsWithAssumption:assumption];
+        if (conflict) {
+            [array removeObjectAtIndex:i];
+            i--;
         }
     }
-    // add this new value from the assumption
-    [mAssumptions addObject:[value input]];
-    assumptions = [NSArray arrayWithArray:mAssumptions];
+    assumptions = [NSArray arrayWithArray:array];
+}
+
+- (void)selectAssumptionValue:(WAAssumptionValue *)value {
+    WARequestAssumption * assumption = [[WARequestAssumption alloc] initWithAssumptionValue:value];
+    [self removeConflicting:assumption];
+    [self addAssumption:assumption];
 }
 
 - (void)selectPodState:(WAPodState *)podState {
@@ -65,6 +79,8 @@
     [mList addObject:[podState encodeInput]];
     podStates = [[NSArray alloc] initWithArray:mList];
 }
+
+#pragma mark - Copying -
 
 - (id)copyWithZone:(NSZone *)zone {
     return [[WARequest alloc] initWithQuery:query apiKey:APIKey assumptions:assumptions podStates:podStates];

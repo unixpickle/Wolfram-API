@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WAEventManager.h"
 
 @protocol WAAssumptionView <NSObject>
+
+@property (nonatomic, weak) WAEventManager * eventManager;
 
 - (void)resizeToWidth:(CGFloat)width;
 

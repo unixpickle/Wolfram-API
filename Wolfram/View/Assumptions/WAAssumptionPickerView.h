@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "WAAssumptionView.h"
 #import "WAAssumption.h"
-#import "WAEventManager.h"
 
 #define kPickerMinWidth 100
 #define kPickerSpacing 5
@@ -21,8 +20,6 @@
     NSSize textSize;
     __weak WAEventManager * eventManager;
 }
-
-@property (nonatomic, weak) WAEventManager * eventManager;
 
 - (id)initWithEventManager:(WAEventManager *)manager assumption:(WAAssumption *)anAssumption;
 - (id)initWithEventManager:(WAEventManager *)manager

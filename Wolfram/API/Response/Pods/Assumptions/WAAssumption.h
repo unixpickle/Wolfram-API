@@ -10,10 +10,13 @@
 #import "WAAssumptionValue.h"
 
 #define kAssumptionTypeFormulaVariable @"FormulaVariable"
+#define kAssumptionTypeFormulaVariableInclude @"FormulaVariableInclude"
+#define kAssumptionTypeFormulaSelect @"FormulaSelect"
 
 typedef enum {
     WAAssumptionInputTypeVariableCustom,
     WAAssumptionInputTypeVariableList,
+    WAAssumptionInputTypeInclude,
     WAAssumptionInputTypeList
 } WAAssumptionInputType;
 

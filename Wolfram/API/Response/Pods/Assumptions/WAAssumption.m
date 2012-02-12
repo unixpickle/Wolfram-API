@@ -49,6 +49,8 @@
         return WAAssumptionInputTypeVariableCustom;
     } else if ([type isEqualToString:kAssumptionTypeFormulaVariable]) {
         return WAAssumptionInputTypeVariableList;
+    } else if ([type isEqualToString:kAssumptionTypeFormulaVariableInclude]) {
+        return WAAssumptionInputTypeInclude;
     }
     return WAAssumptionInputTypeList;
 }

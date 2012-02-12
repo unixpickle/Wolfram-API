@@ -23,6 +23,9 @@
             NSView<WAAssumptionView> * assumptionView = nil;
             if ([assumption inputType] == WAAssumptionInputTypeVariableCustom) {
                 // TODO: make an input type for this
+            } else if ([assumption inputType] == WAAssumptionInputTypeInclude) {
+                assumptionView = [[WAAssumptionIncludes alloc] initWithEventManager:manager
+                                                                         assumption:assumption];
             } else {
                 assumptionView = [[WAAssumptionPickerView alloc] initWithEventManager:manager
                                                                            assumption:assumption];

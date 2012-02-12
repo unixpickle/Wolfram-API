@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WARequestAssumption.h"
 
 @interface WARequest : NSObject {
     NSArray * assumptions;
