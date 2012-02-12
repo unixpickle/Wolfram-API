@@ -8,18 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "WAAssumptionView.h"
-#import "WAAssumption.h"
 
 #define kMinFieldWidth 100
 
-@interface WAAssumptionInput : NSView <WAAssumptionView> {
-    WAAssumption * assumption;
-    NSTextField * promptLabel;
+@interface WAAssumpViewInput : WAAssumptionView {
     NSTextField * inputField;
-    NSSize textSize;
 }
 
-- (id)initWithEventManager:(WAEventManager *)manager assumption:(WAAssumption *)assumption;
 - (void)inputChanged:(id)sender;
 
 @end

@@ -36,11 +36,13 @@
 		FAB3491C14E701F9003AF9A4 /* WAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3491714E701F9003AF9A4 /* WAImageView.m */; };
 		FAB3491D14E701F9003AF9A4 /* WASubPodView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3491914E701F9003AF9A4 /* WASubPodView.m */; };
 		FAB3491E14E701F9003AF9A4 /* WAPodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3491B14E701F9003AF9A4 /* WAPodCell.m */; };
-		FAB3492514E70346003AF9A4 /* WAAssumptionPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492414E70346003AF9A4 /* WAAssumptionPickerView.m */; };
 		FAB3492714E71730003AF9A4 /* WAAssumptionsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492614E7172F003AF9A4 /* WAAssumptionsCell.m */; };
-		FAB3492A14E7207C003AF9A4 /* WAAssumptionIncludes.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492914E7207C003AF9A4 /* WAAssumptionIncludes.m */; };
 		FAB3492D14E7370B003AF9A4 /* WARequestAssumption.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492C14E7370B003AF9A4 /* WARequestAssumption.m */; };
-		FAB3493014E74C79003AF9A4 /* WAAssumptionInput.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB3492F14E74C78003AF9A4 /* WAAssumptionInput.m */; };
+		FAD3B36F14E8612E00654BDB /* WAAssumptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B36E14E8612E00654BDB /* WAAssumptionView.m */; };
+		FAD3B37514E8619D00654BDB /* WAViewRestraints.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B37414E8619D00654BDB /* WAViewRestraints.m */; };
+		FAD3B37E14E86D1600654BDB /* WAAssumpViewInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B37814E86D1600654BDB /* WAAssumpViewInclude.m */; };
+		FAD3B37F14E86D1600654BDB /* WAAssumpViewInput.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B37914E86D1600654BDB /* WAAssumpViewInput.m */; };
+		FAD3B38114E86D7300654BDB /* WAAssumpViewPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD3B38014E86D7300654BDB /* WAAssumpViewPicker.m */; };
 		FAE03F2914DE253D008E7023 /* WAPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2614DE253D008E7023 /* WAPod.m */; };
 		FAE03F2A14DE253D008E7023 /* WASubPod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2814DE253D008E7023 /* WASubPod.m */; };
 		FAE03F2D14DE2574008E7023 /* WAPlainText.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE03F2C14DE2574008E7023 /* WAPlainText.m */; };
@@ -113,16 +115,19 @@
 		FAB3491A14E701F9003AF9A4 /* WAPodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPodCell.h; sourceTree = "<group>"; };
 		FAB3491B14E701F9003AF9A4 /* WAPodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPodCell.m; sourceTree = "<group>"; };
 		FAB3491F14E7021A003AF9A4 /* WAAssumptionsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionsCell.h; sourceTree = "<group>"; };
-		FAB3492214E7029F003AF9A4 /* WAAssumptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionView.h; sourceTree = "<group>"; };
-		FAB3492314E70346003AF9A4 /* WAAssumptionPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionPickerView.h; sourceTree = "<group>"; };
-		FAB3492414E70346003AF9A4 /* WAAssumptionPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionPickerView.m; sourceTree = "<group>"; };
 		FAB3492614E7172F003AF9A4 /* WAAssumptionsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionsCell.m; sourceTree = "<group>"; };
-		FAB3492814E7207B003AF9A4 /* WAAssumptionIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionIncludes.h; sourceTree = "<group>"; };
-		FAB3492914E7207C003AF9A4 /* WAAssumptionIncludes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionIncludes.m; sourceTree = "<group>"; };
 		FAB3492B14E7370B003AF9A4 /* WARequestAssumption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WARequestAssumption.h; sourceTree = "<group>"; };
 		FAB3492C14E7370B003AF9A4 /* WARequestAssumption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WARequestAssumption.m; sourceTree = "<group>"; };
-		FAB3492E14E74C78003AF9A4 /* WAAssumptionInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionInput.h; sourceTree = "<group>"; };
-		FAB3492F14E74C78003AF9A4 /* WAAssumptionInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionInput.m; sourceTree = "<group>"; };
+		FAD3B36D14E8612E00654BDB /* WAAssumptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumptionView.h; sourceTree = "<group>"; };
+		FAD3B36E14E8612E00654BDB /* WAAssumptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumptionView.m; sourceTree = "<group>"; };
+		FAD3B37314E8619D00654BDB /* WAViewRestraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAViewRestraints.h; sourceTree = "<group>"; };
+		FAD3B37414E8619D00654BDB /* WAViewRestraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAViewRestraints.m; sourceTree = "<group>"; };
+		FAD3B37814E86D1600654BDB /* WAAssumpViewInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumpViewInclude.m; sourceTree = "<group>"; };
+		FAD3B37914E86D1600654BDB /* WAAssumpViewInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumpViewInput.m; sourceTree = "<group>"; };
+		FAD3B37A14E86D1600654BDB /* WAAssumpViewPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAAssumpViewPicker.h; sourceTree = "<group>"; };
+		FAD3B37B14E86D1600654BDB /* WAAssumpViewInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; path = WAAssumpViewInclude.h; sourceTree = "<group>"; };
+		FAD3B37C14E86D1600654BDB /* WAAssumpViewInput.h */ = {isa = PBXFileReference; fileEncoding = 4; path = WAAssumpViewInput.h; sourceTree = "<group>"; };
+		FAD3B38014E86D7300654BDB /* WAAssumpViewPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAAssumpViewPicker.m; sourceTree = "<group>"; };
 		FAE03F2514DE253D008E7023 /* WAPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAPod.h; sourceTree = "<group>"; };
 		FAE03F2614DE253D008E7023 /* WAPod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAPod.m; sourceTree = "<group>"; };
 		FAE03F2714DE253D008E7023 /* WASubPod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WASubPod.h; sourceTree = "<group>"; };
@@ -295,15 +300,9 @@
 		FAB3491314E701EA003AF9A4 /* Assumptions */ = {
 			isa = PBXGroup;
 			children = (
-				FAB3492214E7029F003AF9A4 /* WAAssumptionView.h */,
+				FAD3B36314E860FE00654BDB /* Assumption View */,
 				FAB3491F14E7021A003AF9A4 /* WAAssumptionsCell.h */,
 				FAB3492614E7172F003AF9A4 /* WAAssumptionsCell.m */,
-				FAB3492314E70346003AF9A4 /* WAAssumptionPickerView.h */,
-				FAB3492414E70346003AF9A4 /* WAAssumptionPickerView.m */,
-				FAB3492814E7207B003AF9A4 /* WAAssumptionIncludes.h */,
-				FAB3492914E7207C003AF9A4 /* WAAssumptionIncludes.m */,
-				FAB3492E14E74C78003AF9A4 /* WAAssumptionInput.h */,
-				FAB3492F14E74C78003AF9A4 /* WAAssumptionInput.m */,
 			);
 			path = Assumptions;
 			sourceTree = "<group>";
@@ -320,6 +319,31 @@
 				FAB3491714E701F9003AF9A4 /* WAImageView.m */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FAD3B36314E860FE00654BDB /* Assumption View */ = {
+			isa = PBXGroup;
+			children = (
+				FAD3B37614E86CFA00654BDB /* Subclasses */,
+				FAD3B37314E8619D00654BDB /* WAViewRestraints.h */,
+				FAD3B37414E8619D00654BDB /* WAViewRestraints.m */,
+				FAD3B36D14E8612E00654BDB /* WAAssumptionView.h */,
+				FAD3B36E14E8612E00654BDB /* WAAssumptionView.m */,
+			);
+			path = "Assumption View";
+			sourceTree = "<group>";
+		};
+		FAD3B37614E86CFA00654BDB /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				FAD3B37A14E86D1600654BDB /* WAAssumpViewPicker.h */,
+				FAD3B38014E86D7300654BDB /* WAAssumpViewPicker.m */,
+				FAD3B37B14E86D1600654BDB /* WAAssumpViewInclude.h */,
+				FAD3B37814E86D1600654BDB /* WAAssumpViewInclude.m */,
+				FAD3B37C14E86D1600654BDB /* WAAssumpViewInput.h */,
+				FAD3B37914E86D1600654BDB /* WAAssumpViewInput.m */,
+			);
+			path = Subclasses;
 			sourceTree = "<group>";
 		};
 		FAE03F2414DE251E008E7023 /* Pods */ = {
@@ -509,11 +533,13 @@
 				FAB3491C14E701F9003AF9A4 /* WAImageView.m in Sources */,
 				FAB3491D14E701F9003AF9A4 /* WASubPodView.m in Sources */,
 				FAB3491E14E701F9003AF9A4 /* WAPodCell.m in Sources */,
-				FAB3492514E70346003AF9A4 /* WAAssumptionPickerView.m in Sources */,
 				FAB3492714E71730003AF9A4 /* WAAssumptionsCell.m in Sources */,
-				FAB3492A14E7207C003AF9A4 /* WAAssumptionIncludes.m in Sources */,
 				FAB3492D14E7370B003AF9A4 /* WARequestAssumption.m in Sources */,
-				FAB3493014E74C79003AF9A4 /* WAAssumptionInput.m in Sources */,
+				FAD3B36F14E8612E00654BDB /* WAAssumptionView.m in Sources */,
+				FAD3B37514E8619D00654BDB /* WAViewRestraints.m in Sources */,
+				FAD3B37E14E86D1600654BDB /* WAAssumpViewInclude.m in Sources */,
+				FAD3B37F14E86D1600654BDB /* WAAssumpViewInput.m in Sources */,
+				FAD3B38114E86D7300654BDB /* WAAssumpViewPicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,18 +20,20 @@
     if ((self = [super initWithEventManager:manager title:@"Assumptions"])) {
         NSMutableArray * mAssumpViews = [[NSMutableArray alloc] initWithCapacity:[assumptions count]];
         for (WAAssumption * assumption in assumptions) {
-            NSView<WAAssumptionView> * assumptionView = nil;
+            WAAssumptionView * assumptionView = nil;
+            Class viewClass = Nil;
+            
             if ([assumption inputType] == WAAssumptionInputTypeVariableCustom) {
-                assumptionView = [[WAAssumptionInput alloc] initWithEventManager:manager
-                                                                      assumption:assumption];
+                viewClass = [WAAssumptionInput class];
             } else if ([assumption inputType] == WAAssumptionInputTypeInclude) {
-                assumptionView = [[WAAssumptionIncludes alloc] initWithEventManager:manager
-                                                                         assumption:assumption];
+                viewClass = [WAAssumptionIncludes class];
             } else {
-                assumptionView = [[WAAssumptionPickerView alloc] initWithEventManager:manager
-                                                                           assumption:assumption];
+                viewClass = [WAAssumptionPickerView class];
             }
-            if (assumptionView) {
+            
+            if (viewClass != Nil) {
+                assumptionView = [[viewClass alloc] initWithEventManager:manager
+                                                              assumption:assumption];
                 [mAssumpViews addObject:assumptionView];
             }
         }
@@ -44,7 +46,7 @@
 - (void)resizeToWidth:(CGFloat)width {
     CGFloat subviewWidth = width - 20;
     CGFloat height = 10;
-    for (NSView<WAAssumptionView> * assumpView in assumptionViews) {
+    for (WAAssumptionView * assumpView in assumptionViews) {
         [assumpView resizeToWidth:subviewWidth];
         height += assumpView.frame.size.height + 10;
     }
@@ -58,7 +60,7 @@
 - (void)layoutAssumptionViews {
     CGFloat y = 10;
     for (NSInteger i = [assumptionViews count] - 1; i >= 0; i--) {
-        NSView<WAAssumptionView> * assumpView = [assumptionViews objectAtIndex:i];
+        WAAssumptionView * assumpView = [assumptionViews objectAtIndex:i];
         NSRect frame = assumpView.frame;
         frame.origin.y = y;
         frame.origin.x = 10;
