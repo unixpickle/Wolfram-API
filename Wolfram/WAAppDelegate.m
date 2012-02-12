@@ -22,6 +22,7 @@
     [view hookupWindowNotifications];
     
     controller = [[WAController alloc] initWithView:view model:model];
+    [self.window makeFirstResponder:[[view searchCell] searchField]];
 }
 
 @end

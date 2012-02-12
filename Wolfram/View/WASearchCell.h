@@ -12,6 +12,8 @@
     NSTextField * searchField;
 }
 
+@property (readonly) NSTextField * searchField;
+
 - (void)searchEnter:(id)sender;
 
 @end

@@ -24,11 +24,11 @@
             Class viewClass = Nil;
             
             if ([assumption inputType] == WAAssumptionInputTypeVariableCustom) {
-                viewClass = [WAAssumptionInput class];
+                viewClass = [WAAssumpViewInput class];
             } else if ([assumption inputType] == WAAssumptionInputTypeInclude) {
-                viewClass = [WAAssumptionIncludes class];
+                viewClass = [WAAssumpViewInclude class];
             } else {
-                viewClass = [WAAssumptionPickerView class];
+                viewClass = [WAAssumpViewPicker class];
             }
             
             if (viewClass != Nil) {

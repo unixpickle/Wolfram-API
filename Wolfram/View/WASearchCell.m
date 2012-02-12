@@ -16,6 +16,8 @@
 
 @implementation WASearchCell
 
+@synthesize searchField;
+
 - (id)initWithEventManager:(WAEventManager *)manager title:(NSString *)aTitle {
     if ((self = [super initWithEventManager:manager title:aTitle])) {
         searchField = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 10, self.frame.size.width - 20, 22)];
