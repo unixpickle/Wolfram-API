@@ -228,7 +228,14 @@
 
 - (WAAssumptionsCell *)addAssumptionsCell:(NSArray *)assumptions {
     if ([assumptions count] == 0) return nil;
-    WAAssumptionsCell * cell = [[WAAssumptionsCell alloc] initWithEventManager:eventManager assumptions:assumptions];
+    WAAssumptionsCell * cell = [[WAAssumptionsCell alloc] initWithEventManager:eventManager
+                                                                   assumptions:assumptions];
+    [self addCell:cell];
+    return cell;
+}
+
+- (WAErrorCell *)addErrorCell:(NSString *)message {
+    WAErrorCell * cell = [[WAErrorCell alloc] initWithEventManager:eventManager error:message];
     [self addCell:cell];
     return cell;
 }

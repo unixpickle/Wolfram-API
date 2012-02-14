@@ -42,6 +42,6 @@ typedef enum {
 
 - (WAAssumptionInputType)inputType;
 - (NSString *)promptLabel;
-- (NSString *)inputValue;
+- (WAAssumptionValue *)inputValue;
 
 @end

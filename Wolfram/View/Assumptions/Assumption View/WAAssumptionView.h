@@ -27,6 +27,7 @@
                 assumption:(WAAssumption *)anAssumption
                     prompt:(NSString *)prompt;
 
+- (NSTextField *)promptTextField;
 - (void)addRestrainedView:(NSView *)view minWidth:(CGFloat)min maxWidth:(CGFloat)max;
 - (void)resizeToWidth:(CGFloat)width;
 

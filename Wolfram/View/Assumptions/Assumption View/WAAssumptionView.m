@@ -50,6 +50,10 @@
     return self;
 }
 
+- (NSTextField *)promptTextField {
+    return (NSTextField *)[(WAViewRestraints *)[restrainedViews objectAtIndex:0] view];
+}
+
 - (void)addRestrainedView:(NSView *)view minWidth:(CGFloat)min maxWidth:(CGFloat)max {
     WAViewRestraints * layoutInfo = [[WAViewRestraints alloc] initWithView:view
                                                                        min:min

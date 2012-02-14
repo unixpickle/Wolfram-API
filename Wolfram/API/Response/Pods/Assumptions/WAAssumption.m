@@ -68,10 +68,10 @@
     return @"Assuming";
 }
 
-- (NSString *)inputValue {
+- (WAAssumptionValue *)inputValue {
     if ([values count] != 1) return nil;
     WAAssumptionValue * value = [values lastObject];
-    return [value description];
+    return value;
 }
 
 @end

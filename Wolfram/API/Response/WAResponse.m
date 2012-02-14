@@ -19,10 +19,23 @@
 
 @synthesize pods;
 @synthesize assumptions;
+@synthesize success;
+@synthesize parseTimedOut;
 
 - (id)initWithDocument:(WAXMLDocument *)document {
     if ((self = [super init])) {
         WAXMLNode * queryResult = [[document rootNode] elementWithName:@"queryresult"];
+        NSString * successStr = [queryResult valueForAttribute:@"success"];
+        NSString * parsedErrStr = [queryResult valueForAttribute:@"parsetimedout"];
+        if ([parsedErrStr isEqualToString:@"true"]) {
+            parseTimedOut = YES;
+        }
+        if ([successStr isEqualToString:@"false"]) {
+            success = NO;
+            return self;
+        } else {
+            success = YES;
+        }
         WAXMLNode * assumpNode = [queryResult elementWithName:@"assumptions"];
         NSArray * podNodes = [queryResult elementsWithName:@"pod"];
         if (![self loadAssumptionsFromNode:assumpNode]) return nil;

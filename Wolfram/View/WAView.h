@@ -12,6 +12,7 @@
 #import "WAPodCell.h"
 #import "WAScrollState.h"
 #import "WAAssumptionsCell.h"
+#import "WAErrorCell.h"
 
 @class WAView;
 
@@ -47,6 +48,7 @@
 - (WASearchCell *)searchCell;
 - (WAPodCell *)addPodCell:(WAPod *)aPod;
 - (WAAssumptionsCell *)addAssumptionsCell:(NSArray *)assumptions;
+- (WAErrorCell *)addErrorCell:(NSString *)message;
 
 - (void)saveScrollRect;
 - (void)restoreScrollRect;

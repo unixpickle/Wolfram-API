@@ -13,10 +13,13 @@
 - (id)initWithEventManager:(WAEventManager *)manager assumption:(WAAssumption *)anAssumption {
     if ((self = [super initWithEventManager:manager assumption:anAssumption])) {
         inputField = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 24)];
-        [inputField setStringValue:[anAssumption inputValue]];
+        [inputField setStringValue:[anAssumption inputValue].description];
         [inputField setTarget:self];
         [inputField setAction:@selector(inputChanged:)];
         [self addRestrainedView:inputField minWidth:100 maxWidth:CGFLOAT_MAX];
+        if (![[anAssumption inputValue].valid boolValue]) {
+            [[self promptTextField] setTextColor:[NSColor redColor]];
+        }
     }
     return self;
 }

@@ -58,10 +58,19 @@
 
 - (void)model:(WAModel *)model failedToLoad:(NSError *)error {
     NSLog(@"Load failed: %@", error);
+    NSString * msg = [NSString stringWithFormat:@"Wolfram|Alpha encountered an error sending a request: %@", error];
+    [view addErrorCell:msg];
 }
 
 - (void)model:(WAModel *)model gotResponse:(WAResponse *)response {
     NSLog(@"Received response: (%lu assumptions, %lu pods)", [[response assumptions] count], [[response pods] count]);
+    if (![response success]) {
+        NSString * errorStr = @"Wolfram|Alpha encountered an unknown error. Your request could not be completed.";
+        if ([response parseTimedOut]) {
+            errorStr = @"Wolfram|Alpha failed to complete your request because the parse operation timed out.";
+        }
+        [view addErrorCell:errorStr];
+    }
 }
 
 - (void)modelFinishedAllQueries:(WAModel *)model {

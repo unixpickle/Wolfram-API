@@ -13,10 +13,14 @@
 @interface WAResponse : NSObject {
     NSArray * pods;
     NSArray * assumptions;
+    BOOL success;
+    BOOL parseTimedOut;
 }
 
 @property (readonly) NSArray * pods;
 @property (readonly) NSArray * assumptions;
+@property (readonly) BOOL success;
+@property (readonly) BOOL parseTimedOut;
 
 - (id)initWithDocument:(WAXMLDocument *)document;
 
